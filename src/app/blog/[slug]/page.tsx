@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { blogPosts } from "@/data/blog";
+import { KeyboardNav } from "@/components/keyboard-nav";
 import { RelatedPosts } from "@/components/related-posts";
 import { BlogPostContent } from "@/components/blog-post-content";
 import { ReadingProgress } from "@/components/reading-progress";
@@ -42,6 +43,20 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description: post.excerpt,
       type: "article",
       publishedTime: post.date,
+      images: [
+        {
+          url: `/og/blog/${post.slug}.png`,
+          width: 1200,
+          height: 630,
+          alt: post.title,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.excerpt,
+      images: [`/og/blog/${post.slug}.png`],
     },
   };
 }
@@ -55,6 +70,11 @@ export default async function BlogPostPage({ params }: Props) {
   }
 
   const headings = extractHeadings(post.content);
+
+  const currentIndex = blogPosts.findIndex((p) => p.slug === slug);
+  const nextSlug = currentIndex > 0 ? blogPosts[currentIndex - 1].slug : undefined;
+  const previousSlug =
+    currentIndex < blogPosts.length - 1 ? blogPosts[currentIndex + 1].slug : undefined;
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -71,6 +91,11 @@ export default async function BlogPostPage({ params }: Props) {
 
   return (
     <div className="py-20 md:py-28">
+      <KeyboardNav
+        context="post"
+        previousSlug={previousSlug}
+        nextSlug={nextSlug}
+      />
       <ReadingProgress />
       <script
         type="application/ld+json"

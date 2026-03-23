@@ -24,6 +24,20 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     openGraph: {
       title: `${decodedTag} — Blog — Matt Wilson`,
       description: `Blog posts about ${decodedTag} by Matt Wilson.`,
+      images: [
+        {
+          url: `/og/blog/tag/${encodeURIComponent(decodedTag)}.png`,
+          width: 1200,
+          height: 630,
+          alt: `Posts tagged "${decodedTag}"`,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${decodedTag} — Blog — Matt Wilson`,
+      description: `Blog posts about ${decodedTag} by Matt Wilson.`,
+      images: [`/og/blog/tag/${encodeURIComponent(decodedTag)}.png`],
     },
   };
 }

@@ -7,11 +7,12 @@
   },
   "scripts": {
     "dev": "next dev",
-    "prebuild": "tsx scripts/generate-feeds.ts",
+    "prebuild": "tsx scripts/generate-feeds.ts && tsx scripts/generate-og-images.ts",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "generate-feeds": "tsx scripts/generate-feeds.ts"
+    "generate-feeds": "tsx scripts/generate-feeds.ts",
+    "generate-og-images": "tsx scripts/generate-og-images.ts"
   },
   "dependencies": {
     "framer-motion": "^11.0.0",

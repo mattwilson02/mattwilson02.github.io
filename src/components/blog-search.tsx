@@ -1,11 +1,14 @@
 "use client";
 
+import type { RefObject } from "react";
+
 interface BlogSearchProps {
   value: string;
   onChange: (query: string) => void;
+  inputRef?: RefObject<HTMLInputElement | null>;
 }
 
-export function BlogSearch({ value, onChange }: BlogSearchProps) {
+export function BlogSearch({ value, onChange, inputRef }: BlogSearchProps) {
   return (
     <div className="relative">
       <span className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-[var(--color-muted)]">
@@ -32,6 +35,7 @@ export function BlogSearch({ value, onChange }: BlogSearchProps) {
         </svg>
       </span>
       <input
+        ref={inputRef}
         type="search"
         aria-label="Search blog posts"
         placeholder="Search posts..."
