@@ -21,6 +21,11 @@ const Certifications = dynamic(() =>
     default: m.Certifications,
   })),
 );
+const Testimonials = dynamic(() =>
+  import("@/components/testimonials").then((m) => ({
+    default: m.Testimonials,
+  })),
+);
 const Contact = dynamic(() =>
   import("@/components/contact").then((m) => ({ default: m.Contact })),
 );
@@ -41,6 +46,7 @@ export default function Home() {
         <Projects />
         <Skills />
         <Certifications />
+        <Testimonials />
         <CurrentlyBuilding />
         <Contact />
       </main>
