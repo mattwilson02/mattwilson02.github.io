@@ -22,7 +22,7 @@ export const experienceData: ExperienceEntry[] = [
         techSummary:
           "Next.js 15, TypeScript, SQL Server, Prisma, Azure DevOps, Cypress",
         highlights: [
-          "Sole frontend architect and lead full-stack engineer on the primary internal tool for the Global Best Ideas division — client portfolios, valuations, transactions, and financial reporting",
+          "Sole frontend architect on the primary internal tool for the Global Best Ideas division — client portfolios, valuations, transactions, and financial reporting",
           "Designed Clean Architecture end-to-end: 70 business use cases, 29 database models, 28 Prisma migrations including stored procedures for complex financial calculations",
           "Built 45 REST API endpoints and 18 application pages covering client management, portfolio proposals, transaction processing, fund dashboards, AUM reporting, and batch valuation generation",
           "Delivered automated valuation pipeline integrating external DocGen API, password-protected Excel output, and Azure File Share — replacing a previously manual process",

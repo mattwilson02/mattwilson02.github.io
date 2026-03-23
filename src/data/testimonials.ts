@@ -18,7 +18,7 @@ export const testimonialsData: Testimonial[] = [
     quote: "I've had the pleasure of working with Matt across multiple companies and have seen him continuously grow and adapt his skill set to meet each new challenge. He is hardworking, results-driven, and highly committed to delivering quality outcomes. Matt is also an excellent team player who brings a positive attitude and strong collaboration to any environment.",
     name: "Ricardo Brito",
     role: "Team Lead",
-    company: "AAO Holdings & Stonehage Fleming",
-    date: "2022–2025",
+    company: "Stonehage Fleming",
+    date: "2025",
   },
 ];
