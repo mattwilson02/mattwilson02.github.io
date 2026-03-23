@@ -32,7 +32,7 @@ export function RelatedPosts({ currentSlug, currentTags }: RelatedPostsProps) {
             date={post.date}
             excerpt={post.excerpt}
             tags={post.tags}
-            readingTime={post.readingTime}
+            content={post.content}
           />
         ))}
       </div>

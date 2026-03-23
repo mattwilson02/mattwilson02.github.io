@@ -1,9 +1,10 @@
 import Link from "next/link";
 import { BlogPost } from "@/data/blog";
+import { calculateReadingTime } from "@/lib/reading-time";
 
 type BlogCardProps = Pick<
   BlogPost,
-  "slug" | "title" | "date" | "excerpt" | "tags" | "readingTime"
+  "slug" | "title" | "date" | "excerpt" | "tags" | "content"
 >;
 
 function formatDate(dateStr: string): string {
@@ -21,7 +22,7 @@ export function BlogCard({
   date,
   excerpt,
   tags,
-  readingTime,
+  content,
 }: BlogCardProps) {
   return (
     <Link
@@ -34,7 +35,7 @@ export function BlogCard({
           {title}
         </h3>
         <p className="text-sm text-[var(--color-muted)]">
-          {formatDate(date)} &middot; {readingTime}
+          {formatDate(date)} &middot; {calculateReadingTime(content)}
         </p>
       </div>
 

@@ -51,7 +51,7 @@ export function LatestPosts() {
                 date={post.date}
                 excerpt={post.excerpt}
                 tags={post.tags}
-                readingTime={post.readingTime}
+                content={post.content}
               />
             </motion.div>
           ))}

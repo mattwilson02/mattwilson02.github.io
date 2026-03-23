@@ -8,6 +8,9 @@ import { ReadingProgress } from "@/components/reading-progress";
 import { TableOfContents } from "@/components/table-of-contents";
 import { extractHeadings } from "@/lib/extract-headings";
 import { SharePost } from "@/components/share-post";
+import { Breadcrumbs } from "@/components/breadcrumbs";
+import { PostNavigation } from "@/components/post-navigation";
+import { calculateReadingTime } from "@/lib/reading-time";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -75,12 +78,15 @@ export default async function BlogPostPage({ params }: Props) {
       />
 
       <div className="mx-auto max-w-5xl px-6">
-        <Link
-          href="/blog"
-          className="mb-8 inline-block text-sm text-[var(--color-muted)] transition-colors hover:text-[var(--color-foreground)]"
-        >
-          ← Back to Blog
-        </Link>
+        <div className="mb-8">
+          <Breadcrumbs
+            items={[
+              { label: "Home", href: "/" },
+              { label: "Blog", href: "/blog" },
+              { label: post.title },
+            ]}
+          />
+        </div>
 
         <article>
           <h1 className="mb-4 text-3xl font-bold tracking-tight md:text-4xl">
@@ -89,7 +95,7 @@ export default async function BlogPostPage({ params }: Props) {
 
           <div className="mb-6 flex flex-wrap items-center gap-3">
             <span className="text-sm text-[var(--color-muted)]">
-              {formatDate(post.date)} &middot; {post.readingTime}
+              {formatDate(post.date)} &middot; {calculateReadingTime(post.content)}
             </span>
             <div className="flex flex-wrap gap-2">
               {post.tags.map((tag) => (
@@ -139,6 +145,8 @@ export default async function BlogPostPage({ params }: Props) {
         />
 
         <RelatedPosts currentSlug={post.slug} currentTags={post.tags} />
+
+        <PostNavigation currentSlug={post.slug} />
 
         <div className="mt-12 border-t border-[var(--color-border)] pt-8">
           <Link

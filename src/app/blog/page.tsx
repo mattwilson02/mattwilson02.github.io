@@ -5,6 +5,7 @@ import { blogPosts } from "@/data/blog";
 import { BlogCard } from "@/components/blog-card";
 import { TagFilter } from "@/components/tag-filter";
 import { BlogSearch } from "@/components/blog-search";
+import { Breadcrumbs } from "@/components/breadcrumbs";
 
 const allTags = Array.from(new Set(blogPosts.flatMap((p) => p.tags))).sort();
 
@@ -35,6 +36,9 @@ export default function BlogPage() {
   return (
     <div className="py-20 md:py-28">
       <div className="mx-auto max-w-5xl px-6">
+        <div className="mb-4">
+          <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Blog" }]} />
+        </div>
         <h1 className="mb-3 text-3xl font-bold tracking-tight md:text-4xl">
           Blog
         </h1>
@@ -66,7 +70,7 @@ export default function BlogPage() {
                 date={post.date}
                 excerpt={post.excerpt}
                 tags={post.tags}
-                readingTime={post.readingTime}
+                content={post.content}
               />
             ))}
           </div>
