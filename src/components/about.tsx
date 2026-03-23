@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { Section } from "./section";
 import { Avatar } from "./avatar";
 import { aboutData } from "@/data/about";
@@ -26,11 +26,13 @@ const itemVariants = {
 };
 
 export function About() {
+  const prefersReducedMotion = useReducedMotion();
+
   return (
     <Section id="about">
       <motion.div
         variants={containerVariants}
-        initial="hidden"
+        initial={prefersReducedMotion ? false : "hidden"}
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
       >

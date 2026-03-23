@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { Section } from "./section";
 import { certificationsData } from "@/data/certifications";
 
@@ -22,11 +22,13 @@ const itemVariants = {
 };
 
 export function Certifications() {
+  const prefersReducedMotion = useReducedMotion();
+
   return (
     <Section id="certifications">
       <motion.div
         variants={containerVariants}
-        initial="hidden"
+        initial={prefersReducedMotion ? false : "hidden"}
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
       >

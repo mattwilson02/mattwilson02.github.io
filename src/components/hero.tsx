@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { heroData } from "@/data/hero";
 
 const containerVariants = {
@@ -24,6 +24,8 @@ const itemVariants = {
 };
 
 export function Hero() {
+  const prefersReducedMotion = useReducedMotion();
+
   return (
     <section
       id="home"
@@ -32,7 +34,7 @@ export function Hero() {
       <div className="mx-auto w-full max-w-5xl px-6">
         <motion.div
           variants={containerVariants}
-          initial="hidden"
+          initial={prefersReducedMotion ? false : "hidden"}
           animate="visible"
           className="flex flex-col gap-6"
         >

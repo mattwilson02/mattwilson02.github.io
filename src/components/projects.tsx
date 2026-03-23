@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { Section } from "./section";
 import { ProjectCard } from "./project-card";
 import { projectsData } from "@/data/projects";
@@ -23,11 +23,13 @@ const itemVariants = {
 };
 
 export function Projects() {
+  const prefersReducedMotion = useReducedMotion();
+
   return (
     <Section id="projects">
       <motion.div
         variants={containerVariants}
-        initial="hidden"
+        initial={prefersReducedMotion ? false : "hidden"}
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
       >

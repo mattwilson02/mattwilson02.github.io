@@ -4,16 +4,17 @@ import { useEffect, useState } from "react";
 import { ThemeToggle } from "./theme-toggle";
 
 const navLinks = [
-  { label: "Home", href: "#home" },
-  { label: "About", href: "#about" },
-  { label: "Experience", href: "#experience" },
-  { label: "Projects", href: "#projects" },
-  { label: "Skills", href: "#skills" },
+  { label: "Home", href: "#home", id: "home" },
+  { label: "About", href: "#about", id: "about" },
+  { label: "Experience", href: "#experience", id: "experience" },
+  { label: "Projects", href: "#projects", id: "projects" },
+  { label: "Skills", href: "#skills", id: "skills" },
 ];
 
 export function Nav() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [activeId, setActiveId] = useState("home");
 
   useEffect(() => {
     function onScroll() {
@@ -21,6 +22,35 @@ export function Nav() {
     }
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    const sectionIds = navLinks.map((l) => l.id);
+    const intersecting = new Set<string>();
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            intersecting.add(entry.target.id);
+          } else {
+            intersecting.delete(entry.target.id);
+          }
+        }
+        // Pick the topmost visible section (first in DOM order)
+        const active = sectionIds.find((id) => intersecting.has(id));
+        if (active) setActiveId(active);
+        else if (window.scrollY < 100) setActiveId("home");
+      },
+      { rootMargin: "-80px 0px -60% 0px" },
+    );
+
+    for (const id of sectionIds) {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    }
+
+    return () => observer.disconnect();
   }, []);
 
   useEffect(() => {
@@ -33,6 +63,18 @@ export function Nav() {
 
   function handleLinkClick() {
     setMenuOpen(false);
+  }
+
+  function linkClass(id: string) {
+    return activeId === id
+      ? "text-sm font-medium text-[var(--color-foreground)] transition-colors"
+      : "text-sm text-[var(--color-muted)] transition-colors hover:text-[var(--color-foreground)]";
+  }
+
+  function mobileLinkClass(id: string) {
+    return activeId === id
+      ? "block py-3 text-sm font-medium text-[var(--color-foreground)] transition-colors"
+      : "block py-3 text-sm text-[var(--color-muted)] transition-colors hover:text-[var(--color-foreground)]";
   }
 
   return (
@@ -60,10 +102,7 @@ export function Nav() {
         <ul className="hidden items-center gap-6 md:flex">
           {navLinks.map((link) => (
             <li key={link.href}>
-              <a
-                href={link.href}
-                className="text-sm text-[var(--color-muted)] transition-colors hover:text-[var(--color-foreground)]"
-              >
+              <a href={link.href} className={linkClass(link.id)}>
                 {link.label}
               </a>
             </li>
@@ -131,7 +170,7 @@ export function Nav() {
                 <a
                   href={link.href}
                   onClick={handleLinkClick}
-                  className="block py-3 text-sm text-[var(--color-muted)] transition-colors hover:text-[var(--color-foreground)]"
+                  className={mobileLinkClass(link.id)}
                 >
                   {link.label}
                 </a>

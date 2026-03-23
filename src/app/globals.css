@@ -23,6 +23,7 @@
 
   html {
     scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
   }
 
   body {
@@ -35,6 +36,11 @@
   *::before,
   *::after {
     border-color: var(--color-border);
+  }
+
+  /* Adapt focus ring offset colour to the current theme background */
+  :focus-visible {
+    --tw-ring-offset-color: var(--color-background);
   }
 }
 
@@ -55,4 +61,10 @@
 
 .skip-to-content:focus {
   top: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }
