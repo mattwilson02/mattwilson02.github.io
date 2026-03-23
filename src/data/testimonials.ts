@@ -19,6 +19,6 @@ export const testimonialsData: Testimonial[] = [
     name: "Ricardo Brito",
     role: "Team Lead",
     company: "Stonehage Fleming",
-    date: "2025",
+    date: "2024",
   },
 ];
