@@ -49,6 +49,8 @@ export const metadata: Metadata = {
   ],
 };
 
+const PLAUSIBLE_DOMAIN = "mattwilson02.github.io";
+
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
@@ -93,6 +95,11 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+        <script
+          defer
+          data-domain={PLAUSIBLE_DOMAIN}
+          src="https://plausible.io/js/script.js"
         />
       </head>
       <body className={`${inter.variable} font-sans antialiased`}>

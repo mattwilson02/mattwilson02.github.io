@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import ReactMarkdown from "react-markdown";
 import { blogPosts } from "@/data/blog";
 import { RelatedPosts } from "@/components/related-posts";
+import { BlogPostContent } from "@/components/blog-post-content";
+import { ReadingProgress } from "@/components/reading-progress";
+import { TableOfContents } from "@/components/table-of-contents";
+import { extractHeadings } from "@/lib/extract-headings";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -47,6 +50,8 @@ export default async function BlogPostPage({ params }: Props) {
     notFound();
   }
 
+  const headings = extractHeadings(post.content);
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
@@ -62,6 +67,7 @@ export default async function BlogPostPage({ params }: Props) {
 
   return (
     <div className="py-20 md:py-28">
+      <ReadingProgress />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -98,8 +104,31 @@ export default async function BlogPostPage({ params }: Props) {
 
           <hr className="mb-8 border-[var(--color-border)]" />
 
-          <div className="prose max-w-3xl">
-            <ReactMarkdown>{post.content}</ReactMarkdown>
+          {headings.length > 0 && (
+            <div className="mb-6 lg:hidden">
+              <TableOfContents headings={headings} variant="mobile" />
+            </div>
+          )}
+
+          <div
+            className={
+              headings.length > 0
+                ? "lg:flex lg:items-start lg:gap-8"
+                : undefined
+            }
+          >
+            <div
+              className={
+                headings.length > 0 ? "min-w-0 flex-1" : undefined
+              }
+            >
+              <BlogPostContent content={post.content} />
+            </div>
+            {headings.length > 0 && (
+              <aside className="hidden w-[220px] shrink-0 lg:block">
+                <TableOfContents headings={headings} variant="desktop" />
+              </aside>
+            )}
           </div>
         </article>
 
