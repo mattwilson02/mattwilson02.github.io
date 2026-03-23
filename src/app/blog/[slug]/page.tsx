@@ -1,0 +1,116 @@
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import Link from "next/link";
+import ReactMarkdown from "react-markdown";
+import { blogPosts } from "@/data/blog";
+
+interface Props {
+  params: Promise<{ slug: string }>;
+}
+
+function formatDate(dateStr: string): string {
+  const date = new Date(dateStr + "T00:00:00");
+  return date.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  });
+}
+
+export function generateStaticParams() {
+  return blogPosts.map((post) => ({ slug: post.slug }));
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params;
+  const post = blogPosts.find((p) => p.slug === slug);
+  if (!post) return {};
+
+  return {
+    title: `${post.title} — Matt Wilson`,
+    description: post.excerpt,
+    openGraph: {
+      title: post.title,
+      description: post.excerpt,
+      type: "article",
+      publishedTime: post.date,
+    },
+  };
+}
+
+export default async function BlogPostPage({ params }: Props) {
+  const { slug } = await params;
+  const post = blogPosts.find((p) => p.slug === slug);
+
+  if (!post) {
+    notFound();
+  }
+
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.excerpt,
+    datePublished: post.date,
+    author: {
+      "@type": "Person",
+      name: "Matt Wilson",
+    },
+    url: `https://mattwilson02.github.io/blog/${post.slug}`,
+  };
+
+  return (
+    <div className="py-20 md:py-28">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+
+      <div className="mx-auto max-w-5xl px-6">
+        <Link
+          href="/blog"
+          className="mb-8 inline-block text-sm text-[var(--color-muted)] transition-colors hover:text-[var(--color-foreground)]"
+        >
+          ← Back to Blog
+        </Link>
+
+        <article>
+          <h1 className="mb-4 text-3xl font-bold tracking-tight md:text-4xl">
+            {post.title}
+          </h1>
+
+          <div className="mb-6 flex flex-wrap items-center gap-3">
+            <span className="text-sm text-[var(--color-muted)]">
+              {formatDate(post.date)} &middot; {post.readingTime}
+            </span>
+            <div className="flex flex-wrap gap-2">
+              {post.tags.map((tag) => (
+                <span
+                  key={tag}
+                  className="rounded-full border border-[var(--color-border)] bg-[var(--color-card)] px-3 py-1 text-xs font-medium text-[var(--color-foreground)]"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          <hr className="mb-8 border-[var(--color-border)]" />
+
+          <div className="prose max-w-3xl">
+            <ReactMarkdown>{post.content}</ReactMarkdown>
+          </div>
+        </article>
+
+        <div className="mt-12 border-t border-[var(--color-border)] pt-8">
+          <Link
+            href="/blog"
+            className="text-sm text-[var(--color-muted)] transition-colors hover:text-[var(--color-foreground)]"
+          >
+            ← Back to Blog
+          </Link>
+        </div>
+      </div>
+    </div>
+  );
+}

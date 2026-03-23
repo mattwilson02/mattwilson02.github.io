@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { ThemeToggle } from "./theme-toggle";
 
-const navLinks = [
+const homeNavLinks = [
   { label: "Home", href: "#home", id: "home" },
   { label: "About", href: "#about", id: "about" },
   { label: "Experience", href: "#experience", id: "experience" },
@@ -12,10 +12,26 @@ const navLinks = [
   { label: "Contact", href: "#contact", id: "contact" },
 ];
 
-export function Nav() {
+const blogNavLinks = [
+  { label: "Home", href: "/", id: "home" },
+  { label: "About", href: "/#about", id: "about" },
+  { label: "Experience", href: "/#experience", id: "experience" },
+  { label: "Projects", href: "/#projects", id: "projects" },
+  { label: "Skills", href: "/#skills", id: "skills" },
+  { label: "Contact", href: "/#contact", id: "contact" },
+  { label: "Blog", href: "/blog", id: "blog" },
+];
+
+interface NavProps {
+  showBlogLink?: boolean;
+}
+
+export function Nav({ showBlogLink = false }: NavProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeId, setActiveId] = useState("home");
+
+  const navLinks = showBlogLink ? blogNavLinks : homeNavLinks;
 
   useEffect(() => {
     function onScroll() {
@@ -26,7 +42,9 @@ export function Nav() {
   }, []);
 
   useEffect(() => {
-    const sectionIds = navLinks.map((l) => l.id);
+    if (showBlogLink) return;
+
+    const sectionIds = homeNavLinks.map((l) => l.id);
     const intersecting = new Set<string>();
 
     const observer = new IntersectionObserver(
@@ -52,7 +70,7 @@ export function Nav() {
     }
 
     return () => observer.disconnect();
-  }, []);
+  }, [showBlogLink]);
 
   useEffect(() => {
     function onKeyDown(e: KeyboardEvent) {
@@ -67,13 +85,13 @@ export function Nav() {
   }
 
   function linkClass(id: string) {
-    return activeId === id
+    return !showBlogLink && activeId === id
       ? "text-sm font-medium text-[var(--color-foreground)] transition-colors"
       : "text-sm text-[var(--color-muted)] transition-colors hover:text-[var(--color-foreground)]";
   }
 
   function mobileLinkClass(id: string) {
-    return activeId === id
+    return !showBlogLink && activeId === id
       ? "block py-3 text-sm font-medium text-[var(--color-foreground)] transition-colors"
       : "block py-3 text-sm text-[var(--color-muted)] transition-colors hover:text-[var(--color-foreground)]";
   }
@@ -92,7 +110,7 @@ export function Nav() {
       >
         {/* Logo */}
         <a
-          href="#home"
+          href={showBlogLink ? "/" : "#home"}
           className="text-base font-semibold tracking-tight transition-colors hover:text-[var(--color-accent)]"
           onClick={handleLinkClick}
         >
