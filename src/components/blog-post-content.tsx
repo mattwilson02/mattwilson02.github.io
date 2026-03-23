@@ -2,6 +2,7 @@
 
 import { isValidElement, Children } from "react";
 import ReactMarkdown from "react-markdown";
+import rehypeHighlight from "rehype-highlight";
 import { CodeBlock } from "./code-block";
 import { slugify } from "@/lib/extract-headings";
 
@@ -27,6 +28,7 @@ export function BlogPostContent({ content }: BlogPostContentProps) {
   return (
     <div className="prose max-w-3xl">
       <ReactMarkdown
+        rehypePlugins={[rehypeHighlight]}
         components={{
           pre({ children }) {
             return <CodeBlock>{children}</CodeBlock>;

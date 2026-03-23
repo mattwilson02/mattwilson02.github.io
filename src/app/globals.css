@@ -9,6 +9,18 @@
     --color-accent: #2563eb;
     --color-accent-hover: #1d4ed8;
     --color-card: #f9fafb;
+
+    /* Syntax highlighting token colours — light mode */
+    --color-syntax-keyword: #7c3aed;
+    --color-syntax-string: #16a34a;
+    --color-syntax-comment: #9ca3af;
+    --color-syntax-number: #d97706;
+    --color-syntax-function: #2563eb;
+    --color-syntax-variable: var(--color-foreground);
+    --color-syntax-type: #0891b2;
+    --color-syntax-property: #dc2626;
+    --color-syntax-operator: #737373;
+    --color-syntax-punctuation: #9ca3af;
   }
 
   .dark {
@@ -19,6 +31,18 @@
     --color-accent: #2563eb;
     --color-accent-hover: #1d4ed8;
     --color-card: #111111;
+
+    /* Syntax highlighting token colours — dark mode */
+    --color-syntax-keyword: #a78bfa;
+    --color-syntax-string: #4ade80;
+    --color-syntax-comment: #6b7280;
+    --color-syntax-number: #fbbf24;
+    --color-syntax-function: #60a5fa;
+    --color-syntax-variable: var(--color-foreground);
+    --color-syntax-type: #22d3ee;
+    --color-syntax-property: #f87171;
+    --color-syntax-operator: #a3a3a3;
+    --color-syntax-punctuation: #6b7280;
   }
 
   html {
@@ -209,4 +233,57 @@
   border: none;
   border-top: 1px solid var(--color-border);
   margin: 2rem 0;
+}
+
+/* Syntax highlighting — highlight.js token classes */
+.prose .hljs-keyword,
+.prose .hljs-tag {
+  color: var(--color-syntax-keyword);
+}
+
+.prose .hljs-string,
+.prose .hljs-doctag {
+  color: var(--color-syntax-string);
+}
+
+.prose .hljs-comment {
+  color: var(--color-syntax-comment);
+  font-style: italic;
+}
+
+.prose .hljs-number,
+.prose .hljs-literal {
+  color: var(--color-syntax-number);
+}
+
+.prose .hljs-title.function_,
+.prose .hljs-title {
+  color: var(--color-syntax-function);
+}
+
+.prose .hljs-variable,
+.prose .hljs-template-variable {
+  color: var(--color-syntax-variable);
+}
+
+.prose .hljs-type,
+.prose .hljs-built_in {
+  color: var(--color-syntax-type);
+}
+
+.prose .hljs-attr,
+.prose .hljs-property {
+  color: var(--color-syntax-property);
+}
+
+.prose .hljs-operator {
+  color: var(--color-syntax-operator);
+}
+
+.prose .hljs-punctuation {
+  color: var(--color-syntax-punctuation);
+}
+
+.prose .hljs-meta {
+  color: var(--color-syntax-comment);
 }

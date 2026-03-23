@@ -16,7 +16,7 @@ export const blogPosts: BlogPost[] = [
     excerpt:
       "How I built Ralph — an autonomous agent that reads your codebase, generates sprint specs, and ships features end-to-end without manual orchestration.",
     tags: ["AI", "TypeScript", "Developer Tools"],
-    readingTime: "6 min read",
+    readingTime: "7 min read",
     content: `## The Problem
 
 Every developer using AI tools today runs the same loop: open a chat window, paste some code, get a suggestion, copy it back, run tests, find an error, paste the error back, get another suggestion. The model is doing real work, but the developer is the glue — manually orchestrating the entire cycle.
@@ -40,6 +40,20 @@ Ralph is a zero-config autonomous sprint runner. You point it at a repository an
 
 The agent that built this website — including this very blog post you're reading — is Ralph.
 
+Every agent response conforms to a typed schema. No free-form prose to parse, no ambiguity about what the agent intended.
+
+\`\`\`typescript
+interface SprintResult {
+  files: Array<{
+    path: string;
+    action: "create" | "modify" | "delete";
+    content: string;
+  }>;
+  commands: string[];
+  commitMessage: string;
+}
+\`\`\`
+
 ## The Architecture Decision That Mattered Most
 
 Early prototypes used a single model for everything. That was wrong.
@@ -51,6 +65,23 @@ The insight was that different parts of the pipeline have fundamentally differen
 - **Error analysis** (why is this TypeScript error happening?) needs concise, fast responses.
 
 The solution was multi-tier LLM routing: Opus handles strategy and spec generation, Sonnet handles code generation and error analysis, and a lightweight model handles the scaffolding work between calls.
+
+The routing is explicit and typed. Each task type maps to a model and temperature that matches the cognitive demand.
+
+\`\`\`typescript
+function routeToModel(task: TaskType): ModelConfig {
+  switch (task) {
+    case "strategy":
+    case "spec-generation":
+      return { model: "opus", temperature: 0.3 };
+    case "code-generation":
+    case "error-analysis":
+      return { model: "sonnet", temperature: 0.2 };
+    default:
+      return { model: "haiku", temperature: 0.1 };
+  }
+}
+\`\`\`
 
 This cut runtime significantly while improving output quality — not just cost optimization, but accuracy optimization. Forcing Sonnet to do architectural reasoning was actually making it worse.
 
@@ -136,6 +167,24 @@ A precise spec eliminates ambiguity at the decision points that matter. It says:
 - Here's the interface to define
 - Here's the exact pattern to follow from an existing component
 - Here are the acceptance criteria that define done
+
+\`\`\`yaml
+task: "Add blog tag filtering"
+files:
+  - path: src/components/tag-filter.tsx
+    purpose: "Interactive tag filter pill row"
+  - path: src/app/blog/page.tsx
+    purpose: "Convert to client component, add filter state"
+requirements:
+  - "Active pill: bg-accent, text-white"
+  - "Inactive pill: matches existing tech pill style"
+  - "Filter is client-side useState, no URL params"
+acceptance_criteria:
+  - "Clicking tag filters posts to matching tag"
+  - "Clicking active tag clears filter"
+\`\`\`
+
+That level of precision eliminates ambiguity at the decision points. The agent doesn't have to guess what "active pill styling" means — it's specified.
 
 Writing that spec requires you to understand the system deeply enough to make every decision before the agent starts. If you don't understand it, you'll write an underspecified spec, and the agent will fill the gaps in ways that seem reasonable in isolation but diverge from what you actually wanted.
 

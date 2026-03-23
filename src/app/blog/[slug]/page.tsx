@@ -7,6 +7,7 @@ import { BlogPostContent } from "@/components/blog-post-content";
 import { ReadingProgress } from "@/components/reading-progress";
 import { TableOfContents } from "@/components/table-of-contents";
 import { extractHeadings } from "@/lib/extract-headings";
+import { SharePost } from "@/components/share-post";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -131,6 +132,11 @@ export default async function BlogPostPage({ params }: Props) {
             )}
           </div>
         </article>
+
+        <SharePost
+          title={post.title}
+          url={`https://mattwilson02.github.io/blog/${post.slug}`}
+        />
 
         <RelatedPosts currentSlug={post.slug} currentTags={post.tags} />
 
