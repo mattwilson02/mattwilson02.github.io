@@ -99,12 +99,14 @@ export default async function BlogPostPage({ params }: Props) {
             </span>
             <div className="flex flex-wrap gap-2">
               {post.tags.map((tag) => (
-                <span
+                <Link
                   key={tag}
-                  className="rounded-full border border-[var(--color-border)] bg-[var(--color-card)] px-3 py-1 text-xs font-medium text-[var(--color-foreground)]"
+                  href={`/blog/tag/${encodeURIComponent(tag)}`}
+                  aria-label={`View posts tagged ${tag}`}
+                  className="rounded-full border border-[var(--color-border)] bg-[var(--color-card)] px-3 py-1 text-xs font-medium text-[var(--color-foreground)] transition-colors hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]"
                 >
                   {tag}
-                </span>
+                </Link>
               ))}
             </div>
           </div>
@@ -112,7 +114,7 @@ export default async function BlogPostPage({ params }: Props) {
           <hr className="mb-8 border-[var(--color-border)]" />
 
           {headings.length > 0 && (
-            <div className="mb-6 lg:hidden">
+            <div className="print:hidden mb-6 lg:hidden">
               <TableOfContents headings={headings} variant="mobile" />
             </div>
           )}
@@ -132,23 +134,29 @@ export default async function BlogPostPage({ params }: Props) {
               <BlogPostContent content={post.content} />
             </div>
             {headings.length > 0 && (
-              <aside className="hidden w-[220px] shrink-0 lg:block">
+              <aside className="print:hidden hidden w-[220px] shrink-0 lg:block">
                 <TableOfContents headings={headings} variant="desktop" />
               </aside>
             )}
           </div>
         </article>
 
-        <SharePost
-          title={post.title}
-          url={`https://mattwilson02.github.io/blog/${post.slug}`}
-        />
+        <div className="print:hidden">
+          <SharePost
+            title={post.title}
+            url={`https://mattwilson02.github.io/blog/${post.slug}`}
+          />
+        </div>
 
-        <RelatedPosts currentSlug={post.slug} currentTags={post.tags} />
+        <div className="print:hidden">
+          <RelatedPosts currentSlug={post.slug} currentTags={post.tags} />
+        </div>
 
-        <PostNavigation currentSlug={post.slug} />
+        <div className="print:hidden">
+          <PostNavigation currentSlug={post.slug} />
+        </div>
 
-        <div className="mt-12 border-t border-[var(--color-border)] pt-8">
+        <div className="print:hidden mt-12 border-t border-[var(--color-border)] pt-8">
           <Link
             href="/blog"
             className="text-sm text-[var(--color-muted)] transition-colors hover:text-[var(--color-foreground)]"

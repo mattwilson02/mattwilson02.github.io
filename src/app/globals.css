@@ -287,3 +287,103 @@
 .prose .hljs-meta {
   color: var(--color-syntax-comment);
 }
+
+/* ============================================================
+   Print styles — clean output for resume and blog posts
+   ============================================================ */
+@media print {
+  /* Force light-mode colours regardless of active theme */
+  :root,
+  .dark {
+    --color-background: #ffffff;
+    --color-foreground: #000000;
+    --color-muted: #4b5563;
+    --color-border: #d1d5db;
+    --color-card: #f9fafb;
+    --color-accent: #1d4ed8;
+  }
+
+  body {
+    background: white !important;
+    color: black !important;
+    transition: none !important;
+  }
+
+  /* Hide site chrome */
+  nav,
+  footer,
+  [aria-label="Scroll to top"],
+  [aria-label="Toggle light mode"],
+  [aria-label="Toggle dark mode"],
+  [aria-label="Copy code to clipboard"],
+  [aria-label="Copy post link to clipboard"],
+  [aria-label="Share this post"],
+  .print\:hidden {
+    display: none !important;
+  }
+
+  /* Typography */
+  html {
+    font-size: 11pt;
+    scroll-behavior: auto;
+  }
+
+  * {
+    line-height: 1.4;
+    box-shadow: none !important;
+    text-shadow: none !important;
+    animation: none !important;
+  }
+
+  /* Disable shimmer */
+  .text-shimmer {
+    animation: none !important;
+    background: none !important;
+    -webkit-background-clip: unset !important;
+    background-clip: unset !important;
+    -webkit-text-fill-color: #000000 !important;
+    color: #000000 !important;
+  }
+
+  /* Show URLs after external links in prose content */
+  .prose a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 9pt;
+    color: #6b7280;
+  }
+
+  /* Code blocks */
+  .prose pre {
+    background-color: #f8f9fa !important;
+    border: 1px solid #d1d5db !important;
+    overflow-x: visible !important;
+    white-space: pre-wrap !important;
+    word-break: break-word !important;
+    font-size: 9pt !important;
+  }
+
+  .prose code {
+    background-color: #f8f9fa !important;
+    border: 1px solid #d1d5db !important;
+    font-size: 9pt !important;
+  }
+
+  /* Resume-specific print rules */
+  .resume-section {
+    break-inside: avoid;
+  }
+
+  .resume-section h2 {
+    break-after: avoid;
+  }
+
+  .resume-entry {
+    break-inside: avoid;
+  }
+
+  /* Resume container — tight margins for paper */
+  .resume-page {
+    margin: 0;
+    padding: 0.5in;
+  }
+}

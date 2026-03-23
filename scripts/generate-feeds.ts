@@ -22,6 +22,23 @@ function generateSitemap(): string {
     )
     .join("\n");
 
+  const allTags = Array.from(new Set(blogPosts.flatMap((p) => p.tags)));
+  const tagUrls = allTags
+    .map((tag) => {
+      const postsWithTag = blogPosts.filter((p) => p.tags.includes(tag));
+      const lastmod = postsWithTag.reduce(
+        (latest, p) => (p.date > latest ? p.date : latest),
+        "1970-01-01",
+      );
+      return `  <url>
+    <loc>${siteUrl}/blog/tag/${encodeURIComponent(tag)}</loc>
+    <lastmod>${lastmod}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>`;
+    })
+    .join("\n");
+
   return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
@@ -37,12 +54,19 @@ function generateSitemap(): string {
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>${siteUrl}/resume</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>${siteUrl}/blog</loc>
     <lastmod>${today}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 ${postUrls}
+${tagUrls}
 </urlset>`;
 }
 
