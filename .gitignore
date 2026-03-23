@@ -1,0 +1,17 @@
+# dependencies
+node_modules/
+
+# next.js
+.next/
+out/
+
+# misc
+*.log
+.DS_Store
+
+# env
+.env
+.env*.local
+
+# ralph
+.ralph-state.json
