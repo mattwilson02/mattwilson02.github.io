@@ -18,6 +18,16 @@
       <category>Developer Tools</category>
   </item>
   <item>
+    <title>Shipping a Cross-Platform Fintech App with React Native</title>
+    <description>Lessons from building SF Mobile — a cross-platform wealth management app with biometric auth, real-time portfolios, and 4-language localisation.</description>
+    <link>https://mattwilson02.github.io/blog/shipping-cross-platform-fintech-react-native</link>
+    <guid isPermaLink="true">https://mattwilson02.github.io/blog/shipping-cross-platform-fintech-react-native</guid>
+    <pubDate>Sun, 01 Mar 2026 00:00:00 GMT</pubDate>
+      <category>React Native</category>
+      <category>TypeScript</category>
+      <category>Mobile</category>
+  </item>
+  <item>
     <title>Self-Taught to Senior Engineer in 4 Years</title>
     <description>The honest account of going from zero programming knowledge to shipping production fintech — what actually mattered, what didn't, and what's still driving me.</description>
     <link>https://mattwilson02.github.io/blog/self-taught-to-senior-engineer</link>
@@ -25,6 +35,16 @@
     <pubDate>Fri, 20 Feb 2026 00:00:00 GMT</pubDate>
       <category>Career</category>
       <category>Learning</category>
+  </item>
+  <item>
+    <title>Building a RAG Pipeline That Actually Works</title>
+    <description>What I learned building Athena — a personal AI assistant with ChromaDB vector search and Claude. The gap between RAG tutorials and production RAG is wide.</description>
+    <link>https://mattwilson02.github.io/blog/building-rag-pipeline-that-works</link>
+    <guid isPermaLink="true">https://mattwilson02.github.io/blog/building-rag-pipeline-that-works</guid>
+    <pubDate>Thu, 05 Feb 2026 00:00:00 GMT</pubDate>
+      <category>AI</category>
+      <category>Python</category>
+      <category>RAG</category>
   </item>
   <item>
     <title>Specs Over Keystrokes: How AI Changes What Engineers Do</title>

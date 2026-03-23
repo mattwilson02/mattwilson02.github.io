@@ -25,7 +25,7 @@ const itemVariants = {
 
 export function LatestPosts() {
   const prefersReducedMotion = useReducedMotion();
-  const posts = blogPosts.slice(0, 2);
+  const posts = blogPosts.slice(0, 3);
 
   return (
     <Section id="writing">
@@ -42,7 +42,7 @@ export function LatestPosts() {
           Latest Writing
         </motion.h2>
 
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           {posts.map((post) => (
             <motion.div key={post.slug} variants={itemVariants}>
               <BlogCard

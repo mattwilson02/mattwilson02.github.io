@@ -102,6 +102,102 @@ Ralph currently handles TypeScript, Python, Go, and Rust projects. The next majo
 If you want to see the code or follow along, it's on GitHub.`,
   },
   {
+    slug: "shipping-cross-platform-fintech-react-native",
+    title: "Shipping a Cross-Platform Fintech App with React Native",
+    date: "2026-03-01",
+    excerpt:
+      "Lessons from building SF Mobile — a cross-platform wealth management app with biometric auth, real-time portfolios, and 4-language localisation.",
+    tags: ["React Native", "TypeScript", "Mobile"],
+    readingTime: "6 min read",
+    content: `## The Challenge
+
+Building SF Mobile meant shipping a production fintech app — cross-platform, iOS and Android — for wealth management clients who expect banking-grade polish. No prototypes, no "MVP with rough edges." Real money, real clients, high stakes.
+
+I was the lead engineer on a greenfield project. Here's what I learned.
+
+## Auth Is the Hard Part
+
+Wealth management apps don't get to cut corners on authentication. SF Mobile needed MFA with three factors: email OTP, SMS OTP, and biometric (Face ID on iOS, fingerprint on Android). On top of that, device recognition, and JWT session management with platform-specific secure credential storage.
+
+The biometric flow alone has more edge cases than most features combined: enrollment state, fallback to PIN, cancellation handling, and lockout after failed attempts.
+
+\`\`\`typescript
+interface AuthSession {
+  userId: string;
+  deviceId: string;
+  tokens: {
+    access: string;
+    refresh: string;
+    expiresAt: number;
+  };
+  biometricEnrolled: boolean;
+  mfaVerified: boolean;
+}
+
+async function authenticateWithBiometric(
+  session: AuthSession
+): Promise<boolean> {
+  if (!session.biometricEnrolled) return false;
+  const result = await LocalAuthentication.authenticateAsync({
+    promptMessage: "Confirm your identity",
+    fallbackLabel: "Use PIN",
+    cancelLabel: "Cancel",
+  });
+  return result.success;
+}
+\`\`\`
+
+The key architectural decision: keep auth state in a dedicated service layer, not scattered across screens. Every screen that needs identity data reads from a single source of truth.
+
+## The Build Pipeline
+
+For a cross-platform app shipping to the App Store and Google Play, the deployment pipeline is half the product. I chose Expo + EAS Build, which gives you managed builds in CI without owning a macOS build server.
+
+TanStack Query handles server state — it's the right abstraction for the fetch-cache-sync pattern you need when displaying portfolio values that update in real time. For the API layer, I used Kubb to generate typed clients directly from our OpenAPI spec. No hand-written API functions, no type drift between frontend and backend.
+
+\`\`\`typescript
+// kubb.config.ts
+import { defineConfig } from "@kubb/core";
+import { pluginOas } from "@kubb/plugin-oas";
+import { pluginTanstackQuery } from "@kubb/swagger-tanstack-query";
+
+export default defineConfig({
+  input: { path: "./openapi.json" },
+  output: { path: "./src/generated" },
+  plugins: [
+    pluginOas(),
+    pluginTanstackQuery({ framework: "react" }),
+  ],
+});
+\`\`\`
+
+Every API call in the app is generated. Type errors surface at build time, not at runtime in a client's portfolio view.
+
+## Testing at Scale
+
+SF Mobile has 52 Jest + React Native Testing Library test files and 5 Maestro E2E flows per platform. I picked Maestro over Detox because the YAML-based test format is readable by non-engineers and runs reliably in CI without simulator flakiness.
+
+\`\`\`yaml
+appId: com.sfmobile.app
+---
+- launchApp
+- tapOn: "Sign In"
+- inputText:
+    id: email-input
+    text: \${TEST_EMAIL}
+- tapOn: "Continue"
+- assertVisible: "Enter your verification code"
+\`\`\`
+
+Maestro flows run on every PR. Catching a broken auth flow in CI before it reaches a client is table stakes.
+
+## What Made It Work
+
+Treating mobile like a real engineering project: typed APIs, CI/CD from day one, automated tests before shipping features. The temptation with mobile is to "move fast and polish later." In fintech, later never comes.
+
+The stack — Expo, TanStack Query, Kubb, Maestro — was chosen for production reliability, not hype. Each tool earns its place.`,
+  },
+  {
     slug: "self-taught-to-senior-engineer",
     title: "Self-Taught to Senior Engineer in 4 Years",
     date: "2026-02-20",
@@ -140,6 +236,118 @@ I found those situations by being direct about what I wanted: real work, real st
 Four years in, I've shipped production fintech, I'm building autonomous AI tooling, and I'm working toward contributing to Bitcoin Core — which is where this started. The Bitcoin Core goal is still years away. The codebase is large, the review bar is high, and C++ at that level requires genuine depth. I'm working on it.
 
 The self-taught path is real, but it's not a shortcut. It took four years of consistent work, deliberate practice, and a lot of shipped code to get here. The advantage isn't speed — it's that you actually understand what you're building and why, because no one handed it to you.`,
+  },
+  {
+    slug: "building-rag-pipeline-that-works",
+    title: "Building a RAG Pipeline That Actually Works",
+    date: "2026-02-05",
+    excerpt:
+      "What I learned building Athena — a personal AI assistant with ChromaDB vector search and Claude. The gap between RAG tutorials and production RAG is wide.",
+    tags: ["AI", "Python", "RAG"],
+    readingTime: "6 min read",
+    content: `## The Problem I Was Solving
+
+My personal knowledge was scattered across hundreds of markdown files, code comments, saved articles, and meeting notes. grep works for exact matches. It doesn't work when you remember the concept but not the phrase.
+
+I wanted to ask "what did I write about chunking strategies last month?" and get an answer. That's a retrieval problem, and RAG (retrieval-augmented generation) is the right architecture for it.
+
+So I built Athena.
+
+## How RAG Works (The Real Version)
+
+The tutorial version of RAG has four steps: chunk documents, embed chunks, store in a vector database, retrieve at query time. That's accurate but omits most of what matters in practice.
+
+The actual pipeline:
+
+1. **Ingest** — read source documents (markdown, PDFs, code files)
+2. **Chunk** — split into overlapping windows preserving sentence boundaries
+3. **Embed** — convert text to vectors using an embedding model
+4. **Store** — write vectors + metadata to ChromaDB
+5. **Retrieve** — embed the query, find nearest vectors by cosine similarity
+6. **Synthesize** — pass retrieved chunks as context to Claude, get a grounded answer
+
+The retrieval + synthesis step is where the system either delivers or fails:
+
+\`\`\`python
+def query(question: str, n_results: int = 5) -> str:
+    collection = client.get_collection("athena")
+    results = collection.query(
+        query_texts=[question],
+        n_results=n_results,
+        include=["documents", "metadatas", "distances"],
+    )
+
+    chunks = results["documents"][0]
+    sources = [m["source"] for m in results["metadatas"][0]]
+    distances = results["distances"][0]
+
+    # skip retrieval if best match is too distant
+    if distances[0] > RELEVANCE_THRESHOLD:
+        return "I don't have relevant notes on that topic."
+
+    context = "\\n\\n---\\n\\n".join(
+        f"[{src}]\\n{chunk}" for src, chunk in zip(sources, chunks)
+    )
+
+    response = anthropic.messages.create(
+        model="claude-opus-4-6",
+        max_tokens=1024,
+        messages=[{
+            "role": "user",
+            "content": f"Answer using only the context below.\\n\\n{context}\\n\\nQuestion: {question}"
+        }],
+    )
+    return response.content[0].text
+\`\`\`
+
+The \`distances\` field matters. If the nearest match has a distance above your threshold, the document probably doesn't contain the answer — and you should say so rather than letting the LLM confabulate.
+
+## Chunking Is Where Most Implementations Break
+
+Naive chunking — split every N characters — produces chunks that cut mid-sentence, split code blocks, and lose the surrounding context that makes a passage meaningful.
+
+What actually works: overlap windows with sentence-boundary awareness and metadata preservation.
+
+\`\`\`python
+def chunk_document(text: str, chunk_size: int = 512, overlap: int = 64) -> list[dict]:
+    sentences = sent_tokenize(text)
+    chunks = []
+    current, current_len = [], 0
+
+    for sentence in sentences:
+        words = len(sentence.split())
+        if current_len + words > chunk_size and current:
+            chunks.append(" ".join(current))
+            # keep overlap sentences for context continuity
+            overlap_sentences = current[-3:]
+            current = overlap_sentences
+            current_len = sum(len(s.split()) for s in overlap_sentences)
+        current.append(sentence)
+        current_len += words
+
+    if current:
+        chunks.append(" ".join(current))
+
+    return [{"text": chunk, "index": i} for i, chunk in enumerate(chunks)]
+\`\`\`
+
+The overlap ensures a concept that spans a chunk boundary still gets retrieved when queried. Without it, you'll have invisible gaps in coverage.
+
+## What Tutorials Don't Tell You
+
+**Embedding drift.** If you re-embed documents after changing your embedding model, your existing vectors become incomparable. Keep the model version in your metadata and re-index when you upgrade.
+
+**Stale documents.** A file you ingested six months ago may have changed. Track file modification times and re-embed on change.
+
+**Relevance thresholds matter more than recall.** Better to return 2 highly relevant chunks than 10 mediocre ones. Tune your distance threshold empirically against real queries.
+
+**The LLM often already knows.** For factual questions about well-documented topics, retrieval adds noise, not signal. Build an escape hatch for when retrieval confidence is low.
+
+## Practical Takeaways
+
+Start simple: one collection, one embedding model, no re-ranking. Measure retrieval quality — are the right chunks coming back? — before optimising generation quality. ChromaDB is fine for personal scale. You don't need a distributed vector database for a few thousand documents.
+
+The gap between "RAG tutorial" and "RAG that's actually useful" is mostly just measurement. Once you know what's failing, fixing it is straightforward.`,
   },
   {
     slug: "specs-over-keystrokes",
