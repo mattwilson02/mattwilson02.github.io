@@ -10,6 +10,7 @@ const homeNavLinks = [
   { label: "Projects", href: "#projects", id: "projects" },
   { label: "Skills", href: "#skills", id: "skills" },
   { label: "Contact", href: "#contact", id: "contact" },
+  { label: "Blog", href: "/blog", id: "blog" },
 ];
 
 const blogNavLinks = [

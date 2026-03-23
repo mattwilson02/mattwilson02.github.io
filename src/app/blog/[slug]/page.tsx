@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import ReactMarkdown from "react-markdown";
 import { blogPosts } from "@/data/blog";
+import { RelatedPosts } from "@/components/related-posts";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -101,6 +102,8 @@ export default async function BlogPostPage({ params }: Props) {
             <ReactMarkdown>{post.content}</ReactMarkdown>
           </div>
         </article>
+
+        <RelatedPosts currentSlug={post.slug} currentTags={post.tags} />
 
         <div className="mt-12 border-t border-[var(--color-border)] pt-8">
           <Link

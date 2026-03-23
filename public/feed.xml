@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Matt Wilson — Blog</title>
+    <description>Writing about AI engineering, developer tools, and the craft of building software.</description>
+    <link>https://mattwilson02.github.io/blog</link>
+    <language>en</language>
+    <lastBuildDate>Mon, 23 Mar 2026 00:00:00 GMT</lastBuildDate>
+    <atom:link href="https://mattwilson02.github.io/feed.xml" rel="self" type="application/rss+xml" />
+  <item>
+    <title>Building an Autonomous AI Developer Agent</title>
+    <description>How I built Ralph — an autonomous agent that reads your codebase, generates sprint specs, and ships features end-to-end without manual orchestration.</description>
+    <link>https://mattwilson02.github.io/blog/building-an-autonomous-ai-developer-agent</link>
+    <guid isPermaLink="true">https://mattwilson02.github.io/blog/building-an-autonomous-ai-developer-agent</guid>
+    <pubDate>Sun, 15 Mar 2026 00:00:00 GMT</pubDate>
+      <category>AI</category>
+      <category>TypeScript</category>
+      <category>Developer Tools</category>
+  </item>
+  <item>
+    <title>Self-Taught to Senior Engineer in 4 Years</title>
+    <description>The honest account of going from zero programming knowledge to shipping production fintech — what actually mattered, what didn't, and what's still driving me.</description>
+    <link>https://mattwilson02.github.io/blog/self-taught-to-senior-engineer</link>
+    <guid isPermaLink="true">https://mattwilson02.github.io/blog/self-taught-to-senior-engineer</guid>
+    <pubDate>Fri, 20 Feb 2026 00:00:00 GMT</pubDate>
+      <category>Career</category>
+      <category>Learning</category>
+  </item>
+  <item>
+    <title>Specs Over Keystrokes: How AI Changes What Engineers Do</title>
+    <description>The engineering job is shifting from writing code to writing precise specifications and evaluating output. Here's what that looks like in practice — and why it demands more rigour, not less.</description>
+    <link>https://mattwilson02.github.io/blog/specs-over-keystrokes</link>
+    <guid isPermaLink="true">https://mattwilson02.github.io/blog/specs-over-keystrokes</guid>
+    <pubDate>Sat, 10 Jan 2026 00:00:00 GMT</pubDate>
+      <category>AI</category>
+      <category>Engineering</category>
+      <category>Opinion</category>
+  </item>
+  </channel>
+</rss>
