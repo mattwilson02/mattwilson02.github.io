@@ -9,6 +9,7 @@ const navLinks = [
   { label: "Experience", href: "#experience", id: "experience" },
   { label: "Projects", href: "#projects", id: "projects" },
   { label: "Skills", href: "#skills", id: "skills" },
+  { label: "Contact", href: "#contact", id: "contact" },
 ];
 
 export function Nav() {
@@ -99,7 +100,7 @@ export function Nav() {
         </a>
 
         {/* Desktop links */}
-        <ul className="hidden items-center gap-6 md:flex">
+        <ul className="hidden items-center gap-5 md:flex">
           {navLinks.map((link) => (
             <li key={link.href}>
               <a href={link.href} className={linkClass(link.id)}>

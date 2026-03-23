@@ -21,6 +21,25 @@ const itemVariants = {
   },
 };
 
+const DownloadIcon = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="16"
+    height="16"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true"
+  >
+    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+    <polyline points="7 10 12 15 17 10" />
+    <line x1="12" y1="15" x2="12" y2="3" />
+  </svg>
+);
+
 const GitHubIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -98,6 +117,17 @@ export function Contact() {
               {link.label}
             </a>
           ))}
+        </motion.div>
+
+        <motion.div variants={itemVariants} className="mt-6">
+          <a
+            href={contactData.resumeLink.href}
+            download
+            className="flex items-center gap-2 rounded-md border border-[var(--color-border)] px-5 py-2.5 text-sm font-semibold text-[var(--color-foreground)] transition-colors hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] focus-visible:ring-offset-2"
+          >
+            <DownloadIcon />
+            {contactData.resumeLink.label}
+          </a>
         </motion.div>
       </motion.div>
     </Section>

@@ -15,3 +15,6 @@ out/
 
 # ralph
 .ralph-state.json
+
+# Ralph working files
+ralph.log

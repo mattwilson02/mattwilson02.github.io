@@ -72,6 +72,10 @@ const jsonLd = {
     "Docker",
     "Full Stack Development",
   ],
+  seeks: {
+    "@type": "Demand",
+    description: "Full-stack engineering and AI development opportunities",
+  },
 };
 
 export default function RootLayout({

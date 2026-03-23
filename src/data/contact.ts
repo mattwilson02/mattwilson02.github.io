@@ -14,6 +14,7 @@ export interface ContactData {
   description: string;
   email: ContactLink;
   socialLinks: ContactSocialLink[];
+  resumeLink: { label: string; href: string };
 }
 
 export const contactData: ContactData = {
@@ -36,4 +37,8 @@ export const contactData: ContactData = {
       icon: "linkedin",
     },
   ],
+  resumeLink: {
+    label: "Download Resume",
+    href: "/matt-wilson-resume.pdf",
+  },
 };

@@ -5,6 +5,11 @@ export interface HeroData {
   badges: string[];
   primaryCta: { label: string; href: string };
   secondaryLinks: { label: string; href: string }[];
+  resumeLink: { label: string; href: string };
+  availability: {
+    status: "available" | "open" | "unavailable";
+    message: string;
+  };
 }
 
 export const heroData: HeroData = {
@@ -36,4 +41,12 @@ export const heroData: HeroData = {
       href: "https://www.linkedin.com/in/matt-wilson-16a671212/",
     },
   ],
+  resumeLink: {
+    label: "Resume",
+    href: "/matt-wilson-resume.pdf",
+  },
+  availability: {
+    status: "open",
+    message: "Open to opportunities",
+  },
 };

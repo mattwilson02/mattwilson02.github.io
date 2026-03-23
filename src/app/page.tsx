@@ -1,12 +1,34 @@
+import dynamic from "next/dynamic";
 import { Nav } from "@/components/nav";
 import { Hero } from "@/components/hero";
-import { About } from "@/components/about";
-import { Experience } from "@/components/experience";
-import { Projects } from "@/components/projects";
-import { Skills } from "@/components/skills";
-import { Certifications } from "@/components/certifications";
-import { Testimonials } from "@/components/testimonials";
 import { Footer } from "@/components/footer";
+import { ScrollToTop } from "@/components/scroll-to-top";
+
+const About = dynamic(() =>
+  import("@/components/about").then((m) => ({ default: m.About })),
+);
+const Experience = dynamic(() =>
+  import("@/components/experience").then((m) => ({ default: m.Experience })),
+);
+const Projects = dynamic(() =>
+  import("@/components/projects").then((m) => ({ default: m.Projects })),
+);
+const Skills = dynamic(() =>
+  import("@/components/skills").then((m) => ({ default: m.Skills })),
+);
+const Certifications = dynamic(() =>
+  import("@/components/certifications").then((m) => ({
+    default: m.Certifications,
+  })),
+);
+const Testimonials = dynamic(() =>
+  import("@/components/testimonials").then((m) => ({
+    default: m.Testimonials,
+  })),
+);
+const Contact = dynamic(() =>
+  import("@/components/contact").then((m) => ({ default: m.Contact })),
+);
 
 export default function Home() {
   return (
@@ -20,8 +42,10 @@ export default function Home() {
         <Skills />
         <Certifications />
         <Testimonials />
+        <Contact />
       </main>
       <Footer />
+      <ScrollToTop />
     </>
   );
 }
