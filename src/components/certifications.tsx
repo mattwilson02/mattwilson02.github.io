@@ -65,10 +65,31 @@ export function Certifications() {
               </div>
               <div>
                 <p className="font-semibold text-[var(--color-foreground)]">
-                  {cert.name}
+                  {cert.link ? (
+                    <a
+                      href={cert.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="transition-colors hover:text-[var(--color-accent)]"
+                    >
+                      {cert.name}
+                    </a>
+                  ) : (
+                    cert.name
+                  )}
                 </p>
                 <p className="mt-1 text-sm text-[var(--color-muted)]">
                   {cert.issuer} · {cert.date}
+                  {cert.link && (
+                    <a
+                      href={cert.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="ml-2 text-xs text-[var(--color-accent)] hover:underline"
+                    >
+                      Verify →
+                    </a>
+                  )}
                 </p>
               </div>
             </motion.div>

@@ -2,26 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { ThemeToggle } from "./theme-toggle";
-
-const homeNavLinks = [
-  { label: "Home", href: "#home", id: "home" },
-  { label: "About", href: "#about", id: "about" },
-  { label: "Experience", href: "#experience", id: "experience" },
-  { label: "Projects", href: "#projects", id: "projects" },
-  { label: "Skills", href: "#skills", id: "skills" },
-  { label: "Contact", href: "#contact", id: "contact" },
-  { label: "Blog", href: "/blog", id: "blog" },
-];
-
-const blogNavLinks = [
-  { label: "Home", href: "/", id: "home" },
-  { label: "About", href: "/#about", id: "about" },
-  { label: "Experience", href: "/#experience", id: "experience" },
-  { label: "Projects", href: "/#projects", id: "projects" },
-  { label: "Skills", href: "/#skills", id: "skills" },
-  { label: "Contact", href: "/#contact", id: "contact" },
-  { label: "Blog", href: "/blog", id: "blog" },
-];
+import { homeNavLinks, blogNavLinks } from "@/data/navigation";
 
 interface NavProps {
   showBlogLink?: boolean;
@@ -46,31 +27,34 @@ export function Nav({ showBlogLink = false }: NavProps) {
     if (showBlogLink) return;
 
     const sectionIds = homeNavLinks.map((l) => l.id);
-    const intersecting = new Set<string>();
+    const offset = 120;
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) {
-            intersecting.add(entry.target.id);
-          } else {
-            intersecting.delete(entry.target.id);
-          }
+    function updateActive() {
+      if (window.scrollY < 100) {
+        setActiveId("home");
+        return;
+      }
+
+      let closest: string | null = null;
+      let closestDist = Infinity;
+
+      for (const id of sectionIds) {
+        const el = document.getElementById(id);
+        if (!el) continue;
+        const top = el.getBoundingClientRect().top - offset;
+        if (top <= 0 && Math.abs(top) < closestDist) {
+          closestDist = Math.abs(top);
+          closest = id;
         }
-        // Pick the topmost visible section (first in DOM order)
-        const active = sectionIds.find((id) => intersecting.has(id));
-        if (active) setActiveId(active);
-        else if (window.scrollY < 100) setActiveId("home");
-      },
-      { rootMargin: "-80px 0px -60% 0px" },
-    );
+      }
 
-    for (const id of sectionIds) {
-      const el = document.getElementById(id);
-      if (el) observer.observe(el);
+      if (closest) setActiveId(closest);
     }
 
-    return () => observer.disconnect();
+    window.addEventListener("scroll", updateActive, { passive: true });
+    updateActive();
+
+    return () => window.removeEventListener("scroll", updateActive);
   }, [showBlogLink]);
 
   useEffect(() => {

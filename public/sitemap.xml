@@ -25,128 +25,26 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://mattwilson02.github.io/blog/docker-in-production-lessons-hetzner</loc>
-    <lastmod>2026-03-20</lastmod>
+    <loc>https://mattwilson02.github.io/blog/athena-product-overview</loc>
+    <lastmod>2026-03-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://mattwilson02.github.io/blog/building-an-autonomous-ai-developer-agent</loc>
-    <lastmod>2026-03-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://mattwilson02.github.io/blog/600-tests-and-what-they-caught</loc>
-    <lastmod>2026-03-10</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://mattwilson02.github.io/blog/shipping-cross-platform-fintech-react-native</loc>
-    <lastmod>2026-03-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://mattwilson02.github.io/blog/self-taught-to-senior-engineer</loc>
-    <lastmod>2026-02-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://mattwilson02.github.io/blog/building-rag-pipeline-that-works</loc>
-    <lastmod>2026-02-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://mattwilson02.github.io/blog/specs-over-keystrokes</loc>
-    <lastmod>2026-01-10</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://mattwilson02.github.io/blog/tag/Docker</loc>
-    <lastmod>2026-03-20</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://mattwilson02.github.io/blog/tag/DevOps</loc>
-    <lastmod>2026-03-20</lastmod>
+    <loc>https://mattwilson02.github.io/blog/tag/AI</loc>
+    <lastmod>2026-03-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://mattwilson02.github.io/blog/tag/Python</loc>
-    <lastmod>2026-03-20</lastmod>
+    <lastmod>2026-03-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://mattwilson02.github.io/blog/tag/AI</loc>
-    <lastmod>2026-03-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://mattwilson02.github.io/blog/tag/TypeScript</loc>
-    <lastmod>2026-03-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://mattwilson02.github.io/blog/tag/Developer%20Tools</loc>
-    <lastmod>2026-03-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://mattwilson02.github.io/blog/tag/Testing</loc>
-    <lastmod>2026-03-10</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://mattwilson02.github.io/blog/tag/Engineering</loc>
-    <lastmod>2026-03-10</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://mattwilson02.github.io/blog/tag/React%20Native</loc>
-    <lastmod>2026-03-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://mattwilson02.github.io/blog/tag/Mobile</loc>
-    <lastmod>2026-03-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://mattwilson02.github.io/blog/tag/Career</loc>
-    <lastmod>2026-02-20</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://mattwilson02.github.io/blog/tag/Learning</loc>
-    <lastmod>2026-02-20</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://mattwilson02.github.io/blog/tag/RAG</loc>
-    <lastmod>2026-02-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://mattwilson02.github.io/blog/tag/Opinion</loc>
-    <lastmod>2026-01-10</lastmod>
+    <loc>https://mattwilson02.github.io/blog/tag/Product</loc>
+    <lastmod>2026-03-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>

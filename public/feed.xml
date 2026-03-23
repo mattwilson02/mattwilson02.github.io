@@ -8,73 +8,14 @@
     <lastBuildDate>Mon, 23 Mar 2026 00:00:00 GMT</lastBuildDate>
     <atom:link href="https://mattwilson02.github.io/feed.xml" rel="self" type="application/rss+xml" />
   <item>
-    <title>Docker in Production: Lessons from Running Services on Hetzner</title>
-    <description>What actually matters when running Docker containers in production — networking, health checks, volume management, and the things that only break at 2am.</description>
-    <link>https://mattwilson02.github.io/blog/docker-in-production-lessons-hetzner</link>
-    <guid isPermaLink="true">https://mattwilson02.github.io/blog/docker-in-production-lessons-hetzner</guid>
-    <pubDate>Fri, 20 Mar 2026 00:00:00 GMT</pubDate>
-      <category>Docker</category>
-      <category>DevOps</category>
-      <category>Python</category>
-  </item>
-  <item>
-    <title>Building an Autonomous AI Developer Agent</title>
-    <description>How I built Ralph — an autonomous agent that reads your codebase, generates sprint specs, and ships features end-to-end without manual orchestration.</description>
-    <link>https://mattwilson02.github.io/blog/building-an-autonomous-ai-developer-agent</link>
-    <guid isPermaLink="true">https://mattwilson02.github.io/blog/building-an-autonomous-ai-developer-agent</guid>
-    <pubDate>Sun, 15 Mar 2026 00:00:00 GMT</pubDate>
-      <category>AI</category>
-      <category>TypeScript</category>
-      <category>Developer Tools</category>
-  </item>
-  <item>
-    <title>600 Tests and What They Actually Caught</title>
-    <description>Writing 600+ tests across Vitest, Cypress, Jest, and Maestro taught me that the value of testing isn't preventing bugs — it's enabling fearless refactoring.</description>
-    <link>https://mattwilson02.github.io/blog/600-tests-and-what-they-caught</link>
-    <guid isPermaLink="true">https://mattwilson02.github.io/blog/600-tests-and-what-they-caught</guid>
-    <pubDate>Tue, 10 Mar 2026 00:00:00 GMT</pubDate>
-      <category>Testing</category>
-      <category>TypeScript</category>
-      <category>Engineering</category>
-  </item>
-  <item>
-    <title>Shipping a Cross-Platform Fintech App with React Native</title>
-    <description>Lessons from building SF Mobile — a cross-platform wealth management app with biometric auth, real-time portfolios, and 4-language localisation.</description>
-    <link>https://mattwilson02.github.io/blog/shipping-cross-platform-fintech-react-native</link>
-    <guid isPermaLink="true">https://mattwilson02.github.io/blog/shipping-cross-platform-fintech-react-native</guid>
-    <pubDate>Sun, 01 Mar 2026 00:00:00 GMT</pubDate>
-      <category>React Native</category>
-      <category>TypeScript</category>
-      <category>Mobile</category>
-  </item>
-  <item>
-    <title>Self-Taught to Senior Engineer in 4 Years</title>
-    <description>The honest account of going from zero programming knowledge to shipping production fintech — what actually mattered, what didn't, and what's still driving me.</description>
-    <link>https://mattwilson02.github.io/blog/self-taught-to-senior-engineer</link>
-    <guid isPermaLink="true">https://mattwilson02.github.io/blog/self-taught-to-senior-engineer</guid>
-    <pubDate>Fri, 20 Feb 2026 00:00:00 GMT</pubDate>
-      <category>Career</category>
-      <category>Learning</category>
-  </item>
-  <item>
-    <title>Building a RAG Pipeline That Actually Works</title>
-    <description>What I learned building Athena — a personal AI assistant with ChromaDB vector search and Claude. The gap between RAG tutorials and production RAG is wide.</description>
-    <link>https://mattwilson02.github.io/blog/building-rag-pipeline-that-works</link>
-    <guid isPermaLink="true">https://mattwilson02.github.io/blog/building-rag-pipeline-that-works</guid>
-    <pubDate>Thu, 05 Feb 2026 00:00:00 GMT</pubDate>
+    <title>Athena: A Personal AI That Actually Knows You</title>
+    <description>A deep dive into Athena — a personal AI built on a living knowledge graph that reasons across your goals, relationships, finances, and decisions.</description>
+    <link>https://mattwilson02.github.io/blog/athena-product-overview</link>
+    <guid isPermaLink="true">https://mattwilson02.github.io/blog/athena-product-overview</guid>
+    <pubDate>Mon, 23 Mar 2026 00:00:00 GMT</pubDate>
       <category>AI</category>
       <category>Python</category>
-      <category>RAG</category>
-  </item>
-  <item>
-    <title>Specs Over Keystrokes: How AI Changes What Engineers Do</title>
-    <description>The engineering job is shifting from writing code to writing precise specifications and evaluating output. Here's what that looks like in practice — and why it demands more rigour, not less.</description>
-    <link>https://mattwilson02.github.io/blog/specs-over-keystrokes</link>
-    <guid isPermaLink="true">https://mattwilson02.github.io/blog/specs-over-keystrokes</guid>
-    <pubDate>Sat, 10 Jan 2026 00:00:00 GMT</pubDate>
-      <category>AI</category>
-      <category>Engineering</category>
-      <category>Opinion</category>
+      <category>Product</category>
   </item>
   </channel>
 </rss>

@@ -21,11 +21,6 @@ const Certifications = dynamic(() =>
     default: m.Certifications,
   })),
 );
-const LatestPosts = dynamic(() =>
-  import("@/components/latest-posts").then((m) => ({
-    default: m.LatestPosts,
-  })),
-);
 const Contact = dynamic(() =>
   import("@/components/contact").then((m) => ({ default: m.Contact })),
 );
@@ -46,7 +41,6 @@ export default function Home() {
         <Projects />
         <Skills />
         <Certifications />
-        <LatestPosts />
         <CurrentlyBuilding />
         <Contact />
       </main>

@@ -6,13 +6,7 @@ interface ProjectCardProps {
 
 export function ProjectCard({ project }: ProjectCardProps) {
   return (
-    <a
-      href={project.link}
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label={`View ${project.title} on GitHub`}
-      className="group flex h-full flex-col gap-4 rounded-lg border border-[var(--color-border)] bg-[var(--color-card)] p-6 transition-all duration-200 hover:scale-[1.02] hover:border-[var(--color-accent)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]"
-    >
+    <div className="group flex h-full flex-col gap-4 rounded-lg border border-[var(--color-border)] bg-[var(--color-card)] p-6 transition-all duration-200 hover:border-[var(--color-accent)]">
       <div>
         <h3 className="text-lg font-bold text-[var(--color-foreground)]">
           {project.title}
@@ -53,9 +47,21 @@ export function ProjectCard({ project }: ProjectCardProps) {
         ))}
       </div>
 
-      <div className="text-xs font-medium text-[var(--color-accent)] group-hover:underline">
-        View on GitHub →
-      </div>
-    </a>
+      {project.links.length > 0 && (
+        <div className="flex gap-4">
+          {project.links.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xs font-medium text-[var(--color-accent)] hover:underline"
+            >
+              {link.label} →
+            </a>
+          ))}
+        </div>
+      )}
+    </div>
   );
 }

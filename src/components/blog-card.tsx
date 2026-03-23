@@ -59,9 +59,12 @@ export function BlogCard({
         ))}
       </div>
 
-      <div className="relative text-xs font-medium text-[var(--color-accent)] group-hover:underline">
+      <Link
+        href={`/blog/${slug}`}
+        className="relative inline-block rounded-md px-3 py-2 text-xs font-medium text-[var(--color-accent)] transition-colors hover:bg-[var(--color-accent)]/10 hover:underline"
+      >
         Read post →
-      </div>
+      </Link>
     </div>
   );
 }

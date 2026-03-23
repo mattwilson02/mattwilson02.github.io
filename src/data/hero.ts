@@ -14,9 +14,9 @@ export interface HeroData {
 
 export const heroData: HeroData = {
   name: "Matt Wilson",
-  subtitle: "I build production AI systems that actually ship.",
+  subtitle: "Senior Full Stack & AI Engineer",
   tagline:
-    "Self-taught. No CS degree. 4 years shipping software that handles real money — from fintech platforms to autonomous AI developer tooling.",
+    "4 years shipping production software — investment platforms, fintech mobile apps, and AI tooling.",
   badges: [
     "TypeScript",
     "React Native",
