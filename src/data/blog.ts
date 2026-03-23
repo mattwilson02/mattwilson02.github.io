@@ -10,6 +10,118 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "docker-in-production-lessons-hetzner",
+    title: "Docker in Production: Lessons from Running Services on Hetzner",
+    date: "2026-03-20",
+    excerpt:
+      "What actually matters when running Docker containers in production — networking, health checks, volume management, and the things that only break at 2am.",
+    tags: ["Docker", "DevOps", "Python"],
+    readingTime: "6 min read",
+    content: `## The Setup
+
+Imperium — my personal knowledge management platform — runs as a multi-service architecture: Custodes (the watcher), Sigillite (the processing layer), Cockpit (the web UI), and n8n for workflow automation. Not Kubernetes. Not AWS ECS. A single Hetzner VPS with Docker Compose.
+
+This is a deliberate choice. For personal projects and small-team services, a single server with Docker Compose is simpler, cheaper, and more debuggable than managed container services. When something breaks at 2am, I'd rather SSH in and read a log file than navigate a cloud console.
+
+Here's what I've learned running it in production.
+
+## Docker Compose Patterns That Actually Matter
+
+The most important thing I got wrong early: not using health checks. Without health checks, \`depends_on\` is useless — Compose will start dependent services the moment the upstream container starts, not when it's actually ready to accept connections.
+
+\`\`\`yaml
+services:
+  sigillite:
+    image: sigillite:latest
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 15s
+    environment:
+      - DATABASE_URL=\${DATABASE_URL}
+
+  cockpit:
+    image: cockpit:latest
+    restart: unless-stopped
+    depends_on:
+      sigillite:
+        condition: service_healthy
+\`\`\`
+
+The \`condition: service_healthy\` is the key line. Without it, Cockpit starts before Sigillite's database migrations have run. With it, the dependency is real.
+
+\`restart: unless-stopped\` is the right default for everything except one-off jobs. \`always\` will restart even after a manual \`docker stop\` — which makes debugging painful.
+
+## Networking and Reverse Proxy
+
+My reverse proxy of choice is Caddy. For small deployments, Caddy's automatic HTTPS via Let's Encrypt is a significant advantage over nginx — no certbot cronjobs, no manual certificate renewal, no nginx config syntax errors at 2am.
+
+\`\`\`
+{
+    email matt@example.com
+}
+
+cockpit.example.com {
+    reverse_proxy cockpit:3000
+}
+
+n8n.example.com {
+    reverse_proxy n8n:5678
+    basicauth {
+        matt JDJhJDE0J...
+    }
+}
+\`\`\`
+
+All services run on a shared Docker network. Caddy reaches them by container name. Nothing is exposed on the host except ports 80 and 443. This is the right way to do it — no reason to expose service ports to the public internet.
+
+## The Things That Only Break in Production
+
+**Volume permissions.** If your container runs as a non-root user (which it should), and your mounted volume is owned by root on the host, your container can't write to it. This breaks silently — the app starts, logs look fine, then something fails at write time. Fix: set the correct UID in your Dockerfile and \`chown\` the volume directory on the host.
+
+**Log rotation.** Without limits, Docker container logs fill the disk. Set log rotation in your \`docker-compose.yml\` or globally in \`/etc/docker/daemon.json\`.
+
+\`\`\`bash
+# /etc/docker/daemon.json
+{
+  "log-driver": "json-file",
+  "log-opts": {
+    "max-size": "10m",
+    "max-file": "3"
+  }
+}
+\`\`\`
+
+**Cron-based backups.** Production data needs backups. I run a simple script via cron that dumps the Postgres database and uploads to Backblaze B2.
+
+\`\`\`bash
+#!/bin/bash
+set -euo pipefail
+
+TIMESTAMP=$(date +%Y%m%d_%H%M%S)
+BACKUP_FILE="/tmp/imperium_\${TIMESTAMP}.sql.gz"
+
+docker exec postgres pg_dumpall -U postgres | gzip > "$BACKUP_FILE"
+
+# Upload to B2 (via rclone)
+rclone copy "$BACKUP_FILE" b2:imperium-backups/
+
+rm "$BACKUP_FILE"
+echo "Backup completed: imperium_\${TIMESTAMP}.sql.gz"
+\`\`\`
+
+**Resource limits.** Without memory limits, a runaway process can OOM the entire host, taking down all services. Set \`mem_limit\` on anything that does significant processing.
+
+## The Takeaway
+
+For personal projects and small team services: a single VPS with Docker Compose is the right choice. It's simpler, cheaper, and more debuggable than any managed container service. You know exactly where your data is, you can SSH in and look at it, and there's no platform-specific complexity to navigate.
+
+The time to move to Kubernetes is when you have multiple servers and a team to manage the infrastructure. Until then, Docker Compose on a good Hetzner box is more than enough.`,
+  },
+  {
     slug: "building-an-autonomous-ai-developer-agent",
     title: "Building an Autonomous AI Developer Agent",
     date: "2026-03-15",
@@ -100,6 +212,99 @@ This cut runtime significantly while improving output quality — not just cost 
 Ralph currently handles TypeScript, Python, Go, and Rust projects. The next major piece is eval harnesses — the ability to verify that a feature actually works semantically, not just compiles. That's the gap between "it builds" and "it's correct."
 
 If you want to see the code or follow along, it's on GitHub.`,
+  },
+  {
+    slug: "600-tests-and-what-they-caught",
+    title: "600 Tests and What They Actually Caught",
+    date: "2026-03-10",
+    excerpt:
+      "Writing 600+ tests across Vitest, Cypress, Jest, and Maestro taught me that the value of testing isn't preventing bugs — it's enabling fearless refactoring.",
+    tags: ["Testing", "TypeScript", "Engineering"],
+    readingTime: "5 min read",
+    content: `## The Number Is Vanity
+
+600+ tests across multiple projects. Vitest, Jest, Cypress, Maestro, Supertest. I tracked this stat partly because the accumulation felt significant, and partly because it forced me to think about what I was actually testing.
+
+The number is vanity. What matters is what those tests enable.
+
+## The Testing Pyramid in Practice
+
+The triangle holds: lots of unit tests, fewer integration tests, even fewer E2E tests. Not because it's a canonical diagram — because it reflects the cost and value of each layer.
+
+Unit tests (Vitest, Jest) are cheap and fast. They're where business logic lives.
+
+\`\`\`typescript
+import { describe, it, expect } from "vitest";
+import { allocatePortfolioWeights } from "./portfolio";
+import { buildPortfolio } from "../test/factories";
+
+describe("allocatePortfolioWeights", () => {
+  it("weights sum to 1 within floating point tolerance", () => {
+    const portfolio = buildPortfolio({ holdings: 5 });
+    const weighted = allocatePortfolioWeights(portfolio);
+    const total = weighted.reduce((sum, h) => sum + h.weight, 0);
+    expect(total).toBeCloseTo(1.0, 10);
+  });
+
+  it("zero-value holdings receive zero weight", () => {
+    const portfolio = buildPortfolio({ holdings: [{ value: 0 }, { value: 100 }] });
+    const weighted = allocatePortfolioWeights(portfolio);
+    expect(weighted[0].weight).toBe(0);
+  });
+});
+\`\`\`
+
+Factory-based test data is important here. If you're calling \`new Portfolio({ ... })\` in every test, you'll spend more time maintaining test setup than writing assertions. Factories let you express only what's relevant to the test case.
+
+Integration tests (Supertest) cover API contracts. Not every endpoint — just the ones where the behaviour depends on how multiple layers interact. Auth middleware, database transactions, third-party integrations.
+
+E2E tests (Cypress for web, Maestro for mobile) cover critical user flows. Not every interaction — just the ones where a breakage would be visible and costly.
+
+## Testing Mobile: Why Maestro
+
+SF Mobile has 5 Maestro flows per platform. I chose Maestro over Detox for one reason: it runs reliably in CI without simulator flakiness. Detox requires careful native setup and can fail intermittently due to timing issues. Maestro's YAML-based flows run against a running app with straightforward assertions.
+
+\`\`\`yaml
+appId: com.sfmobile.app
+---
+- launchApp:
+    clearState: true
+- tapOn: "Sign In"
+- inputText:
+    id: "email-input"
+    text: \${TEST_EMAIL}
+- tapOn: "Continue"
+- assertVisible: "Enter your verification code"
+- inputText:
+    id: "otp-input"
+    text: "123456"
+- tapOn: "Verify"
+- assertVisible: "Your Portfolio"
+\`\`\`
+
+The YAML format is readable by non-engineers. When a product manager asks "what does the sign-in flow test?", I can show them the file.
+
+## What Tests Actually Caught
+
+Not "button renders correctly" tests. Those catch nothing worth catching.
+
+The tests that saved production:
+
+**Financial calculations in stored procedures.** A weight rounding edge case in portfolio normalisation would have displayed incorrect percentages for holdings under 0.1%. A unit test with 15 different portfolio compositions caught it during development.
+
+**Auth state machine edge cases.** An expired token during biometric re-authentication could leave the app in a state where the user appeared logged in but API calls were silently failing. An integration test that stepped through the token refresh flow during biometric auth caught this before it reached a user.
+
+**API contract changes.** When the backend team updated a response schema, the Supertest integration tests failed on the first CI run. Without them, the mobile app would have broken silently for users with certain account types.
+
+## The Real Value
+
+Tests give you confidence to refactor.
+
+The codebase with 150 test files is the one you can restructure without fear. You change something, run the suite, and know immediately if you broke something. The codebase with zero tests is the one everyone's afraid to touch — where "don't break what's working" is the de facto architecture principle, and tech debt compounds because nobody wants to risk a regression.
+
+Stop writing tests to hit a coverage number. Write tests for the code that, if broken, would cause real problems. Then write enough of them that you trust the suite.
+
+That's what 600+ tests actually taught me.`,
   },
   {
     slug: "shipping-cross-platform-fintech-react-native",

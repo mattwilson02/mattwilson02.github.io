@@ -13,8 +13,20 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://mattwilson02.github.io/blog/docker-in-production-lessons-hetzner</loc>
+    <lastmod>2026-03-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://mattwilson02.github.io/blog/building-an-autonomous-ai-developer-agent</loc>
     <lastmod>2026-03-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://mattwilson02.github.io/blog/600-tests-and-what-they-caught</loc>
+    <lastmod>2026-03-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>

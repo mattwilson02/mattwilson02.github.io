@@ -29,6 +29,11 @@ const LatestPosts = dynamic(() =>
 const Contact = dynamic(() =>
   import("@/components/contact").then((m) => ({ default: m.Contact })),
 );
+const CurrentlyBuilding = dynamic(() =>
+  import("@/components/currently-building").then((m) => ({
+    default: m.CurrentlyBuilding,
+  })),
+);
 
 export default function Home() {
   return (
@@ -42,6 +47,7 @@ export default function Home() {
         <Skills />
         <Certifications />
         <LatestPosts />
+        <CurrentlyBuilding />
         <Contact />
       </main>
       <Footer />

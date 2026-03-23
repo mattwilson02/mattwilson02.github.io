@@ -49,7 +49,7 @@ export function About() {
             variants={itemVariants}
             className="flex flex-col items-center gap-8 md:items-start"
           >
-            <Avatar size={96} />
+            <Avatar size={96} src={aboutData.avatarSrc} />
 
             <div className="flex w-full flex-col gap-4">
               {aboutData.stats.map((stat) => (
