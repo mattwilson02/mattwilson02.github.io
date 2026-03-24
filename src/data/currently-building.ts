@@ -34,7 +34,7 @@ export const currentProjects: CurrentProject[] = [
   {
     name: "This Portfolio",
     description:
-      "Built entirely by Ralph from sprint specs. 7 blog posts, full SEO, and zero manual code.",
+      "Built entirely by Ralph from sprint specs. Full SEO and zero manual code.",
     status: "shipped",
     tech: ["Next.js", "TypeScript", "Tailwind CSS"],
     link: "https://github.com/mattwilson02/mattwilson02.github.io",
