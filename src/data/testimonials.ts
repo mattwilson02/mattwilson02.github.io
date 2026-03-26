@@ -19,6 +19,13 @@ export const testimonialsData: Testimonial[] = [
     name: "Ricardo Brito",
     role: "Team Lead",
     company: "Stonehage Fleming",
-    date: "2024",
+    date: "2025",
+  },
+  {
+    quote: "I had the pleasure of working with Matt Wilson for two years in the IT Business Systems department. Matt is a true Swiss-army-knife developer, equally strong on the frontend and backend, with deep expertise in modern development languages. He highly contributed to the delivery of complex solutions, including a web application for monitoring and valuing a multi-billion fund and a mobile application for a Wealth Management firm. Highly reliable and exceptionally independent, Matt takes full ownership of his work and consistently thinks outside the box. I would recommend him without hesitation — he can build and deliver complete applications from scratch with confidence and skill.",
+    name: "Florian Munier",
+    role: "Group Head of IT Business Systems",
+    company: "Stonehage Fleming",
+    date: "2026",
   },
 ];
