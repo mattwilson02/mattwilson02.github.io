@@ -1,0 +1,89 @@
+<svg width="1584" height="396" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a0a"/>
+      <stop offset="100%" style="stop-color:#111111"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#2563eb"/>
+      <stop offset="100%" style="stop-color:#1d4ed8"/>
+    </linearGradient>
+    <linearGradient id="line" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#2563eb;stop-opacity:0"/>
+      <stop offset="15%" style="stop-color:#2563eb;stop-opacity:1"/>
+      <stop offset="85%" style="stop-color:#2563eb;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#2563eb;stop-opacity:0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1584" height="396" fill="url(#bg)"/>
+
+  <!-- Subtle grid pattern -->
+  <g opacity="0.03">
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" stroke-width="0.5"/>
+    </pattern>
+    <rect width="1584" height="396" fill="url(#grid)"/>
+  </g>
+
+  <!-- Accent line -->
+  <rect x="0" y="360" width="1584" height="2" fill="url(#line)"/>
+
+  <!-- Subtle glow behind text -->
+  <ellipse cx="792" cy="180" rx="500" ry="200" fill="#2563eb" opacity="0.02"/>
+
+  <!-- Name -->
+  <text x="792" y="135" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="52" font-weight="700" fill="#ededed" text-anchor="middle" letter-spacing="-1">Matt Wilson</text>
+
+  <!-- Role -->
+  <text x="792" y="185" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="24" font-weight="400" fill="#2563eb" text-anchor="middle" letter-spacing="0.5">Senior Full Stack &amp; AI Engineer</text>
+
+  <!-- Divider -->
+  <rect x="692" y="210" width="200" height="1" fill="#333" rx="1"/>
+
+  <!-- Tech badges -->
+  <g font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="13" font-weight="500">
+    <!-- Row of badges centered -->
+    <g transform="translate(792, 250)" text-anchor="middle">
+      <!-- TypeScript -->
+      <rect x="-380" y="-14" width="90" height="28" rx="4" fill="#1a1a1a" stroke="#2a2a2a" stroke-width="1"/>
+      <text x="-335" y="5" fill="#888">TypeScript</text>
+
+      <!-- Next.js -->
+      <rect x="-278" y="-14" width="72" height="28" rx="4" fill="#1a1a1a" stroke="#2a2a2a" stroke-width="1"/>
+      <text x="-242" y="5" fill="#888">Next.js</text>
+
+      <!-- NestJS -->
+      <rect x="-194" y="-14" width="72" height="28" rx="4" fill="#1a1a1a" stroke="#2a2a2a" stroke-width="1"/>
+      <text x="-158" y="5" fill="#888">NestJS</text>
+
+      <!-- React Native -->
+      <rect x="-110" y="-14" width="105" height="28" rx="4" fill="#1a1a1a" stroke="#2a2a2a" stroke-width="1"/>
+      <text x="-58" y="5" fill="#888">React Native</text>
+
+      <!-- Python -->
+      <rect x="7" y="-14" width="68" height="28" rx="4" fill="#1a1a1a" stroke="#2a2a2a" stroke-width="1"/>
+      <text x="41" y="5" fill="#888">Python</text>
+
+      <!-- AI/ML -->
+      <rect x="87" y="-14" width="58" height="28" rx="4" fill="#1a1a1a" stroke="#2a2a2a" stroke-width="1"/>
+      <text x="116" y="5" fill="#888">AI/ML</text>
+
+      <!-- Azure -->
+      <rect x="157" y="-14" width="62" height="28" rx="4" fill="#1a1a1a" stroke="#2a2a2a" stroke-width="1"/>
+      <text x="188" y="5" fill="#888">Azure</text>
+
+      <!-- Docker -->
+      <rect x="231" y="-14" width="68" height="28" rx="4" fill="#1a1a1a" stroke="#2a2a2a" stroke-width="1"/>
+      <text x="265" y="5" fill="#888">Docker</text>
+
+      <!-- Flask -->
+      <rect x="311" y="-14" width="62" height="28" rx="4" fill="#1a1a1a" stroke="#2a2a2a" stroke-width="1"/>
+      <text x="342" y="5" fill="#888">Flask</text>
+    </g>
+  </g>
+
+  <!-- Tagline -->
+  <text x="792" y="310" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" font-weight="400" fill="#555" text-anchor="middle">mattwilson02.github.io</text>
+</svg>
