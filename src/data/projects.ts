@@ -46,6 +46,18 @@ export const projectsData: ProjectData[] = [
     ],
   },
   {
+    title: "Athena",
+    description:
+      "Personal AI built on a living knowledge graph that reasons across your goals, relationships, finances, and decisions.",
+    problem:
+      "Generic AI assistants have no real context about you. They can't catch contradictions, track commitments, or give advice informed by your actual life.",
+    approach:
+      "Knowledge graph (180+ nodes, 7 domains) with conflict detection, adaptive response modes, permanence-scored retrieval, and accountability tracking. ChromaDB vector search with NetworkX graph traversal. Exposed as an MCP server so Claude has direct access to your full life context in any conversation.",
+    results: "In active daily use. Solo-built end-to-end, currently mid-Epoch 6 with Ralph handling remaining sprint work.",
+    tech: ["Python", "Flask", "NetworkX", "ChromaDB", "Claude MCP", "Claude API"],
+    links: [{ label: "GitHub", href: "https://github.com/mattwilson02/athena" }],
+  },
+  {
     title: "Imperium",
     description:
       "AI knowledge management platform for businesses, with cost-optimised LLM routing and automated data ingestion.",
@@ -56,18 +68,6 @@ export const projectsData: ProjectData[] = [
     results:
       "Deployed on Hetzner, used daily. 600+ tests at 93% coverage. Production-grade with CI/CD, Caddy reverse proxy, cron backups.",
     tech: ["Python", "Flask", "Docker", "n8n", "Anthropic API", "Claude MCP", "Hetzner"],
-    links: [],
-  },
-  {
-    title: "Athena",
-    description:
-      "Personal AI built on a living knowledge graph that reasons across your goals, relationships, finances, and decisions.",
-    problem:
-      "Generic AI assistants have no real context about you. They can't catch contradictions, track commitments, or give advice informed by your actual life.",
-    approach:
-      "Knowledge graph (180+ nodes, 7 domains) with conflict detection, adaptive response modes, permanence-scored retrieval, and accountability tracking. ChromaDB vector search with NetworkX graph traversal. Svelte 5 frontend with streaming chat and force-directed graph visualisation.",
-    results: "In active daily use. Solo-built end-to-end, currently mid-Epoch 6 with Ralph handling remaining sprint work.",
-    tech: ["Python", "Flask", "NetworkX", "ChromaDB", "Svelte", "Claude API"],
     links: [],
   },
 ];

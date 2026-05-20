@@ -18,23 +18,17 @@ export const currentProjects: CurrentProject[] = [
     link: "https://github.com/mattwilson02/ralph-cli",
   },
   {
-    name: "Imperium",
+    name: "Tamp",
     description:
-      "AI knowledge management platform for businesses. Multi-service architecture with cost-optimised LLM routing, automated ingestion from Gmail, Drive, and Calendar.",
+      "Gamified social learning platform for coffee craft. Animated POV brewing guides, attempt tracking with peer-review scoring, and a barista rank progression system.",
     status: "active",
-    tech: ["Python", "Flask", "Docker", "Claude MCP"],
-  },
-  {
-    name: "Athena",
-    description:
-      "AI personal assistant using RAG architecture with ChromaDB for vector storage and semantic querying across a knowledge base.",
-    status: "active",
-    tech: ["Python", "Flask", "ChromaDB", "Svelte", "Anthropic API"],
+    tech: ["React Native", "Expo", "NestJS", "PostgreSQL", "Prisma", "TypeScript"],
+    link: "https://github.com/mattwilson02/tamp",
   },
   {
     name: "This Portfolio",
     description:
-      "Built entirely by Ralph from sprint specs. Full SEO and zero manual code.",
+      "Built by Ralph from sprint specs. Full SEO and zero manual code.",
     status: "shipped",
     tech: ["Next.js", "TypeScript", "Tailwind CSS"],
     link: "https://github.com/mattwilson02/mattwilson02.github.io",
