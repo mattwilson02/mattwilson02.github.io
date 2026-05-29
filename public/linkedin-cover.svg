@@ -37,53 +37,37 @@
   <text x="792" y="135" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="52" font-weight="700" fill="#ededed" text-anchor="middle" letter-spacing="-1">Matt Wilson</text>
 
   <!-- Role -->
-  <text x="792" y="185" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="24" font-weight="400" fill="#2563eb" text-anchor="middle" letter-spacing="0.5">Senior Full Stack &amp; AI Engineer</text>
+  <text x="792" y="185" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="24" font-weight="400" fill="#2563eb" text-anchor="middle" letter-spacing="0.5">Full Stack Engineer</text>
 
   <!-- Divider -->
   <rect x="692" y="210" width="200" height="1" fill="#333" rx="1"/>
 
-  <!-- Tech badges -->
+  <!-- Tech badges: TypeScript · Next.js · NestJS · React Native · Azure -->
+  <!-- Total width: 90+12+72+12+72+12+105+12+62 = 449px, start at -224 -->
   <g font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="13" font-weight="500">
-    <!-- Row of badges centered -->
     <g transform="translate(792, 250)" text-anchor="middle">
       <!-- TypeScript -->
-      <rect x="-380" y="-14" width="90" height="28" rx="4" fill="#1a1a1a" stroke="#2a2a2a" stroke-width="1"/>
-      <text x="-335" y="5" fill="#888">TypeScript</text>
+      <rect x="-225" y="-14" width="90" height="28" rx="4" fill="#1a1a1a" stroke="#2a2a2a" stroke-width="1"/>
+      <text x="-180" y="5" fill="#888">TypeScript</text>
 
       <!-- Next.js -->
-      <rect x="-278" y="-14" width="72" height="28" rx="4" fill="#1a1a1a" stroke="#2a2a2a" stroke-width="1"/>
-      <text x="-242" y="5" fill="#888">Next.js</text>
+      <rect x="-123" y="-14" width="72" height="28" rx="4" fill="#1a1a1a" stroke="#2a2a2a" stroke-width="1"/>
+      <text x="-87" y="5" fill="#888">Next.js</text>
 
       <!-- NestJS -->
-      <rect x="-194" y="-14" width="72" height="28" rx="4" fill="#1a1a1a" stroke="#2a2a2a" stroke-width="1"/>
-      <text x="-158" y="5" fill="#888">NestJS</text>
+      <rect x="-39" y="-14" width="72" height="28" rx="4" fill="#1a1a1a" stroke="#2a2a2a" stroke-width="1"/>
+      <text x="-3" y="5" fill="#888">NestJS</text>
 
       <!-- React Native -->
-      <rect x="-110" y="-14" width="105" height="28" rx="4" fill="#1a1a1a" stroke="#2a2a2a" stroke-width="1"/>
-      <text x="-58" y="5" fill="#888">React Native</text>
-
-      <!-- Python -->
-      <rect x="7" y="-14" width="68" height="28" rx="4" fill="#1a1a1a" stroke="#2a2a2a" stroke-width="1"/>
-      <text x="41" y="5" fill="#888">Python</text>
-
-      <!-- AI/ML -->
-      <rect x="87" y="-14" width="58" height="28" rx="4" fill="#1a1a1a" stroke="#2a2a2a" stroke-width="1"/>
-      <text x="116" y="5" fill="#888">AI/ML</text>
+      <rect x="45" y="-14" width="105" height="28" rx="4" fill="#1a1a1a" stroke="#2a2a2a" stroke-width="1"/>
+      <text x="98" y="5" fill="#888">React Native</text>
 
       <!-- Azure -->
-      <rect x="157" y="-14" width="62" height="28" rx="4" fill="#1a1a1a" stroke="#2a2a2a" stroke-width="1"/>
-      <text x="188" y="5" fill="#888">Azure</text>
-
-      <!-- Docker -->
-      <rect x="231" y="-14" width="68" height="28" rx="4" fill="#1a1a1a" stroke="#2a2a2a" stroke-width="1"/>
-      <text x="265" y="5" fill="#888">Docker</text>
-
-      <!-- Flask -->
-      <rect x="311" y="-14" width="62" height="28" rx="4" fill="#1a1a1a" stroke="#2a2a2a" stroke-width="1"/>
-      <text x="342" y="5" fill="#888">Flask</text>
+      <rect x="162" y="-14" width="62" height="28" rx="4" fill="#1a1a1a" stroke="#2a2a2a" stroke-width="1"/>
+      <text x="193" y="5" fill="#888">Azure</text>
     </g>
   </g>
 
-  <!-- Tagline -->
+  <!-- Website -->
   <text x="792" y="310" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" font-weight="400" fill="#555" text-anchor="middle">mattwilson02.github.io</text>
 </svg>

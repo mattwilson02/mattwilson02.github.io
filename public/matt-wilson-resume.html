@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Matt Wilson — Resume</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      font-size: 13px;
+      line-height: 1.5;
+      color: #1a1a1a;
+      background: #fff;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 48px 48px;
+    }
+
+    a { color: #2563eb; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── Header ── */
+    header { margin-bottom: 24px; }
+    header h1 { font-size: 26px; font-weight: 700; letter-spacing: -0.5px; }
+    header .title { font-size: 14px; color: #2563eb; font-weight: 500; margin-top: 2px; }
+    header .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px 16px;
+      margin-top: 8px;
+      font-size: 12px;
+      color: #555;
+    }
+    header .tech {
+      margin-top: 8px;
+      font-size: 12px;
+      color: #555;
+      letter-spacing: 0.2px;
+    }
+
+    /* ── Section ── */
+    section { margin-bottom: 22px; }
+    h2 {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: #2563eb;
+      border-bottom: 1px solid #e5e7eb;
+      padding-bottom: 4px;
+      margin-bottom: 12px;
+    }
+
+    /* ── Profile ── */
+    .profile p { color: #333; }
+
+    /* ── Skills ── */
+    .skills-grid { display: flex; flex-direction: column; gap: 5px; }
+    .skill-row { display: flex; gap: 8px; font-size: 12px; }
+    .skill-label { font-weight: 600; min-width: 130px; color: #1a1a1a; flex-shrink: 0; }
+    .skill-value { color: #444; }
+
+    /* ── Experience ── */
+    .job { margin-bottom: 18px; }
+    .job:last-child { margin-bottom: 0; }
+    .job-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 2px; }
+    .job-title { font-weight: 700; font-size: 13px; }
+    .job-period { font-size: 11px; color: #888; white-space: nowrap; }
+    .job-company { font-size: 12px; color: #555; margin-bottom: 4px; }
+    .job-tech { font-size: 11px; color: #888; margin-bottom: 6px; font-style: italic; }
+    .job ul { padding-left: 16px; }
+    .job li { margin-bottom: 3px; color: #333; font-size: 12.5px; }
+
+    /* ── Projects ── */
+    .project { margin-bottom: 14px; }
+    .project:last-child { margin-bottom: 0; }
+    .project-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 2px; }
+    .project-name { font-weight: 700; font-size: 13px; }
+    .project-period { font-size: 11px; color: #888; }
+    .project-tech { font-size: 11px; color: #888; margin-bottom: 5px; font-style: italic; }
+    .project ul { padding-left: 16px; }
+    .project li { margin-bottom: 3px; color: #333; font-size: 12.5px; }
+
+    /* ── Certifications ── */
+    .certs { display: flex; flex-direction: column; gap: 6px; }
+    .cert { display: flex; justify-content: space-between; align-items: baseline; font-size: 12.5px; }
+    .cert-name { font-weight: 600; }
+    .cert-meta { font-size: 11px; color: #888; }
+    .cert-pending { font-size: 10px; color: #d97706; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; margin-left: 6px; }
+
+    /* ── Education ── */
+    .edu { display: flex; justify-content: space-between; align-items: baseline; font-size: 12.5px; }
+    .edu-name { font-weight: 600; }
+    .edu-meta { font-size: 11px; color: #888; }
+
+    @media print {
+      body { padding: 32px 40px; }
+      a { color: #2563eb; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <h1>Matt Wilson</h1>
+    <div class="title">Full Stack Engineer</div>
+    <div class="meta">
+      <span><a href="mailto:wilson.mjaw@gmail.com">wilson.mjaw@gmail.com</a></span>
+      <span>07624 337165</span>
+      <span><a href="https://www.linkedin.com/in/matt-wilson-16a671212/" target="_blank">LinkedIn</a></span>
+      <span><a href="https://github.com/mattwilson02" target="_blank">GitHub</a></span>
+      <span><a href="https://mattwilson02.github.io" target="_blank">mattwilson02.github.io</a></span>
+    </div>
+    <div class="tech">TypeScript · Next.js · NestJS · React Native · Azure</div>
+  </header>
+
+  <!-- Profile -->
+  <section class="profile">
+    <h2>Profile</h2>
+    <p>Full stack engineer with 4 years of production experience building web and mobile applications. Specialising in TypeScript across the full stack — Next.js, NestJS, React Native — Azure certified, with a strong focus on clean architecture, thorough testing, and long-term maintainability.</p>
+  </section>
+
+  <!-- Skills -->
+  <section>
+    <h2>Technical Skills</h2>
+    <div class="skills-grid">
+      <div class="skill-row">
+        <span class="skill-label">Languages</span>
+        <span class="skill-value">TypeScript (strict), JavaScript</span>
+      </div>
+      <div class="skill-row">
+        <span class="skill-label">Frontend</span>
+        <span class="skill-value">Next.js 15, React 19, React Native (Expo), TanStack Query, Tailwind CSS</span>
+      </div>
+      <div class="skill-row">
+        <span class="skill-label">Backend</span>
+        <span class="skill-value">NestJS, Node.js, GraphQL, Prisma ORM, SQL Server, PostgreSQL</span>
+      </div>
+      <div class="skill-row">
+        <span class="skill-label">Cloud & DevOps</span>
+        <span class="skill-value">Azure App Service, Azure DevOps, Azure Blob Storage, Azure Key Vault, Docker, CI/CD</span>
+      </div>
+      <div class="skill-row">
+        <span class="skill-label">Auth & Security</span>
+        <span class="skill-value">Microsoft Entra ID, BetterAuth, JWT, OAuth2, Biometric (iOS & Android), MFA</span>
+      </div>
+      <div class="skill-row">
+        <span class="skill-label">Testing</span>
+        <span class="skill-value">Vitest, Cypress, Jest, React Native Testing Library, Maestro, Supertest</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience -->
+  <section>
+    <h2>Experience</h2>
+
+    <div class="job">
+      <div class="job-header">
+        <span class="job-title">Full Stack Developer · Stonehage Fleming (SF Digital)</span>
+        <span class="job-period">Jan 2024 – Mar 2026</span>
+      </div>
+      <div class="job-company">Remote / Isle of Man</div>
+      <div class="job-tech">Next.js 15 · React Native · NestJS · TypeScript · PostgreSQL · SQL Server · Prisma · Azure DevOps · BetterAuth · Docker · Cypress · Maestro</div>
+      <ul>
+        <li>Sole frontend architect and lead full-stack engineer on an internal investment management platform for the Global Best Ideas division — covering client portfolios, valuations, transactions, AUM reporting, and automated document generation handling $4B in AUM.</li>
+        <li>Sole engineer on SF Mobile from inception — a cross-platform iOS & Android fintech app giving wealth management clients real-time access to portfolios, documents, and transactions. Delivered end-to-end in 6 months.</li>
+        <li>Owned the full authentication and security system across mobile and backend — MFA (email OTP, phone OTP, biometric Face ID / Touch ID), multi-strategy BetterAuth integration (Azure AD OAuth, Twilio OTP, TOTP 2FA), device recognition, and JWT session management.</li>
+        <li>Built 45+ REST API endpoints across both platforms with Clean Architecture, Zod validation, full OpenAPI documentation, and Azure Blob Storage integration for document workflows.</li>
+        <li>Delivered automated valuation pipelines, financial dashboards, multi-currency portfolio views, and a 4-language internationalised mobile experience (English, Spanish, French, German).</li>
+        <li>Established full engineering infrastructure: Azure DevOps CI/CD pipelines (dev/UAT/prod), 150+ test files on the web platform, 52 mobile unit test files, 43 backend test files, and Maestro E2E suites across iOS and Android.</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-header">
+        <span class="job-title">Intermediate Software Developer · AAO Holdings</span>
+        <span class="job-period">Jul 2023 – Sep 2023</span>
+      </div>
+      <div class="job-company">Douglas, Isle of Man</div>
+      <div class="job-tech">JavaScript · TypeScript · React · React Native · GraphQL · Node.js · Vitest</div>
+      <ul>
+        <li>Built custom reusable components including a MultiSelect, reducing dependency on NativeBase and improving application performance.</li>
+        <li>Contributed to the design and build of a cross-departmental ticket system using a state machine pattern — distinct workflow stages, escalation paths, and assignment rules per department.</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-header">
+        <span class="job-title">Junior Software Developer · AAO Holdings</span>
+        <span class="job-period">Jun 2022 – Jul 2023</span>
+      </div>
+      <div class="job-company">Douglas, Isle of Man</div>
+      <ul>
+        <li>Owned internationalisation configuration across a multi-language React Native banking application.</li>
+        <li>Implemented a four-part customer onboarding flow in collaboration with a senior engineer, handling complex conditional state across banking KYC steps.</li>
+      </ul>
+    </div>
+
+  </section>
+
+  <!-- Projects -->
+  <section>
+    <h2>Personal Projects</h2>
+
+    <div class="project">
+      <div class="project-header">
+        <span class="project-name">Imperium · AI Knowledge Management Platform</span>
+        <span class="project-period">2025 – Present</span>
+      </div>
+      <div class="project-tech">Python · Flask · Docker · n8n · Anthropic API · Claude MCP · Hetzner</div>
+      <ul>
+        <li>Production-grade AI knowledge management platform with multi-service architecture and cost-optimised Haiku → Sonnet → Opus LLM routing pipeline.</li>
+        <li>Ingests from Gmail, Drive, and Calendar; validates against governance schemas before writing to a structured Obsidian vault.</li>
+        <li>600+ tests at 93% coverage, Docker Compose orchestration, and multi-environment deployment on Hetzner VPS with Caddy reverse proxy.</li>
+      </ul>
+    </div>
+
+  </section>
+
+  <!-- Certifications -->
+  <section>
+    <h2>Certifications</h2>
+    <div class="certs">
+      <div class="cert">
+        <span class="cert-name">Microsoft Certified: Azure Administrator Associate <span class="cert-pending">In Progress</span></span>
+        <span class="cert-meta">Exam: 20 Jul 2026</span>
+      </div>
+      <div class="cert">
+        <span class="cert-name">Microsoft Certified: Azure Developer Associate</span>
+        <span class="cert-meta">Issued Mar 2025</span>
+      </div>
+      <div class="cert">
+        <span class="cert-name">Microsoft Certified: Azure Fundamentals</span>
+        <span class="cert-meta">Issued Sep 2024</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Education -->
+  <section>
+    <h2>Education</h2>
+    <div class="edu">
+      <span class="edu-name">A-Level Psychology, Business Studies, Media Studies · King's Interhigh Online School</span>
+      <span class="edu-meta">2019 – 2021</span>
+    </div>
+  </section>
+
+</body>
+</html>

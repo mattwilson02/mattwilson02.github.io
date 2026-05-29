@@ -117,7 +117,7 @@ function generateOGImage(): Buffer {
   c.drawText(nameText, nameX, nameY, nameScale, ...WHITE);
 
   // Subtitle
-  const subText = "Senior Full Stack & AI Engineer";
+  const subText = "Full Stack Engineer";
   const subScale = 3;
   const subW = c.textWidth(subText, subScale);
   const subX = Math.round(W / 2 - subW / 2);
@@ -161,7 +161,7 @@ writeFileSync(join(publicDir, "og-image.png"), generateOGImage());
 console.log("✓ public/og-image.png");
 
 const manifest = {
-  name: "Matt Wilson — Senior Full Stack & AI Engineer",
+  name: "Matt Wilson — Full Stack Engineer",
   short_name: "Matt Wilson",
   icons: [
     { src: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
