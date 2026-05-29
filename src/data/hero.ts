@@ -6,30 +6,17 @@ export interface HeroData {
   primaryCta: { label: string; href: string };
   secondaryLinks: { label: string; href: string }[];
   resumeLink: { label: string; href: string };
-  availability: {
-    status: "available" | "open" | "unavailable";
-    message: string;
-  };
 }
 
 export const heroData: HeroData = {
   name: "Matt Wilson",
-  subtitle: "Senior Full Stack & AI Engineer",
+  subtitle: "Full Stack Engineer",
   tagline:
-    "4 years shipping production software — investment platforms, fintech mobile apps, and AI tooling.",
-  badges: [
-    "TypeScript",
-    "React Native",
-    "Next.js",
-    "NestJS",
-    "Python",
-    "AI/ML",
-    "Azure",
-    "Docker",
-  ],
+    "4 years shipping production-ready software — investment platforms, fintech mobile apps, and financial tooling.",
+  badges: ["TypeScript", "Next.js", "NestJS", "React Native", "Azure"],
   primaryCta: {
     label: "Get in Touch",
-    href: "mailto:mattwilsonbusiness25@gmail.com",
+    href: "mailto:wilson.mjaw@gmail.com",
   },
   secondaryLinks: [
     {
@@ -44,9 +31,5 @@ export const heroData: HeroData = {
   resumeLink: {
     label: "Resume",
     href: "/matt-wilson-resume.pdf",
-  },
-  availability: {
-    status: "open",
-    message: "Open to opportunities",
   },
 };

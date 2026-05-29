@@ -20,10 +20,10 @@ export interface ContactData {
 export const contactData: ContactData = {
   heading: "Get in Touch",
   description:
-    "I'm always open to hearing about new opportunities, collaborations, or interesting engineering problems. Whether you're building something ambitious or just want to connect — reach out.",
+    "I'm always open to hearing about collaborations or interesting engineering problems. Whether you're building something ambitious or just want to connect — reach out.",
   email: {
-    label: "mattwilsonbusiness25@gmail.com",
-    href: "mailto:mattwilsonbusiness25@gmail.com",
+    label: "wilson.mjaw@gmail.com",
+    href: "mailto:wilson.mjaw@gmail.com",
   },
   socialLinks: [
     {

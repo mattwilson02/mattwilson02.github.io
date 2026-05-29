@@ -10,9 +10,6 @@ const About = dynamic(() =>
 const Experience = dynamic(() =>
   import("@/components/experience").then((m) => ({ default: m.Experience })),
 );
-const Projects = dynamic(() =>
-  import("@/components/projects").then((m) => ({ default: m.Projects })),
-);
 const Skills = dynamic(() =>
   import("@/components/skills").then((m) => ({ default: m.Skills })),
 );
@@ -29,11 +26,6 @@ const Testimonials = dynamic(() =>
 const Contact = dynamic(() =>
   import("@/components/contact").then((m) => ({ default: m.Contact })),
 );
-const CurrentlyBuilding = dynamic(() =>
-  import("@/components/currently-building").then((m) => ({
-    default: m.CurrentlyBuilding,
-  })),
-);
 
 export default function Home() {
   return (
@@ -43,11 +35,9 @@ export default function Home() {
         <Hero />
         <About />
         <Experience />
-        <Projects />
         <Skills />
         <Certifications />
         <Testimonials />
-        <CurrentlyBuilding />
         <Contact />
       </main>
       <Footer />

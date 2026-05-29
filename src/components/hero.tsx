@@ -57,24 +57,6 @@ export function Hero() {
           animate="visible"
           className="flex flex-col gap-6"
         >
-          {/* Availability badge */}
-          {heroData.availability.status !== "unavailable" && (
-            <motion.div
-              variants={itemVariants}
-              className="flex items-center gap-2"
-            >
-              <span className="relative flex h-3 w-3">
-                {!prefersReducedMotion && (
-                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-500 opacity-75" />
-                )}
-                <span className="relative inline-flex h-3 w-3 rounded-full bg-green-500" />
-              </span>
-              <span className="text-sm text-[var(--color-muted)]">
-                {heroData.availability.message}
-              </span>
-            </motion.div>
-          )}
-
           {/* Name */}
           <motion.h1
             variants={itemVariants}

@@ -6,43 +6,30 @@ export interface SkillCategory {
 export const skillCategories: SkillCategory[] = [
   {
     category: "Languages",
-    skills: ["TypeScript", "JavaScript", "Python"],
-  },
-  {
-    category: "AI / ML",
-    skills: [
-      "Anthropic API",
-      "LLM Integration",
-      "RAG Pipelines",
-      "ChromaDB",
-      "Claude MCP",
-      "n8n",
-    ],
+    skills: ["TypeScript", "JavaScript"],
   },
   {
     category: "Frontend",
-    skills: [
-      "Next.js 15",
-      "React 19",
-      "React Native (Expo)",
-      "Svelte",
-      "Tailwind CSS",
-    ],
+    skills: ["Next.js 15", "React 19", "React Native (Expo)", "Svelte", "Tailwind CSS"],
   },
   {
     category: "Backend",
-    skills: ["NestJS", "Node.js", "Flask", "REST APIs", "GraphQL", "Prisma ORM"],
+    skills: ["NestJS", "Node.js", "GraphQL", "Prisma ORM"],
   },
   {
     category: "Cloud & DevOps",
-    skills: ["Azure", "Docker", "Hetzner VPS", "Caddy", "CI/CD"],
+    skills: ["Azure", "Docker", "CI/CD"],
   },
   {
     category: "Auth & Security",
-    skills: ["Entra ID", "BetterAuth", "JWT", "OAuth2", "Biometric", "MFA"],
+    skills: ["JWT", "OAuth2", "Biometric", "MFA"],
   },
   {
     category: "Testing",
     skills: ["Vitest", "Cypress", "Jest", "Maestro", "Supertest"],
+  },
+  {
+    category: "AI / Workflow",
+    skills: ["Claude Code", "Claude MCP"],
   },
 ];

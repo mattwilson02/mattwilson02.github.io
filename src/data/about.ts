@@ -1,6 +1,7 @@
 export interface AboutStat {
   label: string;
   value: string;
+  ticker?: boolean;
 }
 
 export interface AboutData {
@@ -13,15 +14,15 @@ export interface AboutData {
 export const aboutData: AboutData = {
   avatarSrc: "/headshot.png",
   bio: [
-    "Self-taught. Got into programming after discovering Bitcoin in 2022 — fell down the rabbit hole, started building, and never stopped. 4 years later I'm shipping production software across investment platforms, fintech mobile apps, and AI tooling.",
-    "I specialise in TypeScript across the full stack — Next.js, NestJS, React Native — and I've worked end-to-end on everything from frontend architecture to backend APIs to CI/CD pipelines. Currently building Ralph, an autonomous AI developer agent.",
-    "Based on the Isle of Man, working remotely. I care most about writing software that works well and solving problems cleanly — the rest follows from that.",
+    "Got into programming after discovering Bitcoin in 2022 — fell down the rabbit hole, started building, and never stopped. 4 years later I've shipped production-ready fintech applications, including an investment management platform handling $4B in AUM.",
+    "I specialise in TypeScript across the full stack, and I care about producing code that outlives itself — through thorough test coverage, clean architecture, and high standards at every layer of delivery.",
+    "Currently deepening my Azure expertise, working towards Solutions Architect certification after AZ-104.",
   ],
   beyondTheCode:
-    "Runs ultra marathons and rides bikes when not at a keyboard.",
+    "Enthusiastic amateur athlete and wannabe barista — two ultra marathons, a few questionable flat whites, and a helmet-strap tan from hundreds of hours on the road bike.",
   stats: [
-    { label: "Years Experience", value: "4" },
-    { label: "Azure Certifications", value: "2" },
-    { label: "Projects Shipped", value: "10+" },
+    { label: "Years Coding", value: "4" },
+    { label: "Location", value: "Isle of Man" },
+    { label: "Coffees Consumed", value: "1000", ticker: true },
   ],
 };

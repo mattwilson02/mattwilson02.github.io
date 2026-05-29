@@ -63,9 +63,10 @@ export const experienceData: ExperienceEntry[] = [
         techSummary:
           "JavaScript, TypeScript, React, GraphQL, Node.js, Docker, Vitest",
         highlights: [
-          "Contributed to a full-stack banking application and internal workflow dashboard using React, Node.js, and GraphQL",
-          "Implemented multi-step due diligence workflow with complex conditional logic; serverless functions handling live user interactions in production",
-          "Designed and built cross-departmental ticket system using state machine pattern — multiple departments with distinct workflow stages, escalation paths, and assignment rules",
+          "Owned internationalisation configuration across a multi-language React Native banking application",
+          "Built custom reusable components including a MultiSelect, reducing dependency on NativeBase and improving application performance",
+          "Implemented a four-part customer onboarding flow in collaboration with a senior engineer, handling complex conditional state across banking KYC steps",
+          "Contributed to the design and build of a cross-departmental ticket system using a state machine pattern — distinct workflow stages, escalation paths, and assignment rules per department",
         ],
       },
     ],

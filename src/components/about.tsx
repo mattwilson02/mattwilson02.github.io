@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
+import { useEffect, useState } from "react";
 import { Section } from "./section";
 import { Avatar } from "./avatar";
 import { aboutData } from "@/data/about";
@@ -25,8 +26,42 @@ const itemVariants = {
   },
 };
 
+const StatIcon = ({ label }: { label: string }) => {
+  if (label === "Coffees Consumed")
+    return (
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M17 8h1a4 4 0 1 1 0 8h-1" />
+        <path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z" />
+        <line x1="6" y1="2" x2="6" y2="4" />
+        <line x1="10" y1="2" x2="10" y2="4" />
+        <line x1="14" y1="2" x2="14" y2="4" />
+      </svg>
+    );
+  if (label === "Location")
+    return (
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+        <circle cx="12" cy="10" r="3" />
+      </svg>
+    );
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <polyline points="16 18 22 12 16 6" />
+      <polyline points="8 6 2 12 8 18" />
+    </svg>
+  );
+};
+
 export function About() {
   const prefersReducedMotion = useReducedMotion();
+  const [coffeeCount, setCoffeeCount] = useState(1000);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCoffeeCount((c) => c + 1);
+    }, 3_600_000);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <Section id="about">
@@ -58,9 +93,10 @@ export function About() {
                   className="rounded-lg border border-[var(--color-border)] bg-[var(--color-card)] px-4 py-3"
                 >
                   <div className="text-2xl font-bold text-[var(--color-foreground)]">
-                    {stat.value}
+                    {stat.ticker ? `${coffeeCount.toLocaleString()}+` : stat.value}
                   </div>
-                  <div className="text-sm text-[var(--color-muted)]">
+                  <div className="mt-1 flex items-center gap-1.5 text-sm text-[var(--color-muted)]">
+                    <StatIcon label={stat.label} />
                     {stat.label}
                   </div>
                 </div>
@@ -82,7 +118,7 @@ export function About() {
 
             <motion.p
               variants={itemVariants}
-              className="mt-2 border-t border-[var(--color-border)] pt-4 text-sm italic text-[var(--color-muted)]"
+              className="mt-2 border-t border-[var(--color-border)] pt-4 text-sm italic text-(--color-muted)"
             >
               Beyond the code — {aboutData.beyondTheCode}
             </motion.p>

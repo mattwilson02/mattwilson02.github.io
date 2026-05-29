@@ -13,7 +13,7 @@ export const resumeConfig: ResumeConfig = {
   title: "Senior Full Stack & AI Engineer",
   summary:
     "Full-stack TypeScript engineer with 4 years of production experience building investment platforms, fintech mobile apps, and autonomous AI developer tooling. Self-taught, no CS degree. Currently building tools that let engineers focus on hard problems instead of repetitive implementation.",
-  email: "mattwilsonbusiness25@gmail.com",
+  email: "wilson.mjaw@gmail.com",
   github: "github.com/mattwilson02",
   linkedin: "linkedin.com/in/matt-wilson-16a671212",
   location: "Isle of Man (Remote)",
