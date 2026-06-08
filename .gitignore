@@ -15,6 +15,11 @@ out/
 
 # ralph
 .ralph-state.json
+.ralph.yaml
 
 # Ralph working files
 ralph.log
+
+# internal
+docs/
+PRODUCT_SPEC.md
