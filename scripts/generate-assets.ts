@@ -129,7 +129,7 @@ function generateOGImage(): Buffer {
   c.rect(Math.round(W / 2 - 60), lineY, Math.round(W / 2 + 60), lineY + 2, ...ACCENT);
 
   // URL
-  const urlText = "mattwilson02.github.io";
+  const urlText = "mattwilson.tech";
   const urlScale = 2;
   const urlW = c.textWidth(urlText, urlScale);
   const urlX = Math.round(W / 2 - urlW / 2);

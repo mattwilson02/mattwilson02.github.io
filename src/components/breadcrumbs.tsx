@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-const siteUrl = "https://mattwilson02.github.io";
+const siteUrl = "https://mattwilson.tech";
 
 interface BreadcrumbItem {
   label: string;

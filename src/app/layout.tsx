@@ -9,12 +9,12 @@ const inter = Inter({
   variable: "--font-inter",
 });
 
-const siteUrl = "https://mattwilson02.github.io";
+const siteUrl = "https://mattwilson.tech";
 
 export const metadata: Metadata = {
-  title: "Matt Wilson — Senior Full Stack & AI Engineer",
+  title: "Matt Wilson — Full Stack Engineer",
   description:
-    "Senior Full Stack & AI Engineer specialising in TypeScript, React, Next.js, and production AI systems. Self-taught, 4 years shipping software that handles real money.",
+    "Full Stack Engineer with 4 years shipping production software — investment platforms, fintech mobile apps, and financial tooling. TypeScript, React Native, Next.js, NestJS, Azure.",
   metadataBase: new URL(siteUrl),
   alternates: {
     canonical: siteUrl,
@@ -23,9 +23,9 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Matt Wilson — Senior Full Stack & AI Engineer",
+    title: "Matt Wilson — Full Stack Engineer",
     description:
-      "Senior Full Stack & AI Engineer specialising in TypeScript, React, Next.js, and production AI systems.",
+      "Full Stack Engineer with 4 years shipping production software — investment platforms, fintech mobile apps, and financial tooling.",
     type: "website",
     url: siteUrl,
     images: [
@@ -33,15 +33,15 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Matt Wilson — Senior Full Stack & AI Engineer",
+        alt: "Matt Wilson — Full Stack Engineer",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Matt Wilson — Senior Full Stack & AI Engineer",
+    title: "Matt Wilson — Full Stack Engineer",
     description:
-      "Senior Full Stack & AI Engineer specialising in TypeScript, React, Next.js, and production AI systems.",
+      "Full Stack Engineer with 4 years shipping production software — investment platforms, fintech mobile apps, and financial tooling.",
     images: ["/og-image.png"],
   },
   themeColor: [
@@ -60,13 +60,13 @@ export const metadata: Metadata = {
   manifest: "/site.webmanifest",
 };
 
-const PLAUSIBLE_DOMAIN = "mattwilson02.github.io";
+const PLAUSIBLE_DOMAIN = "mattwilson.tech";
 
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
   name: "Matt Wilson",
-  jobTitle: "Senior Full Stack & AI Engineer",
+  jobTitle: "Full Stack Engineer",
   url: siteUrl,
   sameAs: [
     "https://github.com/mattwilson02",
@@ -75,22 +75,20 @@ const jsonLd = {
   knowsAbout: [
     "TypeScript",
     "JavaScript",
-    "Python",
     "React",
     "Next.js",
     "React Native",
     "NestJS",
     "Node.js",
-    "AI Engineering",
-    "LLM Integration",
-    "RAG Pipelines",
     "Azure",
     "Docker",
     "Full Stack Development",
+    "Fintech",
+    "Mobile Development",
   ],
   seeks: {
     "@type": "Demand",
-    description: "Full-stack engineering and AI development opportunities",
+    description: "Full-stack software engineering opportunities",
   },
 };
 

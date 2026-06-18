@@ -1,49 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://mattwilson02.github.io/</loc>
+    <loc>https://mattwilson.tech/</loc>
     <lastmod>2026-03-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://mattwilson02.github.io/uses</loc>
+    <loc>https://mattwilson.tech/uses</loc>
     <lastmod>2026-03-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://mattwilson02.github.io/resume</loc>
+    <loc>https://mattwilson.tech/resume</loc>
     <lastmod>2026-03-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://mattwilson02.github.io/blog</loc>
+    <loc>https://mattwilson.tech/blog</loc>
     <lastmod>2026-03-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://mattwilson02.github.io/blog/athena-product-overview</loc>
+    <loc>https://mattwilson.tech/blog/athena-product-overview</loc>
     <lastmod>2026-03-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://mattwilson02.github.io/blog/tag/AI</loc>
+    <loc>https://mattwilson.tech/blog/tag/AI</loc>
     <lastmod>2026-03-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://mattwilson02.github.io/blog/tag/Python</loc>
+    <loc>https://mattwilson.tech/blog/tag/Python</loc>
     <lastmod>2026-03-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://mattwilson02.github.io/blog/tag/Product</loc>
+    <loc>https://mattwilson.tech/blog/tag/Product</loc>
     <lastmod>2026-03-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>

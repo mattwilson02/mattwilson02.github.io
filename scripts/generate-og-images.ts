@@ -92,7 +92,7 @@ function generatePostOGImage(title: string): Buffer {
   y += separatorH + afterSeparatorGap;
 
   // Draw URL
-  const urlText = "mattwilson02.github.io";
+  const urlText = "mattwilson.tech";
   const urlW = textWidth(urlText, urlScale);
   const urlX = Math.round(W / 2 - urlW / 2);
   c.drawText(urlText, urlX, y, urlScale, ...MUTED);
@@ -162,7 +162,7 @@ function generateTagOGImage(tag: string, postCount: number): Buffer {
   y += separatorH + afterSeparatorGap;
 
   // URL
-  const urlText = "mattwilson02.github.io";
+  const urlText = "mattwilson.tech";
   const urlW = textWidth(urlText, urlScale);
   const urlX = Math.round(W / 2 - urlW / 2);
   c.drawText(urlText, urlX, y, urlScale, ...MUTED);

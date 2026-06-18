@@ -10,7 +10,7 @@ export interface ResumeConfig {
 
 export const resumeConfig: ResumeConfig = {
   name: "Matt Wilson",
-  title: "Senior Full Stack & AI Engineer",
+  title: "Full Stack Engineer",
   summary:
     "Full-stack TypeScript engineer with 4 years of production experience building investment platforms, fintech mobile apps, and autonomous AI developer tooling. Self-taught, no CS degree. Currently building tools that let engineers focus on hard problems instead of repetitive implementation.",
   email: "wilson.mjaw@gmail.com",

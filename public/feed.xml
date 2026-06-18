@@ -3,15 +3,15 @@
   <channel>
     <title>Matt Wilson — Blog</title>
     <description>Writing about AI engineering, developer tools, and the craft of building software.</description>
-    <link>https://mattwilson02.github.io/blog</link>
+    <link>https://mattwilson.tech/blog</link>
     <language>en</language>
     <lastBuildDate>Mon, 23 Mar 2026 00:00:00 GMT</lastBuildDate>
-    <atom:link href="https://mattwilson02.github.io/feed.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://mattwilson.tech/feed.xml" rel="self" type="application/rss+xml" />
   <item>
     <title>Athena: A Personal AI That Actually Knows You</title>
     <description>A deep dive into Athena — a personal AI built on a living knowledge graph that reasons across your goals, relationships, finances, and decisions.</description>
-    <link>https://mattwilson02.github.io/blog/athena-product-overview</link>
-    <guid isPermaLink="true">https://mattwilson02.github.io/blog/athena-product-overview</guid>
+    <link>https://mattwilson.tech/blog/athena-product-overview</link>
+    <guid isPermaLink="true">https://mattwilson.tech/blog/athena-product-overview</guid>
     <pubDate>Mon, 23 Mar 2026 00:00:00 GMT</pubDate>
       <category>AI</category>
       <category>Python</category>
