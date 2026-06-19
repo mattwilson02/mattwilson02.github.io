@@ -12,7 +12,8 @@
     "start": "next start",
     "lint": "next lint",
     "generate-feeds": "tsx scripts/generate-feeds.ts",
-    "generate-og-images": "tsx scripts/generate-og-images.ts"
+    "generate-og-images": "tsx scripts/generate-og-images.ts",
+    "generate-resume-pdf": "tsx scripts/generate-resume-pdf.ts"
   },
   "dependencies": {
     "framer-motion": "^11.0.0",
@@ -30,6 +31,7 @@
     "@types/react-dom": "^19.0.0",
     "eslint": "^9.0.0",
     "eslint-config-next": "^15.0.0",
+    "puppeteer": "^25.1.0",
     "tailwindcss": "^4.0.0",
     "tsx": "^4.0.0",
     "typescript": "^5.0.0"
