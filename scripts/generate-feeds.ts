@@ -2,7 +2,7 @@ import { writeFileSync } from "fs";
 import { join } from "path";
 import { blogPosts } from "../src/data/blog";
 
-const siteUrl = "https://mattwilson02.github.io";
+const siteUrl = "https://mattwilson.tech";
 const today = new Date().toISOString().split("T")[0];
 
 function toRfc2822(dateStr: string): string {
