@@ -2,3 +2,6 @@ allowBuilds:
   esbuild: true
   sharp: true
   unrs-resolver: true
+  # puppeteer is only used by the local generate-resume-pdf script, not the
+  # CI build — skip its Chromium download instead of approving the build.
+  puppeteer: false
