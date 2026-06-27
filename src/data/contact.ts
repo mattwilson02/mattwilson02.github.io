@@ -24,7 +24,7 @@ export const contactData: ContactData = {
     "Building something ambitious and need a partner who can design it, ship it, and run the infrastructure behind it? Book a call to talk it through — or reach out directly.",
   booking: {
     label: "Book a Call",
-    href: "https://calendly.com/wilson-mjaw",
+    href: "https://calendly.com/wilson-mjaw/discovery",
   },
   email: {
     label: "wilson.mjaw@gmail.com",
