@@ -21,6 +21,26 @@ const itemVariants = {
   },
 };
 
+const CalendarIcon = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="16"
+    height="16"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true"
+  >
+    <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+    <line x1="16" y1="2" x2="16" y2="6" />
+    <line x1="8" y1="2" x2="8" y2="6" />
+    <line x1="3" y1="10" x2="21" y2="10" />
+  </svg>
+);
+
 const DownloadIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -95,10 +115,22 @@ export function Contact() {
           {contactData.description}
         </motion.p>
 
-        <motion.div variants={itemVariants} className="mb-6">
+        <motion.div
+          variants={itemVariants}
+          className="mb-6 flex flex-col items-center gap-3 sm:flex-row"
+        >
+          <a
+            href={contactData.booking.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 rounded-md bg-[var(--color-accent)] px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-[var(--color-accent-hover)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] focus-visible:ring-offset-2"
+          >
+            <CalendarIcon />
+            {contactData.booking.label}
+          </a>
           <a
             href={contactData.email.href}
-            className="rounded-md bg-[var(--color-accent)] px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-[var(--color-accent-hover)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] focus-visible:ring-offset-2"
+            className="rounded-md border border-[var(--color-border)] px-6 py-3 text-sm font-semibold text-[var(--color-foreground)] transition-colors hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] focus-visible:ring-offset-2"
           >
             {contactData.email.label}
           </a>
