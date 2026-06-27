@@ -24,8 +24,7 @@ export const contactData: ContactData = {
     "Building something ambitious and need a partner who can design it, ship it, and run the infrastructure behind it? Book a call to talk it through — or reach out directly.",
   booking: {
     label: "Book a Call",
-    // TODO: replace with real Calendly link once account is live (calendly.com/<username>)
-    href: "https://calendly.com/REPLACE-ME/discovery-call",
+    href: "https://calendly.com/wilson-mjaw",
   },
   email: {
     label: "wilson.mjaw@gmail.com",
