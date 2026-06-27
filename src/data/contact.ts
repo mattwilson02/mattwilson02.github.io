@@ -12,15 +12,21 @@ export interface ContactSocialLink {
 export interface ContactData {
   heading: string;
   description: string;
+  booking: ContactLink;
   email: ContactLink;
   socialLinks: ContactSocialLink[];
   resumeLink: { label: string; href: string };
 }
 
 export const contactData: ContactData = {
-  heading: "Get in Touch",
+  heading: "Let's Work Together",
   description:
-    "I'm always open to hearing about collaborations or interesting engineering problems. Whether you're building something ambitious or just want to connect — reach out.",
+    "Building something ambitious and need a partner who can design it, ship it, and run the infrastructure behind it? Book a call to talk it through — or reach out directly.",
+  booking: {
+    label: "Book a Call",
+    // TODO: replace with real Calendly link once account is live (calendly.com/<username>)
+    href: "https://calendly.com/REPLACE-ME/discovery-call",
+  },
   email: {
     label: "wilson.mjaw@gmail.com",
     href: "mailto:wilson.mjaw@gmail.com",
