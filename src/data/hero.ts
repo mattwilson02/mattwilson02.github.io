@@ -15,8 +15,8 @@ export const heroData: HeroData = {
     "4 years shipping production-ready software — investment platforms, fintech mobile apps, and financial tooling.",
   badges: ["TypeScript", "Next.js", "NestJS", "React Native", "Azure"],
   primaryCta: {
-    label: "Get in Touch",
-    href: "mailto:wilson.mjaw@gmail.com",
+    label: "Book a Call",
+    href: "https://calendly.com/wilson-mjaw/discovery",
   },
   secondaryLinks: [
     {
