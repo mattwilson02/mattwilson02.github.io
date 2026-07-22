@@ -12,7 +12,7 @@ export const heroData: HeroData = {
   name: "Matt Wilson",
   subtitle: "Full Stack Engineer",
   tagline:
-    "4 years shipping production-ready software — investment platforms, fintech mobile apps, and financial tooling.",
+    "4 years shipping production software in regulated finance — investment platforms, fintech mobile apps, and the cloud infrastructure behind them.",
   badges: ["TypeScript", "Next.js", "NestJS", "React Native", "Azure"],
   primaryCta: {
     label: "Book a Call",

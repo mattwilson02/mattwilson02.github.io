@@ -23,3 +23,10 @@ ralph.log
 # internal
 docs/
 PRODUCT_SPEC.md
+
+# company-targeted CV variants — kept local, never published to the site
+public/matt-wilson-resume-*.html
+public/matt-wilson-resume-*.pdf
+
+# typescript incremental build cache
+tsconfig.tsbuildinfo
