@@ -22,7 +22,7 @@ export const certificationsData: Certification[] = [
   {
     name: "Microsoft Certified: Azure Administrator Associate",
     issuer: "Microsoft",
-    date: "Exam: 27 Jul 2026",
+    date: "Exam: 23 Oct 2026",
     pending: true,
   },
   {
