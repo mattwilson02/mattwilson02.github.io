@@ -1,44 +1,47 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { ThemeToggle } from "./theme-toggle";
-import { homeNavLinks, blogNavLinks } from "@/data/navigation";
+import { usePathname } from "next/navigation";
+import {
+  navLinks,
+  anchorIds,
+  calendlyUrl,
+  type NavLink,
+} from "@/data/navigation";
 
-interface NavProps {
-  showBlogLink?: boolean;
-}
+export function Nav() {
+  const pathname = usePathname();
+  const isHome = pathname === "/";
 
-export function Nav({ showBlogLink = false }: NavProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [activeId, setActiveId] = useState("home");
-
-  const navLinks = showBlogLink ? blogNavLinks : homeNavLinks;
+  const [activeAnchor, setActiveAnchor] = useState("home");
 
   useEffect(() => {
     function onScroll() {
       setIsScrolled(window.scrollY > 8);
     }
     window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // Scroll-spy — anchors only, home page only.
   useEffect(() => {
-    if (showBlogLink) return;
+    if (!isHome) return;
 
-    const sectionIds = homeNavLinks.map((l) => l.id);
     const offset = 120;
 
     function updateActive() {
       if (window.scrollY < 100) {
-        setActiveId("home");
+        setActiveAnchor("home");
         return;
       }
 
       let closest: string | null = null;
       let closestDist = Infinity;
 
-      for (const id of sectionIds) {
+      for (const id of anchorIds) {
         const el = document.getElementById(id);
         if (!el) continue;
         const top = el.getBoundingClientRect().top - offset;
@@ -48,14 +51,13 @@ export function Nav({ showBlogLink = false }: NavProps) {
         }
       }
 
-      if (closest) setActiveId(closest);
+      setActiveAnchor(closest ?? "home");
     }
 
     window.addEventListener("scroll", updateActive, { passive: true });
     updateActive();
-
     return () => window.removeEventListener("scroll", updateActive);
-  }, [showBlogLink]);
+  }, [isHome]);
 
   useEffect(() => {
     function onKeyDown(e: KeyboardEvent) {
@@ -65,21 +67,27 @@ export function Nav({ showBlogLink = false }: NavProps) {
     return () => document.removeEventListener("keydown", onKeyDown);
   }, []);
 
-  function handleLinkClick() {
-    setMenuOpen(false);
+  function hrefFor(link: NavLink) {
+    return isHome && link.anchor ? link.anchor : link.route;
   }
 
-  function linkClass(id: string) {
-    return !showBlogLink && activeId === id
+  function isActive(link: NavLink) {
+    if (link.kind === "route") {
+      // /blog should stay active on /blog/some-post
+      return pathname === link.route || pathname.startsWith(`${link.route}/`);
+    }
+    return isHome && activeAnchor === link.id;
+  }
+
+  const desktopClass = (link: NavLink) =>
+    isActive(link)
       ? "text-sm font-medium text-[var(--color-foreground)] transition-colors"
       : "text-sm text-[var(--color-muted)] transition-colors hover:text-[var(--color-foreground)]";
-  }
 
-  function mobileLinkClass(id: string) {
-    return !showBlogLink && activeId === id
+  const mobileClass = (link: NavLink) =>
+    isActive(link)
       ? "block py-3 text-sm font-medium text-[var(--color-foreground)] transition-colors"
       : "block py-3 text-sm text-[var(--color-muted)] transition-colors hover:text-[var(--color-foreground)]";
-  }
 
   return (
     <header
@@ -93,30 +101,37 @@ export function Nav({ showBlogLink = false }: NavProps) {
         aria-label="Main navigation"
         className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4"
       >
-        {/* Logo */}
         <a
-          href={showBlogLink ? "/" : "#home"}
+          href={isHome ? "#home" : "/"}
           className="text-base font-semibold tracking-tight transition-colors hover:text-[var(--color-accent)]"
-          onClick={handleLinkClick}
+          onClick={() => setMenuOpen(false)}
         >
           Matt Wilson
         </a>
 
-        {/* Desktop links */}
         <ul className="hidden items-center gap-5 md:flex">
           {navLinks.map((link) => (
-            <li key={link.href}>
-              <a href={link.href} className={linkClass(link.id)}>
+            <li key={link.id}>
+              <a
+                href={hrefFor(link)}
+                className={desktopClass(link)}
+                aria-current={isActive(link) ? "page" : undefined}
+              >
                 {link.label}
               </a>
             </li>
           ))}
         </ul>
 
-        {/* Right: theme toggle + hamburger */}
-        <div className="flex items-center gap-2">
-          <ThemeToggle />
-          {/* Hamburger — mobile only */}
+        <div className="flex items-center gap-3">
+          <a
+            href={calendlyUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden rounded-md bg-[var(--color-accent)] px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-[var(--color-accent-hover)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] focus-visible:ring-offset-2 md:inline-flex"
+          >
+            Book a call
+          </a>
           <button
             className="flex h-9 w-9 items-center justify-center rounded-md transition-colors hover:bg-[var(--color-card)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] md:hidden"
             aria-label="Toggle menu"
@@ -162,7 +177,6 @@ export function Nav({ showBlogLink = false }: NavProps) {
         </div>
       </nav>
 
-      {/* Mobile menu */}
       {menuOpen && (
         <div
           id="mobile-menu"
@@ -170,16 +184,28 @@ export function Nav({ showBlogLink = false }: NavProps) {
         >
           <ul className="mx-auto flex max-w-5xl flex-col px-6 py-4">
             {navLinks.map((link) => (
-              <li key={link.href}>
+              <li key={link.id}>
                 <a
-                  href={link.href}
-                  onClick={handleLinkClick}
-                  className={mobileLinkClass(link.id)}
+                  href={hrefFor(link)}
+                  onClick={() => setMenuOpen(false)}
+                  className={mobileClass(link)}
+                  aria-current={isActive(link) ? "page" : undefined}
                 >
                   {link.label}
                 </a>
               </li>
             ))}
+            <li className="pt-3">
+              <a
+                href={calendlyUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setMenuOpen(false)}
+                className="inline-flex rounded-md bg-[var(--color-accent)] px-4 py-2 text-sm font-semibold text-white"
+              >
+                Book a call
+              </a>
+            </li>
           </ul>
         </div>
       )}

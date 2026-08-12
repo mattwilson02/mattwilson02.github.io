@@ -4,28 +4,27 @@ import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import { Section } from "./section";
 import { BlogCard } from "./blog-card";
+import { revealViewport, containerVariants, itemVariants } from "@/lib/motion";
 import { blogPosts } from "@/data/blog";
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.12, delayChildren: 0.05 },
-  },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 16 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.5, ease: [0.25, 0.1, 0.25, 1] },
-  },
-};
+/**
+ * Column count follows the post count.
+ *
+ * A three-column grid holding one post leaves it stranded in the left third
+ * and reads as something that failed to load. As posts accumulate this opens
+ * up on its own.
+ */
+function gridClassFor(count: number) {
+  if (count <= 1) return "grid-cols-1 max-w-xl";
+  if (count === 2) return "grid-cols-1 md:grid-cols-2 max-w-3xl";
+  return "grid-cols-1 md:grid-cols-2 lg:grid-cols-3";
+}
 
 export function LatestPosts() {
   const prefersReducedMotion = useReducedMotion();
   const posts = blogPosts.slice(0, 3);
+
+  if (posts.length === 0) return null;
 
   return (
     <Section id="writing">
@@ -33,16 +32,16 @@ export function LatestPosts() {
         variants={containerVariants}
         initial={prefersReducedMotion ? false : "hidden"}
         whileInView="visible"
-        viewport={{ once: true, margin: "-100px" }}
+        viewport={revealViewport}
       >
         <motion.h2
           variants={itemVariants}
-          className="mb-12 text-3xl font-bold tracking-tight md:text-4xl"
+          className="mb-10 text-3xl font-bold tracking-tight md:text-4xl"
         >
-          Latest Writing
+          Writing
         </motion.h2>
 
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className={`grid gap-6 ${gridClassFor(posts.length)}`}>
           {posts.map((post) => (
             <motion.div key={post.slug} variants={itemVariants}>
               <BlogCard
@@ -57,14 +56,16 @@ export function LatestPosts() {
           ))}
         </div>
 
-        <motion.div variants={itemVariants} className="mt-8">
-          <Link
-            href="/blog"
-            className="text-sm font-medium text-[var(--color-accent)] hover:underline"
-          >
-            View All Posts →
-          </Link>
-        </motion.div>
+        {blogPosts.length > posts.length && (
+          <motion.div variants={itemVariants} className="mt-8">
+            <Link
+              href="/blog"
+              className="text-sm font-medium text-[var(--color-accent)] hover:underline"
+            >
+              All writing →
+            </Link>
+          </motion.div>
+        )}
       </motion.div>
     </Section>
   );

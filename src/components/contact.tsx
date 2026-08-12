@@ -98,7 +98,7 @@ export function Contact() {
         variants={containerVariants}
         initial={prefersReducedMotion ? false : "hidden"}
         whileInView="visible"
-        viewport={{ once: true, margin: "-100px" }}
+        viewport={{ once: true, margin: "150px" }}
         className="flex flex-col items-center text-center"
       >
         <motion.h2
