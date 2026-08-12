@@ -40,7 +40,7 @@ export function TableOfContents({ headings, variant = "mobile" }: TableOfContent
   }
 
   return (
-    <div className="rounded-lg border border-[var(--color-border)] bg-[var(--color-card)] p-4">
+    <div className="mb-8 rounded-lg border border-[var(--color-border)] bg-[var(--color-card)] p-4 lg:hidden">
       <button
         onClick={() => setIsOpen(!isOpen)}
         aria-expanded={isOpen}
