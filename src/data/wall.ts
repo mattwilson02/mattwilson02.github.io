@@ -27,11 +27,11 @@ export const wallData: WallData = {
   heading: "The idea isn't the hard part.",
 
   body: [
-    "You already know what the business needs. You've watched the problem for long enough to see exactly where the time goes, and you've probably worked out how you'd fix it — a document, a spreadsheet that half does the job, or something you've had a go at building yourself.",
+    "You already know what the business needs, and roughly how you'd fix it. A document, a spreadsheet that half does the job, or something you've had a go at building yourself.",
 
-    "Getting from there to something people open every morning is a different kind of work. Somewhere for it to live, accounts and permissions, a database holding real records, and all of it still standing on the days nobody is thinking about it.",
+    "Getting from there to something people open every morning is a different kind of work. Somewhere for it to live, accounts and permissions, a database holding real records — and all of it still standing on the days nobody is thinking about it.",
 
-    "And that part isn't really about hours. It's whose name sits against it the first time it touches real money or real records, and who picks up the phone when it breaks. Weighed against a job you already don't have enough time for, that's usually where a good idea stops.",
+    "And that part isn't really about hours. It's whose name sits against it the first time it touches real money, and who picks up the phone when it breaks. Weighed against a job you already don't have enough time for, that's usually where a good idea stops.",
   ],
 
   kicker: "That's the part I take off you — the burden, not just the stack.",

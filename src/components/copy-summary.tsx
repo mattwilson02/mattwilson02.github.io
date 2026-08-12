@@ -5,8 +5,8 @@ import { useState } from "react";
 const CopyIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width="15"
-    height="15"
+    width="14"
+    height="14"
     viewBox="0 0 24 24"
     fill="none"
     stroke="currentColor"
@@ -23,8 +23,8 @@ const CopyIcon = () => (
 const TickIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width="15"
-    height="15"
+    width="14"
+    height="14"
     viewBox="0 0 24 24"
     fill="none"
     stroke="currentColor"
@@ -40,12 +40,12 @@ const TickIcon = () => (
 /**
  * The forwardable summary, as an action rather than a paragraph.
  *
- * It restates the points above it, which is exactly right for something being
- * pasted to someone who has never seen the page — and pure bloat when printed
+ * It restates the terms it sits above, which is exactly right for something
+ * pasted to someone who has never seen the page — and pure bloat printed
  * underneath the list it repeats. So it lives on the clipboard instead.
  *
- * It's also the one interaction on the page that admits what the section is
- * for: the reader isn't the decision-maker, they're the person who has to
+ * It's also the one interaction that admits what the section is for: the
+ * reader usually isn't the decision-maker, they're the person who has to
  * convince one.
  */
 export function CopySummary({ text }: { text: string }) {
@@ -67,10 +67,11 @@ export function CopySummary({ text }: { text: string }) {
       type="button"
       onClick={copy}
       aria-live="polite"
-      className="inline-flex items-center gap-2 rounded-md border border-[var(--color-border)] px-4 py-2.5 text-sm font-medium text-[var(--color-muted)] transition-colors hover:border-[var(--color-accent)] hover:text-[var(--color-foreground)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]"
+      title="Copy a short summary of these terms"
+      className="inline-flex shrink-0 items-center gap-1.5 rounded-md px-2.5 py-1.5 text-xs font-medium text-[var(--color-muted)] transition-colors hover:bg-[var(--color-background)] hover:text-[var(--color-foreground)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]"
     >
       {copied ? <TickIcon /> : <CopyIcon />}
-      {copied ? "Copied" : "Copy this as a summary"}
+      {copied ? "Copied" : "Copy summary"}
     </button>
   );
 }

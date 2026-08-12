@@ -58,7 +58,7 @@ export function HeroMotif() {
   return (
     <div
       aria-hidden="true"
-      className="pointer-events-none absolute right-0 top-1/2 hidden -translate-y-1/2 select-none lg:block"
+      className="pointer-events-none absolute -right-16 -top-6 select-none opacity-40 sm:-right-8 lg:right-0 lg:top-1/2 lg:-translate-y-1/2 lg:opacity-100"
     >
       <svg
         width={width}

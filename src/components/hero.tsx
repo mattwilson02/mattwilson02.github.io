@@ -4,6 +4,11 @@ import { HeroMotif } from "./hero-motif";
 /**
  * Above the fold.
  *
+ * The bloom and the motif render at every size — they were desktop-only, which
+ * left phones looking at flat black. On small screens the motif sits top-right
+ * at lower opacity so it reads as texture behind the type; from lg it moves to
+ * centre-right at full strength where there's room for it.
+ *
  * No CTA — "Book a call" is persistent in the nav. Not animated and no client
  * JavaScript, so the headline is there on first paint.
  */
@@ -13,11 +18,10 @@ export function Hero() {
       id="home"
       className="relative overflow-hidden border-b border-[var(--color-border)] pb-16 pt-20 md:pb-24 md:pt-28"
     >
-      {/* Soft accent bloom behind the motif — gives the right side some depth
-          instead of flat black. Decorative only. */}
+      {/* Accent bloom — depth instead of flat black. Decorative only. */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -right-40 top-1/2 hidden h-[420px] w-[620px] -translate-y-1/2 rounded-full bg-[var(--color-accent)] opacity-[0.07] blur-[110px] lg:block"
+        className="pointer-events-none absolute -right-32 top-0 h-[320px] w-[420px] rounded-full bg-[var(--color-accent)] opacity-[0.10] blur-[90px] sm:-right-24 lg:-right-40 lg:top-1/2 lg:h-[420px] lg:w-[620px] lg:-translate-y-1/2 lg:opacity-[0.07] lg:blur-[110px]"
       />
 
       <div className="relative mx-auto w-full max-w-5xl px-6">

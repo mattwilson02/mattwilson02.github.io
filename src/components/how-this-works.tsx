@@ -10,6 +10,17 @@ import {
 import { CopySummary } from "./copy-summary";
 import { howThisWorksData } from "@/data/how-this-works";
 
+/**
+ * The terms panel.
+ *
+ * Built like a code block: a header strip carrying the label and the copy
+ * action, then the content. The copy control belongs *on* the thing being
+ * copied — as a button floating below the table it read as an orphan and
+ * nobody would know what it referred to.
+ *
+ * Cells sit a shade lighter than the page on hairline dividers, so the panel
+ * reads as a raised object rather than a flat grid drawn on the background.
+ */
 export function HowThisWorks() {
   const prefersReducedMotion = useReducedMotion();
 
@@ -28,20 +39,34 @@ export function HowThisWorks() {
           {howThisWorksData.heading}
         </motion.h2>
 
-        <dl className="mt-10 grid grid-cols-1 gap-px overflow-hidden rounded-lg border border-[var(--color-border)] bg-[var(--color-border)] md:grid-cols-2">
-          {howThisWorksData.points.map((point) => (
-            <motion.div
-              key={point.label}
-              variants={itemVariants}
-              className="bg-[var(--color-background)] p-6"
-            >
-              <dt className="font-semibold">{point.label}</dt>
-              <dd className="mt-2 leading-relaxed text-[var(--color-muted)]">
-                {point.body}
-              </dd>
-            </motion.div>
-          ))}
-        </dl>
+        <motion.div
+          variants={itemVariants}
+          className="mt-10 overflow-hidden rounded-xl border border-[var(--color-border)] shadow-[0_1px_0_0_rgba(255,255,255,0.04)_inset,0_16px_40px_-24px_rgba(0,0,0,0.9)]"
+        >
+          {/* Header strip — label left, copy action right */}
+          <div className="flex items-center justify-between gap-4 border-b border-[var(--color-border)] bg-[var(--color-card)] px-5 py-3">
+            <span className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--color-muted)]">
+              The terms
+            </span>
+            <CopySummary text={howThisWorksData.forwardableSummary} />
+          </div>
+
+          <dl className="grid grid-cols-1 gap-px bg-[var(--color-border)] md:grid-cols-2">
+            {howThisWorksData.points.map((point) => (
+              <div
+                key={point.label}
+                className="group bg-[var(--color-card)] p-6 transition-colors hover:bg-[var(--color-background)]"
+              >
+                <dt className="font-semibold text-[var(--color-accent)]">
+                  {point.label}
+                </dt>
+                <dd className="mt-2 leading-relaxed text-[var(--color-muted)]">
+                  {point.body}
+                </dd>
+              </div>
+            ))}
+          </dl>
+        </motion.div>
 
         <motion.p
           variants={itemVariants}
@@ -49,10 +74,6 @@ export function HowThisWorks() {
         >
           {howThisWorksData.intro}
         </motion.p>
-
-        <motion.div variants={itemVariants} className="mt-8">
-          <CopySummary text={howThisWorksData.forwardableSummary} />
-        </motion.div>
       </motion.div>
     </Section>
   );

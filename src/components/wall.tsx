@@ -19,7 +19,7 @@ export function Wall() {
         initial={prefersReducedMotion ? false : "hidden"}
         whileInView="visible"
         viewport={revealViewport}
-        className="max-w-3xl"
+        className="max-w-2xl lg:max-w-3xl"
       >
         <motion.h2
           variants={itemVariants}
@@ -28,12 +28,12 @@ export function Wall() {
           {wallData.heading}
         </motion.h2>
 
-        <div className="flex flex-col gap-5">
+        <div className="flex flex-col gap-6">
           {wallData.body.map((para, i) => (
             <motion.p
               key={i}
               variants={itemVariants}
-              className="text-lg leading-relaxed text-[var(--color-muted)]"
+              className="text-base leading-relaxed text-[var(--color-muted)] md:text-lg"
             >
               {para}
             </motion.p>
@@ -42,7 +42,7 @@ export function Wall() {
 
         <motion.p
           variants={itemVariants}
-          className="mt-10 border-l-2 border-[var(--color-accent)] pl-5 text-xl font-medium leading-relaxed text-[var(--color-foreground)] md:text-2xl"
+          className="mt-10 border-l-2 border-[var(--color-accent)] pl-5 text-lg font-medium leading-relaxed text-[var(--color-foreground)] md:text-2xl"
         >
           {wallData.kicker}
         </motion.p>
