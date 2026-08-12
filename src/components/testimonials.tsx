@@ -30,7 +30,7 @@ export function Testimonials() {
         variants={containerVariants}
         initial={prefersReducedMotion ? false : "hidden"}
         whileInView="visible"
-        viewport={{ once: true, margin: "-100px" }}
+        viewport={{ once: true, margin: "150px" }}
       >
         <motion.h2
           variants={itemVariants}

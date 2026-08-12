@@ -117,7 +117,7 @@ function generateOGImage(): Buffer {
   c.drawText(nameText, nameX, nameY, nameScale, ...WHITE);
 
   // Subtitle
-  const subText = "Full Stack Engineer";
+  const subText = "Bespoke software and automations";
   const subScale = 3;
   const subW = c.textWidth(subText, subScale);
   const subX = Math.round(W / 2 - subW / 2);

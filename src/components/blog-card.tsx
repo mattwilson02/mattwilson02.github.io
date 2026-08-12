@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { formatDateShort } from "@/lib/format-date";
 import { BlogPost } from "@/data/blog";
 import { calculateReadingTime } from "@/lib/reading-time";
 
@@ -6,15 +7,6 @@ type BlogCardProps = Pick<
   BlogPost,
   "slug" | "title" | "date" | "excerpt" | "tags" | "content"
 >;
-
-function formatDate(dateStr: string): string {
-  const date = new Date(dateStr + "T00:00:00");
-  return date.toLocaleDateString("en-US", {
-    year: "numeric",
-    month: "short",
-    day: "numeric",
-  });
-}
 
 export function BlogCard({
   slug,
@@ -38,7 +30,7 @@ export function BlogCard({
           {title}
         </h3>
         <p className="text-sm text-[var(--color-muted)]">
-          {formatDate(date)} &middot; {calculateReadingTime(content)}
+          {formatDateShort(date)} &middot; {calculateReadingTime(content)}
         </p>
       </div>
 

@@ -1,0 +1,38 @@
+/**
+ * THE WALL — the recognition section.
+ *
+ * Carries almost all the weight of the page. There is no case study further
+ * down to rescue it. If a stranger doesn't see themselves here, they bounce.
+ *
+ * ⚠️ Generalised on 12 Aug. The first version framed all of this around one
+ * scenario — someone who prototyped with AI and hit a wall. That's a real pain
+ * point and it made for good writing, but it describes one route to the gap
+ * rather than the gap itself, and the only client who has ever paid would have
+ * recognised himself in it immediately. That version is banked as a post in
+ * Story Bank → Content Seeds.
+ *
+ * What the buyers actually have in common is narrower than a prototype and
+ * broader than vibe coding: they know what needs building, and crossing the
+ * distance to something the business runs on means owning the consequences.
+ * However far along they are is a detail.
+ */
+
+export interface WallData {
+  heading: string;
+  body: string[];
+  kicker: string;
+}
+
+export const wallData: WallData = {
+  heading: "The idea isn't the hard part.",
+
+  body: [
+    "You already know what the business needs. You've watched the problem for long enough to see exactly where the time goes, and you've probably worked out how you'd fix it — a document, a spreadsheet that half does the job, or something you've had a go at building yourself.",
+
+    "Getting from there to something people open every morning is a different kind of work. Somewhere for it to live, accounts and permissions, a database holding real records, and all of it still standing on the days nobody is thinking about it.",
+
+    "And that part isn't really about hours. It's whose name sits against it the first time it touches real money or real records, and who picks up the phone when it breaks. Weighed against a job you already don't have enough time for, that's usually where a good idea stops.",
+  ],
+
+  kicker: "That's the part I take off you — the burden, not just the stack.",
+};

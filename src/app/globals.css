@@ -1,29 +1,8 @@
 @import "tailwindcss";
 
 @layer base {
+  /* Dark only. There is no light theme — the palette lives here and nowhere else. */
   :root {
-    --color-background: #ffffff;
-    --color-foreground: #171717;
-    --color-muted: #737373;
-    --color-border: #e5e5e5;
-    --color-accent: #2563eb;
-    --color-accent-hover: #1d4ed8;
-    --color-card: #f9fafb;
-
-    /* Syntax highlighting token colours — light mode */
-    --color-syntax-keyword: #7c3aed;
-    --color-syntax-string: #16a34a;
-    --color-syntax-comment: #9ca3af;
-    --color-syntax-number: #d97706;
-    --color-syntax-function: #2563eb;
-    --color-syntax-variable: var(--color-foreground);
-    --color-syntax-type: #0891b2;
-    --color-syntax-property: #dc2626;
-    --color-syntax-operator: #737373;
-    --color-syntax-punctuation: #9ca3af;
-  }
-
-  .dark {
     --color-background: #0a0a0a;
     --color-foreground: #ededed;
     --color-muted: #a3a3a3;
@@ -32,7 +11,7 @@
     --color-accent-hover: #1d4ed8;
     --color-card: #111111;
 
-    /* Syntax highlighting token colours — dark mode */
+    /* Syntax highlighting token colours */
     --color-syntax-keyword: #a78bfa;
     --color-syntax-string: #4ade80;
     --color-syntax-comment: #6b7280;
@@ -293,8 +272,7 @@
    ============================================================ */
 @media print {
   /* Force light-mode colours regardless of active theme */
-  :root,
-  .dark {
+  :root {
     --color-background: #ffffff;
     --color-foreground: #000000;
     --color-muted: #4b5563;
