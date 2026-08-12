@@ -27,8 +27,8 @@ export const contactData: ContactData = {
     href: "https://calendly.com/wilson-mjaw/discovery",
   },
   email: {
-    label: "wilson.mjaw@gmail.com",
-    href: "mailto:wilson.mjaw@gmail.com",
+    label: "matt@mattwilson.tech",
+    href: "mailto:matt@mattwilson.tech",
   },
   socialLinks: [
     {
