@@ -45,8 +45,8 @@ export function BlogIndex() {
         Writing
       </h1>
       <p className="mt-4 max-w-2xl text-lg text-[var(--color-muted)]">
-        {/* TODO — MATT'S WORDS. One line on what this is and why it's worth reading. */}
-        [ONE LINE: what you write about and why someone should read it]
+Notes on building software with AI agents, running an independent
+        practice, and what breaks along the way.
       </p>
 
       <div className="mt-10 flex flex-col gap-5">

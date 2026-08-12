@@ -18,28 +18,25 @@ export interface WhatIDoItem {
 
 export interface WhatIDoData {
   heading: string;
-  intro: string;
   items: WhatIDoItem[];
 }
 
 export const whatIDoData: WhatIDoData = {
   heading: "Built for how you actually work",
 
-  intro:
-    "Off-the-shelf software is built to fit an entire industry, which means it fits nobody exactly. You pay for the ninety percent you'll never open, and you still bend your process around the ten percent you needed. Building something that fits properly used to be too expensive to consider. It isn't any more.",
 
   items: [
     {
-      title: "I start with what you've already built",
-      body: "You've usually done the hardest part — worked out precisely what the thing needs to do. That prototype is a specification. I read it, and I ask about the parts of the job it doesn't show.",
+      title: "I start from what you already know",
+      body: "You've usually done the hardest part — worked out precisely what the thing has to do. However that exists, written down or half-built, it's a specification. I read it, then ask about the parts of the job it doesn't show.",
     },
     {
       title: "Right-sized, not a platform",
-      body: "No modules you'll never turn on, no subscription that climbs every year, no roadmap set by somebody else's customers. Your process, and the software that serves it.",
+      body: "Off-the-shelf software is built to fit an entire industry, which means it fits nobody exactly. You pay for the ninety percent you'll never open, and still bend your process around the ten percent you needed. Building something that fits properly used to be too expensive to consider. It isn't any more.",
     },
     {
       title: "Driven, not generated",
-      body: "I build with AI agents every day and they still get things confidently wrong. On my own tooling I've shipped a build, tested it by hand, and found fifteen defects the automated checks had passed. The machines do the typing. The judgement and the signature at the bottom are mine.",
+      body: "I build with AI agents every day — it's why something bespoke is realistic now rather than a six-figure project. They also get things confidently wrong: testing one of my own finished builds by hand, I found fifteen defects the automated checks had passed. Nothing reaches you that a person hasn't read.",
     },
   ],
 };

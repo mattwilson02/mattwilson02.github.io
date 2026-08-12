@@ -35,14 +35,7 @@ export function WhatIDo() {
           {whatIDoData.heading}
         </motion.h2>
 
-        <motion.p
-          variants={itemVariants}
-          className="mt-5 max-w-2xl text-lg leading-relaxed text-[var(--color-muted)]"
-        >
-          {whatIDoData.intro}
-        </motion.p>
-
-        <div className="mt-12 grid grid-cols-1 gap-4 md:grid-cols-3">
+        <div className="mt-10 grid grid-cols-1 gap-4 md:grid-cols-3">
           {whatIDoData.items.map((item, i) => (
             <motion.div
               key={item.title}
