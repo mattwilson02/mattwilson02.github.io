@@ -30,3 +30,7 @@ public/matt-wilson-resume-*.pdf
 
 # typescript incremental build cache
 tsconfig.tsbuildinfo
+
+# CV — kept local, not published from the business site
+public/matt-wilson-resume.html
+public/matt-wilson-resume.pdf

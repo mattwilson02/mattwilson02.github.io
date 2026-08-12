@@ -11,9 +11,9 @@ const inter = Inter({
 const siteUrl = "https://mattwilson.tech";
 
 export const metadata: Metadata = {
-  title: "Matt Wilson — Full Stack Engineer",
+  title: "Matt Wilson — Bespoke software development and automations",
   description:
-    "Full Stack Engineer with 4 years shipping production software — investment platforms, fintech mobile apps, and financial tooling. TypeScript, React Native, Next.js, NestJS, Azure.",
+    "Independent software engineer. You know what the business needs built — I take the idea the rest of the way, to something it can run on. Fixed price, delivered in phases.",
   metadataBase: new URL(siteUrl),
   alternates: {
     canonical: siteUrl,
@@ -22,9 +22,9 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Matt Wilson — Full Stack Engineer",
+    title: "Matt Wilson — Bespoke software development and automations",
     description:
-      "Full Stack Engineer with 4 years shipping production software — investment platforms, fintech mobile apps, and financial tooling.",
+      "You know what the business needs built — I take the idea the rest of the way, to something it can run on.",
     type: "website",
     url: siteUrl,
     images: [
@@ -32,15 +32,15 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Matt Wilson — Full Stack Engineer",
+        alt: "Matt Wilson — bespoke software development and automations",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Matt Wilson — Full Stack Engineer",
+    title: "Matt Wilson — Bespoke software development and automations",
     description:
-      "Full Stack Engineer with 4 years shipping production software — investment platforms, fintech mobile apps, and financial tooling.",
+      "You know what the business needs built — I take the idea the rest of the way, to something it can run on.",
     images: ["/og-image.png"],
   },
   themeColor: "#0a0a0a",
