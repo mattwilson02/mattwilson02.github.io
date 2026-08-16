@@ -27,7 +27,7 @@ export const heroData: HeroData = {
   headline: "Bespoke software development and automations",
 
   subline:
-    "You know what the business needs built. I take the idea the rest of the way — and carry the risk of getting there.",
+    "You know what the business needs built. I take the idea the rest of the way, and carry the risk of getting there.",
 
   primaryCta: {
     label: "Book a call",

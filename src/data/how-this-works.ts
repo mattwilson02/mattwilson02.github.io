@@ -47,7 +47,7 @@ export const howThisWorksData: HowThisWorksData = {
     },
     {
       label: "You own the code",
-      body: "It sits in your repository from the first day, under your account. Ownership transfers to you as each phase is paid for — not at the end, and not conditionally.",
+      body: "It sits in your repository from the first day, under your account. Ownership transfers to you as each phase is paid for, not at the end and not conditionally.",
     },
     {
       label: "Professionally insured",

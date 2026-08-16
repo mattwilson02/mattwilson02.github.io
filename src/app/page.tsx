@@ -4,9 +4,6 @@ import { Hero } from "@/components/hero";
 import { Footer } from "@/components/footer";
 import { ScrollToTop } from "@/components/scroll-to-top";
 
-const Wall = dynamic(() =>
-  import("@/components/wall").then((m) => ({ default: m.Wall })),
-);
 const WhatIDo = dynamic(() =>
   import("@/components/what-i-do").then((m) => ({ default: m.WhatIDo })),
 );
@@ -27,15 +24,19 @@ const Close = dynamic(() =>
  *
  * Order is deliberate:
  *   Hero          — one-liner, one CTA, nothing else
- *   Wall          — recognition. Carries the weight; no case study to rescue it
  *   WhatIDo       — the bridge, right-sized
  *   HowThisWorks  — the forwardable block. Written for the champion's manager
  *   LatestPosts   — proof accumulates here over time
  *   Close         — CTA repeated + what happens next
  *
- * Experience, Skills, Certifications and Testimonials have come off this page.
- * They belong on /about, and only where they help a stranger decide whether to
- * trust him with their business — not where they prove employability.
+ * HIDDEN 14 Aug: the Wall ("The idea isn't the hard part"). Component and copy
+ * still live in src/components/wall.tsx and src/data/wall.ts, just not rendered
+ * — Matt's call that it reads like a LinkedIn post and may not be relevant.
+ * Restore by re-adding the dynamic import and the <Wall /> below Hero.
+ *
+ * Experience, Skills, Certifications, Testimonials, Projects and the rest are
+ * archived in /archive. They proved employability, which is not the buyer's
+ * question. /about is the exception and is being rewritten.
  */
 export default function Home() {
   return (
@@ -43,7 +44,7 @@ export default function Home() {
       <Nav />
       <main id="main-content">
         <Hero />
-        <Wall />
+
         <WhatIDo />
         <HowThisWorks />
         <LatestPosts />

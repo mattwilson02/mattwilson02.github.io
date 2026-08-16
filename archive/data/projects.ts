@@ -19,11 +19,11 @@ export const projectsData: ProjectData[] = [
     description:
       "Autonomous AI developer agent that reads your codebase and executes full development pipelines.",
     problem:
-      "Building software is slow and repetitive — even with AI copilots, developers still manually orchestrate the build-test-fix-ship cycle.",
+      "Building software is slow and repetitive. Even with AI copilots, developers still manually orchestrate the build-test-fix-ship cycle.",
     approach:
       "Zero-config autonomous sprint runner that reads your codebase, detects your tech stack, and executes full development pipelines: spec → build → verify → audit → ship. Multi-tier LLM routing (Opus for strategy, Sonnet for code). Supports TypeScript, Python, Go, Rust ecosystems.",
     results:
-      "Autonomously builds, verifies, and ships features — including creating PRs. Used to build this very website.",
+      "Autonomously builds, verifies, and ships features, including creating PRs. Used to build this very website.",
     tech: ["TypeScript", "Node.js", "Claude API", "Git"],
     links: [
       { label: "GitHub", href: "https://github.com/mattwilson02/ralph-cli" },
@@ -33,7 +33,7 @@ export const projectsData: ProjectData[] = [
   {
     title: "LeaseLink",
     description:
-      "Full-stack property management platform — web dashboard for managers, mobile app for tenants. Built entirely with Ralph.",
+      "Full-stack property management platform: web dashboard for managers, mobile app for tenants. Built entirely with Ralph.",
     problem:
       "Property managers juggle spreadsheets, emails, and disconnected tools. Tenants have no transparent access to leases, payments, or maintenance status.",
     approach:
