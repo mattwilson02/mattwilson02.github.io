@@ -1,56 +1,37 @@
-import dynamic from "next/dynamic";
-import { Nav } from "@/components/nav";
-import { Hero } from "@/components/hero";
-import { Footer } from "@/components/footer";
-import { ScrollToTop } from "@/components/scroll-to-top";
-
-const Wall = dynamic(() =>
-  import("@/components/wall").then((m) => ({ default: m.Wall })),
-);
-const WhatIDo = dynamic(() =>
-  import("@/components/what-i-do").then((m) => ({ default: m.WhatIDo })),
-);
-const HowThisWorks = dynamic(() =>
-  import("@/components/how-this-works").then((m) => ({
-    default: m.HowThisWorks,
-  })),
-);
-const LatestPosts = dynamic(() =>
-  import("@/components/latest-posts").then((m) => ({ default: m.LatestPosts })),
-);
-const Close = dynamic(() =>
-  import("@/components/close").then((m) => ({ default: m.Close })),
-);
-
 /**
- * The main page.
+ * Temporary holding page.
  *
- * Order is deliberate:
- *   Hero          — one-liner, one CTA, nothing else
- *   Wall          — recognition. Carries the weight; no case study to rescue it
- *   WhatIDo       — the bridge, right-sized
- *   HowThisWorks  — the forwardable block. Written for the champion's manager
- *   LatestPosts   — proof accumulates here over time
- *   Close         — CTA repeated + what happens next
+ * The real site lives on the `site-rebuild-v2` branch. This is deliberately
+ * the whole site: /blog is removed from the build and robots is set to
+ * disallow, so nothing is reachable or indexable while the content is being
+ * rewritten.
  *
- * Experience, Skills, Certifications and Testimonials have come off this page.
- * They belong on /about, and only where they help a stranger decide whether to
- * trust him with their business — not where they prove employability.
+ * To restore: revert the holding-page commit, or merge site-rebuild-v2.
  */
-export default function Home() {
+export default function HoldingPage() {
   return (
-    <>
-      <Nav />
-      <main id="main-content">
-        <Hero />
-        <Wall />
-        <WhatIDo />
-        <HowThisWorks />
-        <LatestPosts />
-        <Close />
-      </main>
-      <Footer />
-      <ScrollToTop />
-    </>
+    <main
+      id="main-content"
+      className="flex min-h-screen flex-col items-center justify-center px-6 text-center"
+    >
+      <span aria-hidden="true" className="mb-8 text-4xl">
+        🚧
+      </span>
+
+      <h1 className="text-2xl font-medium tracking-tight sm:text-3xl">
+        Building in progress
+      </h1>
+
+      <p className="mt-4 max-w-sm text-sm leading-relaxed text-[var(--color-muted)]">
+        This site is being rewritten. It will be back shortly.
+      </p>
+
+      <a
+        href="mailto:matt@mattwilson.tech"
+        className="mt-10 border-b border-[var(--color-border)] pb-0.5 text-sm transition-colors hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]"
+      >
+        matt@mattwilson.tech
+      </a>
+    </main>
   );
 }
