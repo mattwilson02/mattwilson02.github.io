@@ -101,21 +101,23 @@ export function Nav() {
       <nav
         aria-label="Main navigation"
         className={`mx-auto flex max-w-5xl items-center px-6 py-4 ${
-          isHome ? "justify-center md:gap-8" : "justify-between"
+          isHome ? "justify-between md:justify-center md:gap-8" : "justify-between"
         }`}
       >
-        {/* Wordmark and CTA are dropped on the home page — the hero says both,
-            and saying them twice in one viewport is why the centred hero felt
-            crowded. Every other page has no hero, so they stay there. */}
-        {!isHome && (
-          <Link
-            href="/"
-            className="text-base font-semibold tracking-tight transition-colors hover:text-[var(--color-accent)]"
-            onClick={() => setMenuOpen(false)}
-          >
-            Matt Wilson
-          </Link>
-        )}
+        {/* On home the wordmark is hidden from md up — the hero says the name
+            at full size in the same viewport, so a second one is noise. On a
+            phone the hero name sits well below the fold and the bar would
+            otherwise hold nothing but a menu icon, so it stays. Every other
+            page has no hero and keeps it at all widths. */}
+        <Link
+          href="/"
+          className={`text-base font-semibold tracking-tight transition-colors hover:text-[var(--color-accent)] ${
+            isHome ? "md:hidden" : ""
+          }`}
+          onClick={() => setMenuOpen(false)}
+        >
+          Matt Wilson
+        </Link>
 
         <ul
           className={`hidden items-center gap-1 rounded-full border border-[var(--color-accent)]/25 p-1.5 backdrop-blur-xl transition-all duration-200 md:flex ${
