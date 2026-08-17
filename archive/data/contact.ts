@@ -21,7 +21,7 @@ export interface ContactData {
 export const contactData: ContactData = {
   heading: "Let's Work Together",
   description:
-    "Building something ambitious and need a partner who can design it, ship it, and run the infrastructure behind it? Book a call to talk it through — or reach out directly.",
+    "Building something ambitious and need a partner who can design it, ship it, and run the infrastructure behind it? Book a call to talk it through, or reach out directly.",
   booking: {
     label: "Book a Call",
     href: "https://calendly.com/wilson-mjaw/discovery",

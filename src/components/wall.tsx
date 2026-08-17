@@ -13,7 +13,7 @@ export function Wall() {
   const prefersReducedMotion = useReducedMotion();
 
   return (
-    <Section id="the-wall" className="border-b border-[var(--color-border)]">
+    <Section id="the-wall" tone="band">
       <motion.div
         variants={containerVariants}
         initial={prefersReducedMotion ? false : "hidden"}

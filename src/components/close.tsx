@@ -39,7 +39,7 @@ export function Close() {
   const prefersReducedMotion = useReducedMotion();
 
   return (
-    <Section id="contact">
+    <Section id="contact" tone="band">
       <motion.div
         initial={prefersReducedMotion ? false : "hidden"}
         whileInView="visible"

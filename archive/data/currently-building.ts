@@ -12,7 +12,7 @@ export const currentProjects: CurrentProject[] = [
   {
     name: "Ralph CLI",
     description:
-      "Autonomous AI developer agent. Zero-config sprint runner that reads your codebase, writes specs, builds, verifies, and ships — including opening PRs.",
+      "Autonomous AI developer agent. Zero-config sprint runner that reads your codebase, writes specs, builds, verifies, and ships, including opening PRs.",
     status: "active",
     tech: ["TypeScript", "Claude API", "Node.js"],
     link: "https://github.com/mattwilson02/ralph-cli",

@@ -27,16 +27,16 @@ export const whatIDoData: WhatIDoData = {
 
   items: [
     {
-      title: "I start from what you already know",
-      body: "You've usually done the hardest part — worked out precisely what the thing has to do. However that exists, written down or half-built, it's a specification. I read it, then ask about the parts of the job it doesn't show.",
+      title: "Your specification is the starting point",
+      body: "A document, a spreadsheet, or something half-built. It gets used, not replaced. What I ask about is the rest: who uses it, what it connects to, and what happens when it breaks.",
     },
     {
-      title: "Right-sized, not a platform",
-      body: "Off-the-shelf software is built to fit an entire industry, which means it fits nobody exactly. You pay for the ninety percent you'll never open, and still bend your process around the ten percent you needed. Building something that fits properly used to be too expensive to consider. It isn't any more.",
+      title: "Tailored to your business",
+      body: "Off-the-shelf software is built for a whole industry, so you pay for features you never open and bend your process to fit theirs. Yours is built round how you already work, and it's yours to keep.",
     },
     {
-      title: "Driven, not generated",
-      body: "I build with AI agents every day — it's why something bespoke is realistic now rather than a six-figure project. They also get things confidently wrong: testing one of my own finished builds by hand, I found fifteen defects the automated checks had passed. Nothing reaches you that a person hasn't read.",
+      title: "Supercharge your workflows",
+      body: "You're doing the same thirty-minute job again, and it's costing you the thing you'd rather be spending on the business. We turn that work into something that runs itself, and hand the time back.",
     },
   ],
 };

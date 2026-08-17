@@ -45,7 +45,7 @@ export const usesCategories: UsesCategory[] = [
       {
         name: "Zsh + Oh My Zsh",
         description:
-          "Shell with git aliases and autocompletion. Nothing fancy — I don't spend time on shell customisation.",
+          "Shell with git aliases and autocompletion. Nothing fancy. I don't spend time on shell customisation.",
         link: "https://ohmyz.sh",
       },
       {
@@ -80,7 +80,7 @@ export const usesCategories: UsesCategory[] = [
       {
         name: "Python",
         description:
-          "AI/ML work, scripting, backend services. Flask for APIs, not Django — I prefer assembling parts over batteries-included.",
+          "AI/ML work, scripting, backend services. Flask for APIs, not Django. I prefer assembling parts over batteries-included.",
         link: "https://www.python.org",
       },
       {

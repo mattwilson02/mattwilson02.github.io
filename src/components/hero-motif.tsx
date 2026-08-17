@@ -9,14 +9,27 @@
  *
  * Pure inline SVG. No dependencies, no images, no runtime cost. Delete this
  * component and the one line rendering it in hero.tsx to remove entirely.
+ *
+ * BAND 17 Aug. Positioning moved out to the caller and the grid made
+ * configurable. Centred behind type at 14 columns the left-to-right gradient
+ * isn't perceivable — you see a scatter of blocks, which is decoration where
+ * there used to be an argument. Spanning the full width restores the reading.
  */
 
-const COLS = 14;
-const ROWS = 7;
+interface HeroMotifProps {
+  cols?: number;
+  rows?: number;
+  className?: string;
+}
+
 const CELL = 26;
 const GAP = 6;
 
-export function HeroMotif() {
+export function HeroMotif({
+  cols: COLS = 14,
+  rows: ROWS = 7,
+  className = "",
+}: HeroMotifProps = {}) {
   const cells = [];
 
   for (let row = 0; row < ROWS; row++) {
@@ -56,31 +69,29 @@ export function HeroMotif() {
   const height = ROWS * (CELL + GAP) - GAP;
 
   return (
-    <div
+    <svg
       aria-hidden="true"
-      className="pointer-events-none absolute -right-16 -top-6 select-none opacity-40 sm:-right-8 lg:right-0 lg:top-1/2 lg:-translate-y-1/2 lg:opacity-100"
+      viewBox={`0 0 ${width} ${height}`}
+      preserveAspectRatio="xMidYMid slice"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      role="presentation"
+      className={className}
     >
-      <svg
-        width={width}
-        height={height}
-        viewBox={`0 0 ${width} ${height}`}
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        role="presentation"
-      >
-        <defs>
-          {/* Fades the left edge out so the grid emerges rather than starting abruptly */}
-          <linearGradient id="motif-fade" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0%" stopColor="white" stopOpacity="0" />
-            <stop offset="45%" stopColor="white" stopOpacity="1" />
-            <stop offset="100%" stopColor="white" stopOpacity="1" />
-          </linearGradient>
-          <mask id="motif-mask">
-            <rect width={width} height={height} fill="url(#motif-fade)" />
-          </mask>
-        </defs>
-        <g mask="url(#motif-mask)">{cells}</g>
-      </svg>
-    </div>
+      <defs>
+        {/* Fades both edges out so the band emerges and recedes rather than
+            being cut off by the viewport. */}
+        <linearGradient id="motif-fade" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stopColor="white" stopOpacity="0" />
+          <stop offset="30%" stopColor="white" stopOpacity="1" />
+          <stop offset="72%" stopColor="white" stopOpacity="1" />
+          <stop offset="100%" stopColor="white" stopOpacity="0" />
+        </linearGradient>
+        <mask id="motif-mask">
+          <rect width={width} height={height} fill="url(#motif-fade)" />
+        </mask>
+      </defs>
+      <g mask="url(#motif-mask)">{cells}</g>
+    </svg>
   );
 }

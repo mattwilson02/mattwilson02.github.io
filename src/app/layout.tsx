@@ -62,7 +62,7 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
   name: "Matt Wilson",
-  jobTitle: "Full Stack Engineer",
+  jobTitle: "Independent Software Engineer",
   url: siteUrl,
   sameAs: [
     "https://github.com/mattwilson02",
@@ -82,9 +82,18 @@ const jsonLd = {
     "Fintech",
     "Mobile Development",
   ],
-  seeks: {
-    "@type": "Demand",
-    description: "Full-stack software engineering opportunities",
+  // `seeks: Demand` described someone looking for a job and was still live
+  // on 17 Aug, months after the business decision. Replaced with what the
+  // business actually offers.
+  makesOffer: {
+    "@type": "Offer",
+    itemOffered: {
+      "@type": "Service",
+      name: "Bespoke software development and automations",
+      serviceType: "Custom software development",
+      provider: { "@type": "Person", name: "Matt Wilson" },
+      areaServed: "Isle of Man, United Kingdom, remote",
+    },
   },
 };
 

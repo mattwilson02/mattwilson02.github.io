@@ -4,47 +4,98 @@ import { HeroMotif } from "./hero-motif";
 /**
  * Above the fold.
  *
- * The bloom and the motif render at every size — they were desktop-only, which
- * left phones looking at flat black. On small screens the motif sits top-right
- * at lower opacity so it reads as texture behind the type; from lg it moves to
- * centre-right at full strength where there's room for it.
+ * FULL-HEIGHT 17 Aug. The hero was content-sized (460px in a 682px viewport),
+ * so the section below always showed on first paint — two competing headlines
+ * in one screen, and the Wall spoiled before it could land as a reveal. It now
+ * claims exactly one viewport minus the sticky nav.
  *
- * No CTA — "Book a call" is persistent in the nav. Not animated and no client
- * JavaScript, so the headline is there on first paint.
+ * CENTRED STACK 17 Aug, testing the fernandobelotto.com shape at Matt's
+ * request: eyebrow → name → statement → descriptor → CTA, all centred.
+ *
+ * The motif moves from a right-hand object to a full-width background wash.
+ * Centred type and a right-aligned graphic fight each other, and the motif's
+ * meaning — cells resolving left-to-right, part-built becoming finished —
+ * survives being texture. It reads across the whole band rather than sitting
+ * beside the words.
+ *
+ * The CTA returns to the hero. It was removed on the grounds that "Book a
+ * call" is persistent in the nav, which is true, but this shape has an empty
+ * space where the action belongs and the nav button is not where the eye is.
+ * The nav now drops its wordmark and CTA on the home page so they aren't said
+ * twice in one viewport — see nav.tsx.
+ *
+ * ⚠️ Typography is Inter throughout, per the site's own system. The reference
+ * site used monospace for its small lines; borrowing that here would be wrong
+ * twice over — it's someone else's voice, and on this site monospace already
+ * means "this is code". The small-label treatment is the existing house one:
+ * Inter semibold, uppercase, 0.18em tracking, accent or muted.
+ *
+ * ONE SMALL LINE, NOT TWO (17 Aug). The stack briefly carried an eyebrow
+ * ("Independent software engineer") and a descriptor ("Bespoke software
+ * development and automations") in identical treatments, top and bottom.
+ * Two category lines at the same weight cancel each other and neither gets
+ * read. The job title was scrapped and the category line promoted into the
+ * eyebrow slot, which is the strongest position in the stack — accented,
+ * rule-flanked, and read first. Matt's call.
+ *
+ * The stack is now: what this is → who → what they get → book.
+ *
+ * Not animated and no client JavaScript, so the type is there on first paint.
  */
 export function Hero() {
   return (
     <section
       id="home"
-      className="relative overflow-hidden border-b border-[var(--color-border)] pb-16 pt-20 md:pb-24 md:pt-28"
+      className="relative flex min-h-[calc(100svh-var(--nav-h))] items-center justify-center overflow-hidden border-b border-[var(--color-border)] py-16 md:py-20"
     >
       {/* Accent bloom — depth instead of flat black. Decorative only. */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -right-32 top-0 h-[320px] w-[420px] rounded-full bg-[var(--color-accent)] opacity-[0.10] blur-[90px] sm:-right-24 lg:-right-40 lg:top-1/2 lg:h-[420px] lg:w-[620px] lg:-translate-y-1/2 lg:opacity-[0.07] lg:blur-[110px]"
+        className="pointer-events-none absolute left-1/2 top-1/2 h-[420px] w-[720px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[var(--color-accent)] opacity-[0.08] blur-[120px]"
       />
 
-      <div className="relative mx-auto w-full max-w-5xl px-6">
-        <HeroMotif />
+      {/* Motif as a full-width band. 40 columns rather than 14, so stretching
+          it across the viewport keeps the cells small and the left-to-right
+          resolution legible — which is the whole point of the graphic. */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 top-1/2 h-[340px] -translate-y-1/2 opacity-[0.5]"
+      >
+        <HeroMotif cols={40} rows={9} className="h-full w-full" />
+      </div>
 
-        <div className="relative max-w-3xl">
-          <div className="flex items-center gap-3">
-            <span
-              className="h-px w-8 bg-[var(--color-accent)]"
-              aria-hidden="true"
-            />
-            <span className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--color-accent)]">
-              {heroData.eyebrow}
-            </span>
-          </div>
+      <div className="relative mx-auto w-full max-w-3xl px-6 text-center">
+        <div className="flex items-center justify-center gap-3">
+          <span
+            className="h-px w-8 bg-[var(--color-accent)]"
+            aria-hidden="true"
+          />
+          <span className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--color-accent)]">
+            {heroData.eyebrow}
+          </span>
+          <span
+            className="h-px w-8 bg-[var(--color-accent)]"
+            aria-hidden="true"
+          />
+        </div>
 
-          <h1 className="mt-7 text-4xl font-bold leading-[1.05] tracking-tight md:text-5xl lg:text-[3.5rem]">
-            {heroData.headline}
-          </h1>
+        <h1 className="mt-6 text-5xl font-bold leading-[0.95] tracking-tight md:text-7xl lg:text-8xl">
+          {heroData.name}
+        </h1>
 
-          <p className="mt-6 max-w-xl text-lg leading-relaxed text-[var(--color-muted)] md:text-xl">
-            {heroData.subline}
-          </p>
+        <p className="mx-auto mt-7 max-w-2xl text-lg leading-relaxed text-[var(--color-muted)] md:text-xl">
+          {heroData.statement}
+        </p>
+
+        <div className="mt-10">
+          <a
+            href={heroData.primaryCta.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center rounded-full bg-[var(--color-accent)] px-7 py-3 text-sm font-semibold text-white transition-colors hover:bg-[var(--color-accent-hover)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-background)]"
+          >
+            {heroData.primaryCta.label}
+          </a>
         </div>
       </div>
     </section>
