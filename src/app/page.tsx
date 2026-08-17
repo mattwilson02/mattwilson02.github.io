@@ -4,6 +4,9 @@ import { Hero } from "@/components/hero";
 import { Footer } from "@/components/footer";
 import { ScrollToTop } from "@/components/scroll-to-top";
 
+const Wall = dynamic(() =>
+  import("@/components/wall").then((m) => ({ default: m.Wall })),
+);
 const WhatIDo = dynamic(() =>
   import("@/components/what-i-do").then((m) => ({ default: m.WhatIDo })),
 );
@@ -22,17 +25,23 @@ const Close = dynamic(() =>
 /**
  * The main page.
  *
- * Order is deliberate:
- *   Hero          — one-liner, one CTA, nothing else
- *   WhatIDo       — the bridge, right-sized
- *   HowThisWorks  — the forwardable block. Written for the champion's manager
- *   LatestPosts   — proof accumulates here over time
- *   Close         — CTA repeated + what happens next
+ * Order is deliberate, and the tones alternate base/band down the page:
+ *   Hero          base — one-liner, one CTA, nothing else
+ *   Wall          band — the recognition moment. Their problem, before any solution
+ *   WhatIDo       base — the bridge, right-sized
+ *   HowThisWorks  band — the forwardable block. Written for the champion's manager
+ *   LatestPosts   base — proof accumulates here over time
+ *   Close         band — CTA repeated + what happens next
  *
- * HIDDEN 14 Aug: the Wall ("The idea isn't the hard part"). Component and copy
- * still live in src/components/wall.tsx and src/data/wall.ts, just not rendered
- * — Matt's call that it reads like a LinkedIn post and may not be relevant.
- * Restore by re-adding the dynamic import and the <Wall /> below Hero.
+ * Before 17 Aug every section was base except What I Do, which was card —
+ * so the page read as four black bands and one charcoal accident. Raised
+ * objects (cards, tiles) always use --color-card, which is lighter than
+ * either section tone, so they lift off whichever band they land on.
+ *
+ * RESTORED 17 Aug. The Wall was hidden on 14 Aug, but the objection was to its
+ * presentation and layout, not its message — Matt's clarification. Without it
+ * the page ran Hero straight into WhatIDo and never said "here is your problem"
+ * to a stranger. Copy stands; the layout is what gets worked on.
  *
  * Experience, Skills, Certifications, Testimonials, Projects and the rest are
  * archived in /archive. They proved employability, which is not the buyer's
@@ -44,7 +53,7 @@ export default function Home() {
       <Nav />
       <main id="main-content">
         <Hero />
-
+        <Wall />
         <WhatIDo />
         <HowThisWorks />
         <LatestPosts />

@@ -9,7 +9,21 @@
     --color-border: #262626;
     --color-accent: #2563eb;
     --color-accent-hover: #1d4ed8;
-    --color-card: #111111;
+
+    /* Three tones, and they have distinct jobs.
+       background — base sections
+       band       — the alternating section, one step up. Gives the page a
+                    regular beat instead of one random charcoal block
+       card       — raised objects only: cards, panels, tiles. Always lighter
+                    than whatever section it sits in, so it reads as lifted */
+    --color-band: #0f1013;
+    --color-card: #16171b;
+    --color-card-hover: #1c1d22;
+
+    /* Height of the sticky nav. The hero subtracts this so that nav + hero
+       fill exactly one viewport and nothing below bleeds into first paint.
+       Measured, not guessed — keep in sync if the nav's padding changes. */
+    --nav-h: 68px;
 
     /* Syntax highlighting token colours */
     --color-syntax-keyword: #a78bfa;

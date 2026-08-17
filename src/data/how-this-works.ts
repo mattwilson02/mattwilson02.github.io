@@ -25,16 +25,17 @@ export interface HowThisWorksPoint {
 
 export interface HowThisWorksData {
   heading: string;
-  intro: string;
   points: HowThisWorksPoint[];
   forwardableSummary: string;
 }
 
+/**
+ * The intro line was DELETED on 17 Aug, not relocated — Matt's call:
+ * "completely unnecessary". It announced what the six points were about to
+ * demonstrate, which is a preamble the points don't need.
+ */
 export const howThisWorksData: HowThisWorksData = {
   heading: "How working together works",
-
-  intro:
-    "The terms are the same for every engagement, and they exist so that bringing in an outsider is a low-risk decision for whoever has to approve it.",
 
   points: [
     {

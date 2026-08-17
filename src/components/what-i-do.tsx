@@ -21,7 +21,7 @@ export function WhatIDo() {
   const prefersReducedMotion = useReducedMotion();
 
   return (
-    <Section id="what-i-do" className="bg-[var(--color-card)]">
+    <Section id="what-i-do">
       <motion.div
         variants={containerVariants}
         initial={prefersReducedMotion ? false : "hidden"}
@@ -40,7 +40,7 @@ export function WhatIDo() {
             <motion.div
               key={item.title}
               variants={itemVariants}
-              className="flex flex-col rounded-lg border border-[var(--color-border)] bg-[var(--color-background)] p-6"
+              className="flex flex-col rounded-xl border border-[var(--color-border)] bg-[var(--color-card)] p-6 shadow-[0_1px_0_0_rgba(255,255,255,0.03)_inset,0_12px_32px_-20px_rgba(0,0,0,0.9)] transition-colors duration-200 hover:bg-[var(--color-card-hover)]"
             >
               <span className="text-xs font-semibold tracking-widest text-[var(--color-accent)]">
                 {String(i + 1).padStart(2, "0")}

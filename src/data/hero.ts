@@ -1,7 +1,10 @@
 export interface HeroData {
+  /** The category line, in the accent treatment above the name. */
   eyebrow: string;
-  headline: string;
-  subline: string;
+  /** The masthead. Sell Matt, not software. */
+  name: string;
+  /** The positioning sentence. The line that actually makes an argument. */
+  statement: string;
   primaryCta: { label: string; href: string };
 }
 
@@ -20,17 +23,29 @@ export interface HeroData {
  *
  * (He still diagnoses — the gap between a prototype and a production system,
  * not the business problem. That belongs in What I Do, not the masthead.)
+ *
+ * RESTRUCTURED 17 Aug, testing the fernandobelotto.com hero shape:
+ *   eyebrow → NAME → statement → descriptor → CTA, centred.
+ *
+ * The important move is the demotion. "Bespoke software development and
+ * automations" was the headline and it is a category label — it names a
+ * service without making a claim, which is why it read as a directory entry
+ * at 56px. As a small mono descriptor it does its job fine. The sentence that
+ * was the subline carries the argument, so it moves up; and the masthead
+ * becomes the name, which is what "sell Matt, not software" means literally.
+ *
+ * No new copy was written for this. Every string below already existed.
  */
 export const heroData: HeroData = {
-  eyebrow: "Independent software engineer",
+  eyebrow: "Bespoke software development and automations",
 
-  headline: "Bespoke software development and automations",
+  name: "Matt Wilson",
 
-  subline:
-    "You know what the business needs built. I take the idea the rest of the way, and carry the risk of getting there.",
+  statement:
+    "You know what the business needs. I take the idea the rest of the way.",
 
   primaryCta: {
     label: "Book a call",
-    href: "https://calendly.com/wilson-mjaw/discovery",
+    href: "https://calendly.com/mattwilsontech/discovery",
   },
 };

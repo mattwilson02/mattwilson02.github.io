@@ -42,4 +42,4 @@ export const anchorIds = navLinks
   .filter((l) => l.kind === "anchor")
   .map((l) => l.id);
 
-export const calendlyUrl = "https://calendly.com/wilson-mjaw/discovery";
+export const calendlyUrl = "https://calendly.com/mattwilsontech/discovery";

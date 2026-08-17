@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
   navLinks,
@@ -91,23 +92,30 @@ export function Nav() {
 
   return (
     <header
-      className={`sticky top-0 z-50 w-full backdrop-blur-md transition-all duration-200 ${
+      className={`sticky top-0 z-50 w-full border-b backdrop-blur-xl transition-all duration-200 ${
         isScrolled
-          ? "border-b border-[var(--color-border)] bg-[var(--color-background)]/90"
-          : "bg-[var(--color-background)]/80"
+          ? "border-[var(--color-border)] bg-[var(--color-band)]/95 shadow-[0_8px_24px_-16px_rgba(0,0,0,0.9)]"
+          : "border-transparent bg-[var(--color-band)]/70"
       }`}
     >
       <nav
         aria-label="Main navigation"
-        className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4"
+        className={`mx-auto flex max-w-5xl items-center px-6 py-4 ${
+          isHome ? "justify-center md:gap-8" : "justify-between"
+        }`}
       >
-        <a
-          href={isHome ? "#home" : "/"}
-          className="text-base font-semibold tracking-tight transition-colors hover:text-[var(--color-accent)]"
-          onClick={() => setMenuOpen(false)}
-        >
-          Matt Wilson
-        </a>
+        {/* Wordmark and CTA are dropped on the home page — the hero says both,
+            and saying them twice in one viewport is why the centred hero felt
+            crowded. Every other page has no hero, so they stay there. */}
+        {!isHome && (
+          <Link
+            href="/"
+            className="text-base font-semibold tracking-tight transition-colors hover:text-[var(--color-accent)]"
+            onClick={() => setMenuOpen(false)}
+          >
+            Matt Wilson
+          </Link>
+        )}
 
         <ul className="hidden items-center gap-5 md:flex">
           {navLinks.map((link) => (
@@ -123,15 +131,17 @@ export function Nav() {
           ))}
         </ul>
 
-        <div className="flex items-center gap-3">
-          <a
-            href={calendlyUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hidden rounded-md bg-[var(--color-accent)] px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-[var(--color-accent-hover)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] focus-visible:ring-offset-2 md:inline-flex"
-          >
-            Book a call
-          </a>
+        <div className={`flex items-center gap-3 ${isHome ? "md:hidden" : ""}`}>
+          {!isHome && (
+            <a
+              href={calendlyUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden rounded-md bg-[var(--color-accent)] px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-[var(--color-accent-hover)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] focus-visible:ring-offset-2 md:inline-flex"
+            >
+              Book a call
+            </a>
+          )}
           <button
             className="flex h-9 w-9 items-center justify-center rounded-md transition-colors hover:bg-[var(--color-card)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] md:hidden"
             aria-label="Toggle menu"

@@ -15,6 +15,13 @@
  * broader than vibe coding: they know what needs building, and crossing the
  * distance to something the business runs on means owning the consequences.
  * However far along they are is a detail.
+ *
+ * HEADING REPLACED 17 Aug. "The idea isn't the hard part" spent its opening
+ * words telling the reader that the thing they had done was the easy bit —
+ * which is a strange way to open the section whose only job is recognition.
+ * Matt's call, and his replacement leads with the destination rather than the
+ * obstacle. "Alchemise" is the brand verb, doing work that "take" or "get"
+ * can't.
  */
 
 export interface WallData {
@@ -24,7 +31,7 @@ export interface WallData {
 }
 
 export const wallData: WallData = {
-  heading: "The idea isn't the hard part.",
+  heading: "Alchemise an idea into the tab nobody closes",
 
   body: [
     "You already know what the business needs, and roughly how you'd fix it. A document, a spreadsheet that half does the job, or something you've had a go at building yourself.",

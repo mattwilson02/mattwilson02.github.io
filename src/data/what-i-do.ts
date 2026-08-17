@@ -32,11 +32,11 @@ export const whatIDoData: WhatIDoData = {
     },
     {
       title: "Tailored to your business",
-      body: "Off-the-shelf software is built for a whole industry, so you pay for features you never open and bend your process to fit theirs. Bespoke used to cost six figures. It doesn't now.",
+      body: "Off-the-shelf software is built for a whole industry, so you pay for features you never open and bend your process to fit theirs. Yours is built round how you already work, and it's yours to keep.",
     },
     {
-      title: "Built with AI, checked by a person",
-      body: "AI agents are why bespoke is affordable now. They also get things confidently wrong. Hand-testing my last build found fifteen defects the automated checks passed. Nothing ships unread.",
+      title: "Supercharge your workflows",
+      body: "You're doing the same thirty-minute job again, and it's costing you the thing you'd rather be spending on the business. We turn that work into something that runs itself, and hand the time back.",
     },
   ],
 };

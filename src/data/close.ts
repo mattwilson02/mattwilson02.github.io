@@ -20,7 +20,7 @@ export interface CloseData {
 export const closeData: CloseData = {
   heading: "Start with a conversation",
 
-  body: "No pitch, no charge. Thirty minutes, and you do most of the talking.",
+  body: "No pitch, no charge. Twenty minutes, and you do most of the talking.",
 
   covers: [
     "How the task is handled right now, step by step",
@@ -31,6 +31,6 @@ export const closeData: CloseData = {
 
   cta: {
     label: "Book a call",
-    href: "https://calendly.com/wilson-mjaw/discovery",
+    href: "https://calendly.com/mattwilsontech/discovery",
   },
 };
