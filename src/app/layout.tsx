@@ -15,15 +15,11 @@ export const metadata: Metadata = {
   description:
     "Independent software engineer. You know what the business needs built — I take the idea the rest of the way, to something it can run on. Fixed price, delivered in phases.",
   metadataBase: new URL(siteUrl),
-  // Holding page: keep it out of every index until the rebuild lands.
-  robots: {
-    index: false,
-    follow: false,
-    nocache: true,
-    googleBot: { index: false, follow: false },
-  },
   alternates: {
     canonical: siteUrl,
+    types: {
+      "application/rss+xml": "/feed.xml",
+    },
   },
   openGraph: {
     title: "Matt Wilson — Bespoke software development and automations",
