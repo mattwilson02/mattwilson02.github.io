@@ -17,7 +17,7 @@ export function BlogCard({
   content,
 }: BlogCardProps) {
   return (
-    <div className="group relative flex h-full flex-col gap-4 rounded-lg border border-[var(--color-border)] bg-[var(--color-card)] p-6 transition-all duration-200 hover:scale-[1.02] hover:border-[var(--color-accent)]">
+    <div className="group relative flex h-full flex-col gap-4 rounded-xl border border-[var(--color-border)] bg-[var(--color-card)] p-6 shadow-[0_1px_0_0_rgba(255,255,255,0.03)_inset,0_12px_32px_-20px_rgba(0,0,0,0.9)] transition-all duration-200 hover:border-[var(--color-accent)] hover:bg-[var(--color-card-hover)]">
       {/* Stretched link covers the whole card — sits below tag links */}
       <Link
         href={`/blog/${slug}`}
