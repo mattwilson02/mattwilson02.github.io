@@ -22,6 +22,10 @@
  * Matt's call, and his replacement leads with the destination rather than the
  * obstacle. "Alchemise" is the brand verb, doing work that "take" or "get"
  * can't.
+ *
+ * An intermediate draft read "the tab nobody closes". Cut because "tab" means
+ * a browser, which silently excludes mobile and anything not on the web —
+ * a narrower promise than the business makes.
  */
 
 export interface WallData {
@@ -31,7 +35,7 @@ export interface WallData {
 }
 
 export const wallData: WallData = {
-  heading: "Alchemise an idea into the tab nobody closes",
+  heading: "Alchemise an idea into what the business runs on",
 
   body: [
     "You already know what the business needs, and roughly how you'd fix it. A document, a spreadsheet that half does the job, or something you've had a go at building yourself.",

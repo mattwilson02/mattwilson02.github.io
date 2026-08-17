@@ -80,10 +80,12 @@ export function Nav() {
     return isHome && activeAnchor === link.id;
   }
 
+  // Links sit inside a pill, so each one gets its own rounded hit area and the
+  // active one is filled rather than just brightened.
   const desktopClass = (link: NavLink) =>
     isActive(link)
-      ? "text-sm font-medium text-[var(--color-foreground)] transition-colors"
-      : "text-sm text-[var(--color-muted)] transition-colors hover:text-[var(--color-foreground)]";
+      ? "rounded-full bg-[var(--color-accent)]/15 px-3.5 py-1.5 text-sm font-medium text-[var(--color-foreground)] transition-colors"
+      : "rounded-full px-3.5 py-1.5 text-sm text-[var(--color-muted)] transition-colors hover:bg-[var(--color-accent)]/10 hover:text-[var(--color-foreground)]";
 
   const mobileClass = (link: NavLink) =>
     isActive(link)
@@ -91,12 +93,10 @@ export function Nav() {
       : "block py-3 text-sm text-[var(--color-muted)] transition-colors hover:text-[var(--color-foreground)]";
 
   return (
+    // The header itself is transparent. The emphasis lives on the pill around
+    // the links, not on a full-width grey band across the top. Matt's call.
     <header
-      className={`sticky top-0 z-50 w-full border-b backdrop-blur-xl transition-all duration-200 ${
-        isScrolled
-          ? "border-[var(--color-border)] bg-[var(--color-band)]/95 shadow-[0_8px_24px_-16px_rgba(0,0,0,0.9)]"
-          : "border-transparent bg-[var(--color-band)]/70"
-      }`}
+      className="sticky top-0 z-50 w-full transition-all duration-200"
     >
       <nav
         aria-label="Main navigation"
@@ -117,7 +117,13 @@ export function Nav() {
           </Link>
         )}
 
-        <ul className="hidden items-center gap-5 md:flex">
+        <ul
+          className={`hidden items-center gap-1 rounded-full border border-[var(--color-accent)]/25 p-1.5 backdrop-blur-xl transition-all duration-200 md:flex ${
+            isScrolled
+              ? "border-[var(--color-accent)]/40 bg-[var(--color-band)]/90 shadow-[0_8px_24px_-16px_rgba(0,0,0,0.9)]"
+              : "bg-[var(--color-background)]/50"
+          }`}
+        >
           {navLinks.map((link) => (
             <li key={link.id}>
               <a
