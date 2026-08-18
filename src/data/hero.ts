@@ -30,7 +30,7 @@ export interface HeroData {
  * The important move is the demotion. "Bespoke software development and
  * automations" was the headline and it is a category label — it names a
  * service without making a claim, which is why it read as a directory entry
- * at 56px. As a small mono descriptor it does its job fine. The sentence that
+ * at 56px. As a small line above the name it does its job fine. The sentence that
  * was the subline carries the argument, so it moves up; and the masthead
  * becomes the name, which is what "sell Matt, not software" means literally.
  *
