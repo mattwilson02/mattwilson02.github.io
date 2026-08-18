@@ -1,5 +1,5 @@
 {
-  "name": "Matt Wilson — Full Stack Engineer",
+  "name": "Matt Wilson, independent software engineer",
   "short_name": "Matt Wilson",
   "icons": [
     {
@@ -19,6 +19,6 @@
     }
   ],
   "theme_color": "#2563eb",
-  "background_color": "#ffffff",
+  "background_color": "#0a0a0a",
   "display": "standalone"
 }

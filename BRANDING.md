@@ -230,7 +230,8 @@ Deliberately parked, 18 Aug — this is the next branding decision.
 | | |
 |---|---|
 | `/about` | **Does not exist — it 404s.** `src/components/about.tsx` and `src/data/about.ts` exist but nothing renders them, and the data is the employability version: *Years Coding · Coffees Consumed · working towards Solutions Architect after AZ-104*. Matt is doing the layout and the copy |
-| LinkedIn cover | He isn't happy with how it reads. Gates the launch |
+| LinkedIn cover | Updated and now on-brand — but **the avatar sits over the text on mobile**, so it reads "Bespoke software … ent and automations". LinkedIn always parks the photo bottom-left; the fix is in the image |
+| X cover | **The text isn't bordered on mobile** — spotted 18 Aug, after the first thread went out. Fix later |
 | `site.webmanifest` | Stale title and a white background on a dark site |
 | `og-image.png` wording | Says *"Bespoke software and automations"*; the site says *"development and automations"* |
 | Blog OG cards | Still carry an em dash in `Blog — Matt Wilson` |
