@@ -11,9 +11,12 @@ const inter = Inter({
 const siteUrl = "https://mattwilson.tech";
 
 export const metadata: Metadata = {
-  title: "Matt Wilson — Bespoke software development and automations",
+  title: "Matt Wilson, independent software engineer",
+  // Matt's line, and it is the hero verbatim. The old one was the hero as it
+  // read before 17 Aug — it still said "needs built" and "to something it can
+  // run on", both of which he cut. The page changed and the metadata didn't.
   description:
-    "Independent software engineer. You know what the business needs built — I take the idea the rest of the way, to something it can run on. Fixed price, delivered in phases.",
+    "You know what the business needs. I take the idea the rest of the way.",
   metadataBase: new URL(siteUrl),
   alternates: {
     canonical: siteUrl,
@@ -22,9 +25,9 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Matt Wilson — Bespoke software development and automations",
+    title: "Matt Wilson, independent software engineer",
     description:
-      "You know what the business needs built — I take the idea the rest of the way, to something it can run on.",
+      "You know what the business needs. I take the idea the rest of the way.",
     type: "website",
     url: siteUrl,
     images: [
@@ -32,15 +35,15 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Matt Wilson — bespoke software development and automations",
+        alt: "Matt Wilson, independent software engineer",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Matt Wilson — Bespoke software development and automations",
+    title: "Matt Wilson, independent software engineer",
     description:
-      "You know what the business needs built — I take the idea the rest of the way, to something it can run on.",
+      "You know what the business needs. I take the idea the rest of the way.",
     images: ["/og-image.png"],
   },
   themeColor: "#0a0a0a",

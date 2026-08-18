@@ -29,10 +29,10 @@ export async function generateMetadata({
   const { slug } = await params;
   const post = blogPosts.find((p) => p.slug === slug);
 
-  if (!post) return { title: "Not found — Matt Wilson" };
+  if (!post) return { title: "Not found · Matt Wilson" };
 
   return {
-    title: `${post.title} — Matt Wilson`,
+    title: `${post.title} · Matt Wilson`,
     description: post.excerpt,
     alternates: { canonical: `/blog/${post.slug}` },
     openGraph: {

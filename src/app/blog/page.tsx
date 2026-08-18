@@ -5,7 +5,7 @@ import { ScrollToTop } from "@/components/scroll-to-top";
 import { BlogIndex } from "@/components/blog-index";
 
 export const metadata: Metadata = {
-  title: "Writing — Matt Wilson",
+  title: "Writing · Matt Wilson",
   description:
     "Notes on building software, working with AI agents, and running an independent practice.",
   alternates: { canonical: "/blog" },
