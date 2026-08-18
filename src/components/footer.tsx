@@ -4,13 +4,15 @@ export function Footer() {
   return (
     <footer className="border-t border-[var(--color-border)] py-10">
       <div className="flex flex-col items-center gap-6 text-center">
-        <div className="flex items-center gap-4">
+        {/* 20px icons in 44px boxes — the row keeps its width because
+            the gap comes in as the targets grow. */}
+        <div className="flex items-center gap-1">
           <a
             href="https://github.com/mattwilson02"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="GitHub"
-            className="text-[var(--color-muted)] transition-colors hover:text-[var(--color-foreground)]"
+            className="flex h-11 w-11 items-center justify-center rounded-md text-[var(--color-muted)] transition-colors hover:bg-[var(--color-card)] hover:text-[var(--color-foreground)]"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -28,7 +30,7 @@ export function Footer() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="LinkedIn"
-            className="text-[var(--color-muted)] transition-colors hover:text-[var(--color-foreground)]"
+            className="flex h-11 w-11 items-center justify-center rounded-md text-[var(--color-muted)] transition-colors hover:bg-[var(--color-card)] hover:text-[var(--color-foreground)]"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -46,7 +48,7 @@ export function Footer() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Strava"
-            className="text-[var(--color-muted)] transition-colors hover:text-[#FC4C02]"
+            className="flex h-11 w-11 items-center justify-center rounded-md text-[var(--color-muted)] transition-colors hover:bg-[var(--color-card)] hover:text-[#FC4C02]"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -62,7 +64,7 @@ export function Footer() {
           <a
             href="mailto:matt@mattwilson.tech"
             aria-label="Email"
-            className="text-[var(--color-muted)] transition-colors hover:text-[var(--color-foreground)]"
+            className="flex h-11 w-11 items-center justify-center rounded-md text-[var(--color-muted)] transition-colors hover:bg-[var(--color-card)] hover:text-[var(--color-foreground)]"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"

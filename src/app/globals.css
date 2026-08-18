@@ -22,8 +22,14 @@
 
     /* Height of the sticky nav. The hero subtracts this so that nav + hero
        fill exactly one viewport and nothing below bleeds into first paint.
-       Measured, not guessed — keep in sync if the nav's padding changes. */
-    --nav-h: 68px;
+       Measured, not guessed — keep in sync if the nav's padding changes.
+
+       The two values differ because the bar holds different things: a 44px
+       menu button on a phone, the links pill from md up. It was a single
+       68px for both, which was 8px short on mobile — enough for the Wall to
+       show a sliver above the fold, which is exactly what the full-height
+       hero exists to prevent. */
+    --nav-h: 76px;
 
     /* Syntax highlighting token colours */
     --color-syntax-keyword: #a78bfa;
@@ -36,6 +42,12 @@
     --color-syntax-property: #f87171;
     --color-syntax-operator: #a3a3a3;
     --color-syntax-punctuation: #6b7280;
+  }
+
+  @media (min-width: 48rem) {
+    :root {
+      --nav-h: 70px;
+    }
   }
 
   html {

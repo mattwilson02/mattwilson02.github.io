@@ -65,16 +65,19 @@ export function Hero() {
       </div>
 
       <div className="relative mx-auto w-full max-w-3xl px-6 text-center">
+        {/* The flanking rules are hidden on a phone. The eyebrow wraps to two
+            lines at that width, and a rule sitting against one end of each
+            line reads as a mistake rather than as framing. */}
         <div className="flex items-center justify-center gap-3">
           <span
-            className="h-px w-8 bg-[var(--color-accent)]"
+            className="hidden h-px w-8 bg-[var(--color-accent)] sm:block"
             aria-hidden="true"
           />
           <span className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--color-accent)]">
             {heroData.eyebrow}
           </span>
           <span
-            className="h-px w-8 bg-[var(--color-accent)]"
+            className="hidden h-px w-8 bg-[var(--color-accent)] sm:block"
             aria-hidden="true"
           />
         </div>

@@ -87,16 +87,30 @@ export function Nav() {
       ? "rounded-full bg-[var(--color-accent)]/15 px-3.5 py-1.5 text-sm font-medium text-[var(--color-foreground)] transition-colors"
       : "rounded-full px-3.5 py-1.5 text-sm text-[var(--color-muted)] transition-colors hover:bg-[var(--color-accent)]/10 hover:text-[var(--color-foreground)]";
 
+  // min-h-11 is 44px — the smallest target a thumb reliably hits. py-3 alone
+  // gave 40px rows.
   const mobileClass = (link: NavLink) =>
     isActive(link)
-      ? "block py-3 text-sm font-medium text-[var(--color-foreground)] transition-colors"
-      : "block py-3 text-sm text-[var(--color-muted)] transition-colors hover:text-[var(--color-foreground)]";
+      ? "flex min-h-11 items-center text-sm font-medium text-[var(--color-foreground)] transition-colors"
+      : "flex min-h-11 items-center text-sm text-[var(--color-muted)] transition-colors hover:text-[var(--color-foreground)]";
 
   return (
     // The header itself is transparent. The emphasis lives on the pill around
-    // the links, not on a full-width grey band across the top. Matt's call.
+    // the links, not on a full-width grey band across the top. Matt's call —
+    // and it still holds at md and up.
+    //
+    // On a phone there is no pill to carry a background, so the bar was
+    // genuinely transparent at every scroll position: the wordmark and the
+    // menu icon printed straight over body copy. "Built for how you actually
+    // work" and "Writing" both had "Matt Wilson" stamped across them. Mobile
+    // therefore gets a backdrop once the page moves, or whenever the menu is
+    // open; md and up is unchanged.
     <header
-      className="sticky top-0 z-50 w-full transition-all duration-200"
+      className={`sticky top-0 z-50 w-full transition-all duration-200 ${
+        isScrolled || menuOpen
+          ? "border-b border-[var(--color-border)] bg-[var(--color-background)]/90 backdrop-blur-md md:border-b-0 md:bg-transparent md:backdrop-blur-none"
+          : ""
+      }`}
     >
       <nav
         aria-label="Main navigation"
@@ -111,7 +125,7 @@ export function Nav() {
             page has no hero and keeps it at all widths. */}
         <Link
           href="/"
-          className={`text-base font-semibold tracking-tight transition-colors hover:text-[var(--color-accent)] ${
+          className={`-my-2.5 py-2.5 text-base font-semibold tracking-tight transition-colors hover:text-[var(--color-accent)] ${
             isHome ? "md:hidden" : ""
           }`}
           onClick={() => setMenuOpen(false)}
@@ -151,7 +165,7 @@ export function Nav() {
             </a>
           )}
           <button
-            className="flex h-9 w-9 items-center justify-center rounded-md transition-colors hover:bg-[var(--color-card)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] md:hidden"
+            className="-mr-2.5 flex h-11 w-11 items-center justify-center rounded-md transition-colors hover:bg-[var(--color-card)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] md:hidden"
             aria-label="Toggle menu"
             aria-expanded={menuOpen}
             aria-controls="mobile-menu"
@@ -198,7 +212,7 @@ export function Nav() {
       {menuOpen && (
         <div
           id="mobile-menu"
-          className="border-t border-[var(--color-border)] bg-[var(--color-background)]/95 backdrop-blur-md md:hidden"
+          className="border-b border-[var(--color-border)] bg-[var(--color-background)]/90 backdrop-blur-md md:hidden"
         >
           <ul className="mx-auto flex max-w-5xl flex-col px-6 py-4">
             {navLinks.map((link) => (
@@ -219,7 +233,7 @@ export function Nav() {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => setMenuOpen(false)}
-                className="inline-flex rounded-md bg-[var(--color-accent)] px-4 py-2 text-sm font-semibold text-white"
+                className="inline-flex min-h-11 items-center rounded-md bg-[var(--color-accent)] px-5 text-sm font-semibold text-white"
               >
                 Book a call
               </a>
