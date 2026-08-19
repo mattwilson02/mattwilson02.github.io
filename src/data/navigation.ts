@@ -29,15 +29,13 @@ export const navLinks: NavLink[] = [
   // the menu, not last: Matt's call. A stranger arriving from a post wants to
   // know who this is before they read how the engagement runs.
   { label: "About", id: "about", kind: "route", route: "/about" },
-  {
-    label: "How it works",
-    id: "how-this-works",
-    kind: "anchor",
-    anchor: "#how-this-works",
-    route: "/#how-this-works",
-  },
   { label: "Writing", id: "writing", kind: "route", route: "/blog" },
 ];
+
+// "How it works" was removed from the nav on 19 Aug — Matt's call. Once /about
+// existed, the menu held three routes and one in-page anchor, and a link that
+// scrolls sits oddly beside three that navigate. The section itself is
+// untouched and still does its job on the home page; only the menu entry went.
 
 /** Section ids the scroll-spy is allowed to track. */
 export const anchorIds = navLinks
