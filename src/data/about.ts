@@ -24,6 +24,13 @@
  *
  * This text also stands alone as LinkedIn's About. His call: same person
  * arriving from two directions.
+ *
+ * ⚠️ The opening of the middle block was replaced on 19 Aug — his call, "it
+ * looks wack and doesn't read like the rest". It ran "I take a concept through
+ * the entire product development lifecycle and pay meticulous attention to
+ * detail at every stage", which is the Belotto register the rest of the page
+ * avoids. What replaced it is his own line from my-story.md, and it moved up
+ * to sit with "I work for myself now" so the projects stand on their own.
  */
 
 export interface AboutData {
@@ -39,8 +46,8 @@ export const aboutData: AboutData = {
   body: [
     "I'm an Isle of Man based Software Engineer, originally from Cape Town. I taught myself to code in 2021, dropped the marketing degree, and went all in.",
     "Since then, I've spent 4 years in fintech, building an efficient business bank account application process across UK offshore jurisdictions, and most recently at Stonehage Fleming, where I built an investment management platform managing $4bn in assets and trimmed a valuation pipeline from 30 minutes to under a minute.",
-    "I work for myself now, building bespoke software for businesses that already know exactly what they need and have nobody to build it.",
-    "I take a concept through the entire product development lifecycle and pay meticulous attention to detail at every stage, delivering applications that people love, not just something that checks the boxes. I am also the author of open-source project Ralph, an agentic process that takes a product specification and breaks it into chunks of work until it meets the goal, and Athena, an MCP-based personal knowledge vault that helps you make strategic decisions about your life.",
+    "I work for myself now, building bespoke software for businesses that already know exactly what they need and have nobody to build it. When you're building software that manages serious data for serious clients, precision isn't optional.",
+    "I am also the author of open-source project Ralph, an agentic process that takes a product specification and breaks it into chunks of work until it meets the goal, and Athena, an MCP-based personal knowledge vault that helps you make strategic decisions about your life.",
   ],
   beyondTheCode:
     "Beyond the business, I love spending time in nature and competing in endurance events. I make a mean flat white, and I'm currently immersing myself in Spanish culture and learning the language.",
