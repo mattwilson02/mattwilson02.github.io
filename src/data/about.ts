@@ -1,28 +1,47 @@
-export interface AboutStat {
-  label: string;
-  value: string;
-  ticker?: boolean;
-}
+/**
+ * /about
+ *
+ * Every word here is Matt's, written 18–19 Aug. The canonical source and the
+ * full decision record live in `business-log/content/2026-08-18-about-page.md`
+ * — edit against that file, not this one, and change both together.
+ *
+ * Shape settled off his own read of Sara Soueidan, Brad Frost, Jonathan Stark
+ * and Fernando Belotto: 250–350 words, first person, no arc story, no
+ * chronology-first opening. It runs ~209, which he accepted — his standing
+ * position is that short is fine.
+ *
+ * ⚠️ The middle block is deliberately NOT what-I-do-for-you. His argument on
+ * 19 Aug: "surely if the website is already selling you on what the business
+ * does for you, my about should stay away from about what I do for you." So it
+ * is a body of work instead — the shape Frost and Soueidan use. Belotto's page
+ * is the one that fills that slot with capability, and it is the only one of
+ * the four that could belong to any other engineer.
+ *
+ * ⚠️ The stat tiles are gone. "Years Coding: 4" was arithmetic off the old 2022
+ * story and is wrong — he started in 2021, confirmed 19 Aug — and the coffee
+ * count incremented on a setInterval, which is a strange thing to sit beside a
+ * paragraph selling meticulous attention to detail.
+ *
+ * This text also stands alone as LinkedIn's About. His call: same person
+ * arriving from two directions.
+ */
 
 export interface AboutData {
-  bio: string[];
+  /** The professional block. Sections 1 and 2, in order. */
+  body: string[];
+  /** Section 3 — the human line. One or two sentences, then stop. */
   beyondTheCode: string;
-  stats: AboutStat[];
   avatarSrc?: string;
 }
 
 export const aboutData: AboutData = {
   avatarSrc: "/headshot.png",
-  bio: [
-    "Got into programming after discovering Bitcoin in 2022. Fell down the rabbit hole, started building, and never stopped. 4 years later I've shipped production-ready fintech applications, including an investment management platform handling $4B in AUM.",
-    "I specialise in TypeScript across the full stack, and I care about producing code that outlives itself, through thorough test coverage, clean architecture, and high standards at every layer of delivery. The work I'm proudest of tends to be the unglamorous kind: cutting a half-hour valuation process down to a minute, or rebuilding an authentication system in-house because the incumbent couldn't meet EU compliance.",
-    "Currently deepening my Azure expertise, working towards Solutions Architect certification after AZ-104.",
+  body: [
+    "I'm an Isle of Man based Software Engineer, originally from Cape Town. I taught myself to code in 2021, dropped the marketing degree, and went all in.",
+    "Since then, I've spent 4 years in fintech, building an efficient business bank account application process across UK offshore jurisdictions, and most recently at Stonehage Fleming, where I built an investment management platform managing $4bn in assets and trimmed a valuation pipeline from 30 minutes to under a minute.",
+    "I work for myself now, building bespoke software for businesses that already know exactly what they need and have nobody to build it.",
+    "I take a concept through the entire product development lifecycle and pay meticulous attention to detail at every stage, delivering applications that people love, not just something that checks the boxes. I am also the author of open-source project Ralph, an agentic process that takes a product specification and breaks it into chunks of work until it meets the goal, and Athena, an MCP-based personal knowledge vault that helps you make strategic decisions about your life.",
   ],
   beyondTheCode:
-    "Enthusiastic amateur athlete and wannabe barista: two ultra marathons, a few questionable flat whites, and a helmet-strap tan from hundreds of hours on the road bike.",
-  stats: [
-    { label: "Years Coding", value: "4" },
-    { label: "Location", value: "Isle of Man" },
-    { label: "Coffees Consumed", value: "1000", ticker: true },
-  ],
+    "Beyond the business, I love spending time in nature and competing in endurance events. I make a mean flat white, and I'm currently immersing myself in Spanish culture and learning the language.",
 };

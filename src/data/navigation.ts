@@ -33,8 +33,8 @@ export const navLinks: NavLink[] = [
     route: "/#how-this-works",
   },
   { label: "Writing", id: "writing", kind: "route", route: "/blog" },
-  // About is written but unlinked until the copy exists — see git history on
-  // site-rebuild-v1 for the scaffold.
+  // Linked 19 Aug — the copy exists now and /about no longer 404s.
+  { label: "About", id: "about", kind: "route", route: "/about" },
 ];
 
 /** Section ids the scroll-spy is allowed to track. */

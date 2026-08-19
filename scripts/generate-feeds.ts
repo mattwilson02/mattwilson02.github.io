@@ -48,13 +48,7 @@ function generateSitemap(): string {
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>${siteUrl}/uses</loc>
-    <lastmod>${today}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>${siteUrl}/resume</loc>
+    <loc>${siteUrl}/about</loc>
     <lastmod>${today}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
