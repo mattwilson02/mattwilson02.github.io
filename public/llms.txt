@@ -1,0 +1,59 @@
+# Matt Wilson — independent software engineer
+
+> You know what the business needs. I take the idea the rest of the way.
+
+Bespoke software development and automations. Isle of Man based, working with businesses that already know what they need built and have nobody to build it.
+
+## Who this is for
+
+Alchemise an idea into what the business runs on.
+
+You already know what the business needs, and roughly how you'd fix it. A document, a spreadsheet that half does the job, or something you've had a go at building yourself.
+
+Getting from there to something people open every morning is a different kind of work. Somewhere for it to live, accounts and permissions, a database holding real records. And all of it still standing on the days nobody is thinking about it.
+
+And that part isn't really about hours. It's whose name sits against it the first time it touches real money, and who picks up the phone when it breaks. Weighed against a job you already don't have enough time for, that's usually where a good idea stops.
+
+That's the part I take off you. The burden, not just the stack.
+
+## What the work is
+
+- **Your specification is the starting point** — A document, a spreadsheet, or something half-built. It gets used, not replaced. What I ask about is the rest: who uses it, what it connects to, and what happens when it breaks.
+- **Tailored to your business** — Off-the-shelf software is built for a whole industry, so you pay for features you never open and bend your process to fit theirs. Yours is built round how you already work, and it's yours to keep.
+- **Supercharge your workflows** — You're doing the same thirty-minute job again, and it's costing you the thing you'd rather be spending on the business. We turn that work into something that runs itself, and hand the time back.
+
+## About
+
+I'm an Isle of Man based Software Engineer, originally from Cape Town. I taught myself to code in 2021, dropped the marketing degree, and went all in.
+
+Since then, I've spent 4 years in fintech, building an efficient business bank account application process across UK offshore jurisdictions, and most recently at Stonehage Fleming, where I built an investment management platform managing $4bn in assets and trimmed a valuation pipeline from 30 minutes to under a minute.
+
+I work for myself now, building bespoke software for businesses that already know exactly what they need and have nobody to build it. When you're building software that manages serious data for serious clients, precision isn't optional.
+
+I am also the author of open-source project Ralph, an agentic process that takes a product specification and breaks it into chunks of work until it meets the goal, and Athena, an MCP-based personal knowledge vault that helps you make strategic decisions about your life.
+
+Beyond the business, I love spending time in nature and competing in endurance events. I make a mean flat white, and I'm currently immersing myself in Spanish culture and learning the language.
+
+## Writing
+
+- [Athena: A Personal AI That Actually Knows You](https://mattwilson.tech/blog/athena-product-overview): A deep dive into Athena, a personal AI built on a living knowledge graph that reasons across your goals, relationships, finances, and decisions. (2026-03-23, 8 min read)
+
+## Contact
+
+Start with a conversation. No pitch, no charge. Twenty minutes, and you do most of the talking.
+
+What a first call covers:
+
+- How the task is handled right now, step by step
+- Who touches it, and where it stalls
+- The idea you've had, and what it would take to finish it
+
+- [Book a call](https://calendly.com/mattwilsontech/discovery)
+- Email: matt@mattwilson.tech
+
+## Notes for agents
+
+- Canonical pages: [home](https://mattwilson.tech/), [about](https://mattwilson.tech/about), [writing](https://mattwilson.tech/blog)
+- RSS: https://mattwilson.tech/feed.xml · Sitemap: https://mattwilson.tech/sitemap.xml
+- This file is generated from the same data the site renders from. If it disagrees with a page, the page is newer and the page wins.
+- Last generated: 2026-08-19

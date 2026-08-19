@@ -2,3 +2,6 @@ User-agent: *
 Allow: /
 
 Sitemap: https://mattwilson.tech/sitemap.xml
+
+# Structured summary for language models — llmstxt.org
+# https://mattwilson.tech/llms.txt
