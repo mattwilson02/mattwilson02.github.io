@@ -25,6 +25,10 @@ export interface NavLink {
 
 export const navLinks: NavLink[] = [
   { label: "Home", id: "home", kind: "anchor", anchor: "#home", route: "/" },
+  // Linked 19 Aug — the copy exists now and /about no longer 404s. Second in
+  // the menu, not last: Matt's call. A stranger arriving from a post wants to
+  // know who this is before they read how the engagement runs.
+  { label: "About", id: "about", kind: "route", route: "/about" },
   {
     label: "How it works",
     id: "how-this-works",
@@ -33,8 +37,6 @@ export const navLinks: NavLink[] = [
     route: "/#how-this-works",
   },
   { label: "Writing", id: "writing", kind: "route", route: "/blog" },
-  // Linked 19 Aug — the copy exists now and /about no longer 404s.
-  { label: "About", id: "about", kind: "route", route: "/about" },
 ];
 
 /** Section ids the scroll-spy is allowed to track. */
