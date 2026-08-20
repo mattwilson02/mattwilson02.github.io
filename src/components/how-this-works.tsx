@@ -1,12 +1,4 @@
-"use client";
-
-import { motion, useReducedMotion } from "framer-motion";
 import { Section } from "./section";
-import {
-  revealViewport,
-  containerVariants,
-  itemVariants,
-} from "@/lib/motion";
 import { CopySummary } from "./copy-summary";
 import { howThisWorksData } from "@/data/how-this-works";
 
@@ -28,31 +20,24 @@ import { howThisWorksData } from "@/data/how-this-works";
  * own. `forwardableSummary` is still what the copy button carries.
  */
 export function HowThisWorks() {
-  const prefersReducedMotion = useReducedMotion();
-
   return (
     <Section id="how-this-works" tone="band">
-      <motion.div
-        variants={containerVariants}
-        initial={prefersReducedMotion ? false : "hidden"}
-        whileInView="visible"
-        viewport={revealViewport}
-      >
-        <motion.div
-          variants={itemVariants}
+      <div>
+        <div
+          data-reveal
           className="flex flex-wrap items-center justify-between gap-4"
         >
           <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
             {howThisWorksData.heading}
           </h2>
           <CopySummary text={howThisWorksData.forwardableSummary} />
-        </motion.div>
+        </div>
 
         <dl className="mt-10 grid grid-cols-1 gap-4 md:grid-cols-2">
           {howThisWorksData.points.map((point) => (
-            <motion.div
+            <div
               key={point.label}
-              variants={itemVariants}
+              data-reveal
               className="rounded-xl border border-[var(--color-border)] bg-[var(--color-card)] p-6 shadow-[0_1px_0_0_rgba(255,255,255,0.03)_inset,0_12px_32px_-20px_rgba(0,0,0,0.9)] transition-colors duration-200 hover:bg-[var(--color-card-hover)]"
             >
               <dt className="font-semibold text-[var(--color-accent)]">
@@ -61,10 +46,10 @@ export function HowThisWorks() {
               <dd className="mt-2 leading-relaxed text-[var(--color-muted)]">
                 {point.body}
               </dd>
-            </motion.div>
+            </div>
           ))}
         </dl>
-      </motion.div>
+      </div>
     </Section>
   );
 }

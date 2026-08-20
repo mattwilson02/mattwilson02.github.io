@@ -1,10 +1,6 @@
-"use client";
-
 import Link from "next/link";
-import { motion, useReducedMotion } from "framer-motion";
 import { Section } from "./section";
 import { BlogCard } from "./blog-card";
-import { revealViewport, containerVariants, itemVariants } from "@/lib/motion";
 import { blogPosts } from "@/data/blog";
 
 /**
@@ -21,29 +17,23 @@ function gridClassFor(count: number) {
 }
 
 export function LatestPosts() {
-  const prefersReducedMotion = useReducedMotion();
   const posts = blogPosts.slice(0, 3);
 
   if (posts.length === 0) return null;
 
   return (
     <Section id="writing">
-      <motion.div
-        variants={containerVariants}
-        initial={prefersReducedMotion ? false : "hidden"}
-        whileInView="visible"
-        viewport={revealViewport}
-      >
-        <motion.h2
-          variants={itemVariants}
+      <div>
+        <h2
+          data-reveal
           className="mb-10 text-3xl font-bold tracking-tight md:text-4xl"
         >
           Writing
-        </motion.h2>
+        </h2>
 
         <div className={`grid gap-6 ${gridClassFor(posts.length)}`}>
           {posts.map((post) => (
-            <motion.div key={post.slug} variants={itemVariants}>
+            <div key={post.slug} data-reveal>
               <BlogCard
                 slug={post.slug}
                 title={post.title}
@@ -52,21 +42,21 @@ export function LatestPosts() {
                 tags={post.tags}
                 content={post.content}
               />
-            </motion.div>
+            </div>
           ))}
         </div>
 
         {blogPosts.length > posts.length && (
-          <motion.div variants={itemVariants} className="mt-8">
+          <div data-reveal className="mt-8">
             <Link
               href="/blog"
               className="text-sm font-medium text-[var(--color-accent)] hover:underline"
             >
               All writing →
             </Link>
-          </motion.div>
+          </div>
         )}
-      </motion.div>
+      </div>
     </Section>
   );
 }

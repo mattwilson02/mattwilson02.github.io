@@ -118,6 +118,47 @@
   animation: shimmer 10s linear infinite;
 }
 
+/**
+ * Scroll reveals.
+ *
+ * The rule: content ships VISIBLE. The reveal is an enhancement layered on
+ * top, never the thing standing between the reader and the page.
+ *
+ * The bug this replaces: reveals ran through framer-motion with
+ * `initial="hidden"`, which serialises `opacity: 0` into the server HTML.
+ * Every section below the fold was invisible until the JS bundle downloaded,
+ * parsed and hydrated. Imperceptible on a desktop connection; roughly two
+ * seconds of black on a phone, then everything appearing at once.
+ *
+ * This version cannot do that, because the hidden state only exists inside
+ * `@supports (animation-timeline: view())`. A browser that can't drive the
+ * animation from scroll position never hides anything — it just gets the
+ * page. No JS is involved at any point.
+ *
+ * Stagger is emergent rather than configured: each element animates on its
+ * own entry, so they arrive in the order you reach them.
+ */
+@keyframes reveal-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    [data-reveal] {
+      animation: reveal-in linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 60%;
+    }
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

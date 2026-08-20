@@ -1,10 +1,6 @@
-"use client";
-
-import { motion, useReducedMotion } from "framer-motion";
 import { Section } from "./section";
 import { Avatar } from "./avatar";
 import { Breadcrumbs } from "./breadcrumbs";
-import { revealViewport, containerVariants, itemVariants } from "@/lib/motion";
 import { aboutData } from "@/data/about";
 
 /**
@@ -21,59 +17,47 @@ import { aboutData } from "@/data/about";
  * The last paragraph is separated by a rule rather than a "Beyond the code"
  * label. Stark's About does the same thing and the shift in register does the
  * signposting on its own.
+ *
+ * ⚠️ The header block is deliberately NOT revealed. It is above the fold on
+ * every viewport, so animating it in delays the first thing the reader looks
+ * at in exchange for nothing.
  */
 export function About() {
-  const prefersReducedMotion = useReducedMotion();
-
   return (
     <>
       <Section id="about" tone="band" className="pt-28 md:pt-32">
         <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "About" }]} />
 
-        <motion.div
-          initial={prefersReducedMotion ? false : "hidden"}
-          animate="visible"
-          variants={containerVariants}
-          className="mt-6 flex flex-col gap-6 sm:flex-row sm:items-center sm:gap-8"
-        >
-          <motion.div variants={itemVariants} className="shrink-0">
+        <div className="mt-6 flex flex-col gap-6 sm:flex-row sm:items-center sm:gap-8">
+          <div className="shrink-0">
             <Avatar size={88} src={aboutData.avatarSrc} />
-          </motion.div>
+          </div>
 
-          <motion.h1
-            variants={itemVariants}
-            className="text-4xl font-bold tracking-tight md:text-5xl"
-          >
+          <h1 className="text-4xl font-bold tracking-tight md:text-5xl">
             About
-          </motion.h1>
-        </motion.div>
+          </h1>
+        </div>
       </Section>
 
       <Section id="about-body">
-        <motion.div
-          initial={prefersReducedMotion ? false : "hidden"}
-          whileInView="visible"
-          viewport={revealViewport}
-          variants={containerVariants}
-          className="flex max-w-2xl flex-col gap-6"
-        >
+        <div className="flex max-w-2xl flex-col gap-6">
           {aboutData.body.map((paragraph) => (
-            <motion.p
+            <p
               key={paragraph.slice(0, 32)}
-              variants={itemVariants}
+              data-reveal
               className="text-base leading-relaxed text-[var(--color-muted)] md:text-lg"
             >
               {paragraph}
-            </motion.p>
+            </p>
           ))}
 
-          <motion.p
-            variants={itemVariants}
+          <p
+            data-reveal
             className="mt-4 border-t border-[var(--color-border)] pt-6 text-base leading-relaxed text-[var(--color-muted)] md:text-lg"
           >
             {aboutData.beyondTheCode}
-          </motion.p>
-        </motion.div>
+          </p>
+        </div>
       </Section>
     </>
   );

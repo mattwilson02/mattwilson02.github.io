@@ -1,12 +1,4 @@
-"use client";
-
-import { motion, useReducedMotion } from "framer-motion";
 import { Section } from "./section";
-import {
-  revealViewport,
-  containerVariants,
-  itemVariants,
-} from "@/lib/motion";
 import { closeData } from "@/data/close";
 
 const CheckIcon = () => (
@@ -36,34 +28,26 @@ const CheckIcon = () => (
  * paragraph at the end of a page of paragraphs.
  */
 export function Close() {
-  const prefersReducedMotion = useReducedMotion();
-
   return (
     <Section id="contact" tone="band">
-      <motion.div
-        initial={prefersReducedMotion ? false : "hidden"}
-        whileInView="visible"
-        viewport={revealViewport}
-        variants={containerVariants}
-        className="rounded-xl border border-[var(--color-border)] bg-[var(--color-card)] p-8 md:p-12"
-      >
+      <div className="rounded-xl border border-[var(--color-border)] bg-[var(--color-card)] p-8 md:p-12">
         <div className="grid gap-10 md:grid-cols-2 md:gap-16">
           <div>
-            <motion.h2
-              variants={itemVariants}
+            <h2
+              data-reveal
               className="text-3xl font-bold tracking-tight md:text-4xl"
             >
               {closeData.heading}
-            </motion.h2>
+            </h2>
 
-            <motion.p
-              variants={itemVariants}
+            <p
+              data-reveal
               className="mt-5 text-lg leading-relaxed text-[var(--color-muted)]"
             >
               {closeData.body}
-            </motion.p>
+            </p>
 
-            <motion.div variants={itemVariants} className="mt-8">
+            <div data-reveal className="mt-8">
               <a
                 href={closeData.cta.href}
                 target="_blank"
@@ -72,32 +56,32 @@ export function Close() {
               >
                 {closeData.cta.label}
               </a>
-            </motion.div>
+            </div>
           </div>
 
           <div>
-            <motion.p
-              variants={itemVariants}
+            <p
+              data-reveal
               className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--color-muted)]"
             >
               What we cover
-            </motion.p>
+            </p>
 
             <ul className="mt-5 flex flex-col gap-3">
               {closeData.covers.map((item) => (
-                <motion.li
+                <li
                   key={item}
-                  variants={itemVariants}
+                  data-reveal
                   className="flex gap-3 leading-relaxed"
                 >
                   <CheckIcon />
                   <span>{item}</span>
-                </motion.li>
+                </li>
               ))}
             </ul>
           </div>
         </div>
-      </motion.div>
+      </div>
     </Section>
   );
 }

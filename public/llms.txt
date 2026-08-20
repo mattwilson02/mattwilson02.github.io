@@ -56,4 +56,4 @@ What a first call covers:
 - Canonical pages: [home](https://mattwilson.tech/), [about](https://mattwilson.tech/about), [writing](https://mattwilson.tech/blog)
 - RSS: https://mattwilson.tech/feed.xml · Sitemap: https://mattwilson.tech/sitemap.xml
 - This file is generated from the same data the site renders from. If it disagrees with a page, the page is newer and the page wins.
-- Last generated: 2026-08-19
+- Last generated: 2026-08-20
