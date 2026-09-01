@@ -10,6 +10,79 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "ralphs-got-rails",
+    title: "Ralph's Got Rails",
+    date: "2026-09-01",
+    excerpt:
+      "An autonomous agent built a complete tax compliance application and got every number right. Two things had changed since the build before it, and only the evidence ledger could tell me which of them mattered.",
+    tags: ["AI", "Agents", "Governance"],
+    readingTime: "5 min read",
+    content: `Ralph built an entire tax compliance application. 14 sprints, unsupervised, in a domain where being wrong is expensive and quiet.
+
+I went through the finished thing by hand afterwards, hunting for defects. Every rate, every threshold, every statutory form: correct. Zero correctness bugs in the whole build.
+
+The build before it had fifteen.
+
+## Two things changed, not one
+
+I want to be straight about this, because it is the part a post like this usually skips.
+
+Between the two builds I added a harness: control-flow gates, risk-based autonomy, scope containment, a per-sprint evidence ledger, and GitHub's own machinery on the repo side. That took two months.
+
+I also upgraded the models, eight hours before the second run started.
+
+So I cannot hand you a clean experiment. Two variables moved. Anyone who tells you a result like this proves their tooling, on one project, with one evaluator, is selling you something.
+
+What I can tell you is what the evidence trail showed, because that is the part that does not depend on which variable you believe.
+
+## What the harness actually caught
+
+Across the 14 sprints, 8 shipped clean and 6 stopped and escalated to a human rather than guessing. Every stop was resolved, and all 14 sprints' work reached main.
+
+That is the part worth pointing at, and it does not need a hypothetical to make it. Without those gates the six carry on quietly, and I meet them at the end as wrong work built on top of wrong work. Which is precisely what the build before it did: 19 sprints, every check green, and fifteen correctness bugs that only surfaced when I went through the finished thing by hand.
+
+One of those stops is the one worth reading. Sprint 12 changed 56 files outside the scope its spec declared. It was stopped, escalated, re-run, and shipped clean.
+
+That is a specific, checkable thing the control plane did. It did not make the model cleverer. It made an overreach visible before it merged.
+
+## What the ledger then told me about my own harness
+
+Ten escalation reasons across those six sprints. I read them back nine days later because the ledgers were still on disk.
+
+Four were a 45 minute wall-clock timeout killing a sprint that was working fine. Three were my auditor's own output failing to parse, from a greedy regex that broke on trailing prose. Two were the fix loop giving up after one of its three permitted attempts.
+
+Nine of ten were mine, not the model's.
+
+There was a better one hiding underneath. Sprint 1's ledger records zero verification checks *run*. Not zero passed. The project scanner read the directory once at launch, found no test script because there was not one yet, and cached that. Sprint 1 then wrote the test script. Every sprint after it still believed there was nothing to run.
+
+I only know any of that because each sprint wrote down what it did at the time. Without the ledger, "six sprints escalated" is a fact about the agent. With it, it is a fact about me.
+
+## What shipped
+
+The scanner re-reads the project at the top of every sprint. The timeout is now a backstop behind an effort budget and a stall detector, so a slow but advancing sprint hits none of them. The audit parser is brace-balanced instead of greedy.
+
+And the judge stopped taking Ralph's word for anything.
+
+It used to score six of its nine checks out of Ralph's own evidence ledger. A ledger written by the thing being judged is a statement, not evidence. It now verifies that the ledger names the branch it is attached to, that every commit it cites is in the pull request, that CI's own check runs agree, and it recomputes scope containment from the PR's file list rather than reading the agent's account of it.
+
+The joke is that the judge could never read its evidence at all. Ralph wrote \`.ralph/\` into \`.gitignore\`, so the ledger was never committed, so it did not exist in CI's fresh checkout. Every judge run on that project failed, for the one reason it was unable to report.
+
+## What is left
+
+The application was correct and its first screen was overloaded: 2,769 visible words on one page, and 48 internal specification references rendered into the interface, because the spec asked for traceability and the builder gave it literally.
+
+That is a fixable finding, and it is a better problem than fifteen bugs. But it marks the boundary precisely.
+
+Every gate I have built decides whether work proceeds. None of them decide what reaches the screen. That is the next one, and I do not yet know what it looks like.
+
+## Try it
+
+    npx ralph-agent@next
+    ralph init --governance
+
+[npmjs.com/package/ralph-agent](https://www.npmjs.com/package/ralph-agent)`,
+  },
+  {
     slug: "athena-product-overview",
     title: "Athena: A Personal AI That Actually Knows You",
     date: "2026-03-23",

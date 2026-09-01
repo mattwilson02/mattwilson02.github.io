@@ -3,7 +3,7 @@
  * Run with: npx tsx scripts/generate-og-images.ts
  * Output files are committed to public/og/.
  */
-import { writeFileSync, mkdirSync } from "fs";
+import { writeFileSync, mkdirSync, readdirSync, unlinkSync } from "fs";
 import { join } from "path";
 import { Canvas, FONT, ACCENT, WHITE, DARK, MUTED } from "./canvas";
 import { blogPosts } from "../src/data/blog";
@@ -108,7 +108,7 @@ function generateTagOGImage(tag: string, postCount: number): Buffer {
   const tagScale = textWidth(tag, 8) <= 900 ? 8 : textWidth(tag, 6) <= 900 ? 6 : 5;
   const tagLineH = 7 * tagScale;
 
-  const subText = "Blog \u2014 Matt Wilson";
+  const subText = "Blog \u00b7 Matt Wilson";
   const subScale = 3;
   const subLineH = 7 * subScale; // 21px
 
@@ -144,7 +144,7 @@ function generateTagOGImage(tag: string, postCount: number): Buffer {
   c.drawText(tag, tagX, y, tagScale, ...WHITE);
   y += tagLineH + afterTagGap;
 
-  // "Blog — Matt Wilson"
+  // "Blog · Matt Wilson" — middot, not an em dash. See BRANDING.md.
   const subW = textWidth(subText, subScale);
   const subX = Math.round(W / 2 - subW / 2);
   c.drawText(subText, subX, y, subScale, ...MUTED);
@@ -182,19 +182,42 @@ const tagOgDir = join(publicDir, "og", "blog", "tag");
 mkdirSync(blogOgDir, { recursive: true });
 mkdirSync(tagOgDir, { recursive: true });
 
-// Per-post OG images
-for (const post of blogPosts) {
-  const outPath = join(blogOgDir, `${post.slug}.png`);
-  writeFileSync(outPath, generatePostOGImage(post.title));
-  console.log(`✓ public/og/blog/${post.slug}.png`);
+/**
+ * Delete generated cards that no longer correspond to live content.
+ *
+ * Without this the generator only ever adds: a renamed slug leaves its old
+ * card behind, and a retired post leaves one forever. Seven dead post cards
+ * and twelve dead tag cards had accumulated in the repository this way.
+ */
+function prune(dir: string, keep: Set<string>, label: string): void {
+  for (const file of readdirSync(dir, { withFileTypes: true })) {
+    if (!file.isFile() || !file.name.endsWith(".png")) continue;
+    if (keep.has(file.name)) continue;
+    unlinkSync(join(dir, file.name));
+    console.log(`✗ removed stale ${label}/${file.name}`);
+  }
 }
 
-// Per-tag OG images
+// Per-post OG images
+const postCards = new Set<string>();
+for (const post of blogPosts) {
+  const filename = `${post.slug}.png`;
+  writeFileSync(join(blogOgDir, filename), generatePostOGImage(post.title));
+  postCards.add(filename);
+  console.log(`✓ public/og/blog/${filename}`);
+}
+
+// Per-tag OG images. The filename is the URL-encoded tag, matching the
+// /blog/tag/<tag> links in blog-card.tsx.
+const tagCards = new Set<string>();
 const allTags = Array.from(new Set(blogPosts.flatMap((p) => p.tags)));
 for (const tag of allTags) {
   const postCount = blogPosts.filter((p) => p.tags.includes(tag)).length;
   const filename = `${encodeURIComponent(tag)}.png`;
-  const outPath = join(tagOgDir, filename);
-  writeFileSync(outPath, generateTagOGImage(tag, postCount));
+  writeFileSync(join(tagOgDir, filename), generateTagOGImage(tag, postCount));
+  tagCards.add(filename);
   console.log(`✓ public/og/blog/tag/${filename}`);
 }
+
+prune(tagOgDir, tagCards, "public/og/blog/tag");
+prune(blogOgDir, postCards, "public/og/blog");

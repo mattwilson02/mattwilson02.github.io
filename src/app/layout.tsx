@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { ErrorBoundary } from "@/components/error-boundary";
@@ -46,7 +46,6 @@ export const metadata: Metadata = {
       "You know what the business needs. I take the idea the rest of the way.",
     images: ["/og-image.png"],
   },
-  themeColor: "#0a0a0a",
   icons: {
     icon: [
       { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
@@ -57,6 +56,15 @@ export const metadata: Metadata = {
     ],
   },
   manifest: "/site.webmanifest",
+};
+
+/**
+ * `themeColor` belongs in the viewport export, not in metadata. Next 15 warns
+ * on every route when it sits in the wrong one, which is six warnings on every
+ * build for a single misplaced line.
+ */
+export const viewport: Viewport = {
+  themeColor: "#0a0a0a",
 };
 
 const PLAUSIBLE_DOMAIN = "mattwilson.tech";

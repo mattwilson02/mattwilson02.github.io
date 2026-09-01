@@ -5,8 +5,18 @@
     <description>Writing about AI engineering, developer tools, and the craft of building software.</description>
     <link>https://mattwilson.tech/blog</link>
     <language>en</language>
-    <lastBuildDate>Thu, 20 Aug 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 01 Sep 2026 00:00:00 GMT</lastBuildDate>
     <atom:link href="https://mattwilson.tech/feed.xml" rel="self" type="application/rss+xml" />
+  <item>
+    <title>Ralph's Got Rails</title>
+    <description>An autonomous agent built a complete tax compliance application and got every number right. Two things had changed since the build before it, and only the evidence ledger could tell me which of them mattered.</description>
+    <link>https://mattwilson.tech/blog/ralphs-got-rails</link>
+    <guid isPermaLink="true">https://mattwilson.tech/blog/ralphs-got-rails</guid>
+    <pubDate>Tue, 01 Sep 2026 00:00:00 GMT</pubDate>
+      <category>AI</category>
+      <category>Agents</category>
+      <category>Governance</category>
+  </item>
   <item>
     <title>Athena: A Personal AI That Actually Knows You</title>
     <description>A deep dive into Athena, a personal AI built on a living knowledge graph that reasons across your goals, relationships, finances, and decisions.</description>
